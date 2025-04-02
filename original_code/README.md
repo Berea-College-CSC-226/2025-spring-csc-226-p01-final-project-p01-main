@@ -8,7 +8,7 @@ dayton = turtle.Turtle()
 
 wn.bgcolor("white")
 
-alex.speed("fastest")
+alex.speed("fastest") #hi
 alex.penup()
 dayton.hideturtle()
 
