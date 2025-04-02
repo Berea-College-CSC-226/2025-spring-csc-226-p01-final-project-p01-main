@@ -7,7 +7,7 @@
 
 ❗️**Author(s)**: Tafreed Sardar, Hope Michael
 
-❗️**Google Doc Link**: https://docs.google.com/document/d/1UKZfv3geGkOdmvUdQ1jIEGk3vvioOPGFC-actVCHqDw/edit?usp=sharing
+❗️**Google  Doc Link**: https://docs.google.com/document/d/1UKZfv3geGkOdmvUdQ1jIEGk3vvioOPGFC-actVCHqDw/edit?usp=sharing
 
 ---
 
