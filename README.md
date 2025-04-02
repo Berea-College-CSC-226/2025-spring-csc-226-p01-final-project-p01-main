@@ -14,11 +14,11 @@
 
 ## Milestone 1: Setup, Planning, Design
 
-❗️**Title**: Space Adventure
+️**Title**: Space Adventure
 
-❗**Purpose**: `TO inform users about planets through an informational game`
+  **Purpose**: `TO inform users about planets through an informational game`
 
-❗️**Source Assignment(s)**: 
+  **Source Assignment(s)**: 
 `Chapter 4/ HW02: Python Turtle Graphics – using Turtle for graphics, this chapter will help us with drawing the rocket, planets, and movement.
 
 Chapter 15/ Teamwork 12: GUI and Event-Driven Programming – Since our project involves holding a key to move the rocket, this chapter will help with handling user input and key events.
@@ -29,7 +29,7 @@ Chapter 6/ Any teamwork and HW with functions: Functions – Using functions wil
 
 Chapter 17 & 18/ T10-now/ HW9 - now: Classes and Objects – to make our rocket and planets objects with attributes (e.g., name, size, distance), object-oriented programming will be helpful.`
 
-❗️**CRC Card(s)**:
+️**CRC Card(s)**:
   - Create a CRC card for each class that your project will implement.
   - See this link for a sample CRC card and a template to use for your own cards (you will have to make a copy to edit):
     [CRC Card Example](https://docs.google.com/document/d/1JE_3Qmytk_JGztRqkPXWACJwciPH61VCx3idIlBCVFY/edit?usp=sharing)
@@ -39,7 +39,7 @@ Chapter 17 & 18/ T10-now/ HW9 - now: Classes and Objects – to make our rocket 
   
 ![Don't leave me in your README!](https://docs.google.com/document/d/1KJlmu1N8ecuOCz_Q6Wp6xxB8dUrAiOvsBwJBR0WXhpY/edit?tab=t.0)
 
-❗️**Branches**: This project will **require** effective use of git. 
+️**Branches**: This project will **require** effective use of git. 
 
 Each partner should create a branch at the beginning of the project, and stay on this branch (or branches of their 
 branch) as they work. When you need to bring each others branches together, do so by merging each other's branches 
