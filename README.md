@@ -2,20 +2,20 @@
 
 ## Instructions
 
-❗️Exclamation Marks ❗️indicate action items; you should remove these emoji as you complete/update the items which 
-  they accompany. (This means that your final README should have no ❗️in it!)
+️Exclamation Marks  ️indicate action items; you should remove these emoji as you complete/update the items which 
+  they accompany. (This means that your final README should have no  ️in it!)
 
-❗️**Author(s)**: Your name(s) here
+️**Author(s)**: Dayton Conwell
 
-❗️**Google Doc Link**: Your link here
+  **Google Doc Link**: https://docs.google.com/document/d/1M4_pZLKzrGjGwAjhPCBc2SmoOvJ_NzyybsaB7eOy0ZQ/edit?tab=t.0
 
 ---
 
 ## Milestone 1: Setup, Planning, Design
 
-❗️**Title**: `What is the title of your project? Be creative! Replace this block of text.`
+**Title**: `Space adventure`
 
-❗**Purpose**: `In a single sentence, describe WHAT your project will do. Replace this block of text.`
+**Purpose**: `Our project will inform others on specific information about the solar system while being interactive`
 
 ❗️**Source Assignment(s)**: `List which original assignments you will base your project on? Replace this block of text.`
 
@@ -36,8 +36,8 @@ branch) as they work. When you need to bring each others branches together, do s
 into your own, following the process we've discussed in previous assignments, then re-branching out from the merged code.  
 
 ```
-    Branch 1 starting name: _____________
-    Branch 2 starting name: _____________
+    Branch 1 starting name: 
+    Branch 2 starting name: conwelld
 ```
 
 ### References 
