@@ -1,23 +1,18 @@
-# ❗CSC226 Final Project
+# CSC226 Final Project
 
-## Instructions
+**Author(s)**: Tafreed Sardar, Hope Michael
 
-❗️Exclamation Marks ❗️indicate action items; you should remove these emoji as you complete/update the items which 
-  they accompany. (This means that your final README should have no ❗️in it!)
-
-❗️**Author(s)**: Tafreed Sardar, Hope Michael
-
-❗️**Google Doc Link**: https://docs.google.com/document/d/1UKZfv3geGkOdmvUdQ1jIEGk3vvioOPGFC-actVCHqDw/edit?usp=sharing
+**Google Doc Link**: https://docs.google.com/document/d/1UKZfv3geGkOdmvUdQ1jIEGk3vvioOPGFC-actVCHqDw/edit?usp=sharing
 
 ---
 
 ## Milestone 1: Setup, Planning, Design
 
-❗️**Title**: `Interactive Calculator with Turtle`
+**Title**: `Interactive Calculator with Turtle`
 
-❗**Purpose**: 'Building an interactive calculator and using a turtle object to write the result.'
+**Purpose**: 'Building an interactive calculator and using a turtle object to write the result.'
 
-❗️**Source Assignment(s)**: `We are not going to be working off of any old programs.`
+**Source Assignment(s)**: `We are not going to be working off of any old programs.`
 
 ❗️**CRC Card(s)**:
   - Create a CRC card for each class that your project will implement.
@@ -29,7 +24,7 @@
   
 ![Don't leave me in your README!](image/crc.png "Image of CRC card as an example. Upload your CRC card(s) in place of this one. ")
 
-❗️**Branches**: This project will **require** effective use of git. 
+**Branches**: This project will **require** effective use of git. 
 
 Each partner should create a branch at the beginning of the project, and stay on this branch (or branches of their 
 branch) as they work. When you need to bring each others branches together, do so by merging each other's branches 
