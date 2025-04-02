@@ -5,7 +5,7 @@
 ❗️Exclamation Marks ❗️indicate action items; you should remove these emoji as you complete/update the items which 
   they accompany. (This means that your final README should have no ❗️in it!)
 
-❗️**Author(s)**: Tafreed Sardar
+❗️**Author(s)**: Tafreed Sardar, Hope Michael
 
 ❗️**Google Doc Link**: https://docs.google.com/document/d/1UKZfv3geGkOdmvUdQ1jIEGk3vvioOPGFC-actVCHqDw/edit?usp=sharing
 
@@ -13,11 +13,11 @@
 
 ## Milestone 1: Setup, Planning, Design
 
-❗️**Title**: `What is the title of your project? Be creative! Replace this block of text.`
+❗️**Title**: `Interactive Calculator with Turtle`
 
-❗**Purpose**: `In a single sentence, describe WHAT your project will do. Replace this block of text.`
+❗**Purpose**: 'Building an interactive calculator and using a turtle object to write the result.'
 
-❗️**Source Assignment(s)**: `List which original assignments you will base your project on? Replace this block of text.`
+❗️**Source Assignment(s)**: `We are not going to be working off of any old programs.`
 
 ❗️**CRC Card(s)**:
   - Create a CRC card for each class that your project will implement.
@@ -36,8 +36,8 @@ branch) as they work. When you need to bring each others branches together, do s
 into your own, following the process we've discussed in previous assignments, then re-branching out from the merged code.  
 
 ```
-    Branch 1 starting name: _____________
-    Branch 2 starting name: _____________
+    Branch 1 starting name: sardart
+    Branch 2 starting name: michaelh
 ```
 
 ### References 
