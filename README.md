@@ -5,8 +5,8 @@
 ️Exclamation Marks  ️indicate action items; you should remove these emoji as you complete/update the items which 
   they accompany. (This means that your final README should have no  ️in it!)
 
-Karina Ismailova, Dayton Conwell: Your name(s) here
-️**Author(s)**: Dayton Conwell
+
+️**Author(s)**: Dayton Conwell Karina Ismailova
 
   **Google Doc Link**: https://docs.google.com/document/d/1M4_pZLKzrGjGwAjhPCBc2SmoOvJ_NzyybsaB7eOy0ZQ/edit?tab=t.0
 
@@ -14,11 +14,20 @@ Karina Ismailova, Dayton Conwell: Your name(s) here
 
 ## Milestone 1: Setup, Planning, Design
 
-❗️**Title**: `What is the title of your project? Be creative! Replace this block of text.`
+❗️**Title**: Space Adventure
 
-❗**Purpose**: `In a single sentence, describe WHAT your project will do. Replace this block of text.`
+❗**Purpose**: `TO inform users about planets through an informational game`
 
-❗️**Source Assignment(s)**: `List which original assignments you will base your project on? Replace this block of text.`
+❗️**Source Assignment(s)**: 
+`Chapter 4/ HW02: Python Turtle Graphics – using Turtle for graphics, this chapter will help us with drawing the rocket, planets, and movement.
+
+Chapter 15/ Teamwork 12: GUI and Event-Driven Programming – Since our project involves holding a key to move the rocket, this chapter will help with handling user input and key events.
+
+Chapter 5: Python Modules – organizing our code into separate files for readability, using modules will be useful.
+
+Chapter 6/ Any teamwork and HW with functions: Functions – Using functions will make our code more structured and reusable.
+
+Chapter 17 & 18/ T10-now/ HW9 - now: Classes and Objects – to make our rocket and planets objects with attributes (e.g., name, size, distance), object-oriented programming will be helpful.`
 
 ❗️**CRC Card(s)**:
   - Create a CRC card for each class that your project will implement.
@@ -28,7 +37,7 @@ Karina Ismailova, Dayton Conwell: Your name(s) here
     README. You can do this by saving an image in the repository and linking to it. See the sample CRC card below - 
     and REPLACE it with your own:
   
-![Don't leave me in your README!](image/crc.png "Image of CRC card as an example. Upload your CRC card(s) in place of this one. ")
+![Don't leave me in your README!](https://docs.google.com/document/d/1KJlmu1N8ecuOCz_Q6Wp6xxB8dUrAiOvsBwJBR0WXhpY/edit?tab=t.0)
 
 ❗️**Branches**: This project will **require** effective use of git. 
 
@@ -37,8 +46,8 @@ branch) as they work. When you need to bring each others branches together, do s
 into your own, following the process we've discussed in previous assignments, then re-branching out from the merged code.  
 
 ```
-    Branch 1 starting name: _____________
-    Branch 2 starting name: _____________
+    Branch 1 starting name: conwelld
+    Branch 2 starting name: ismailovak
 ```
 
 ### References 
@@ -47,6 +56,20 @@ Throughout this project, you will likely use outside resources. Reference all id
 and describe how you integrated the ideas or code into your program. This includes online sources, people who have 
 helped you, AI tools you've used, and any other resources that are not solely your own contribution. Update this 
 section as you go. DO NOT forget about it!
+
+Online Documentation & Tutorials
+Python Official Documentation (https://docs.python.org/3/) – Referenced for syntax, Turtle graphics, and event-driven programming.
+
+GeeksforGeeks (https://www.geeksforgeeks.org/) – Used for examples on handling keyboard events and object-oriented programming.
+
+Real Python (https://realpython.com/) – Consulted for best practices in writing modular Python code.
+
+AI & Code Assistance
+ChatGPT – Used for brainstorming ideas, debugging code, and refining program structure. Suggestions were implemented after personal review and modifications.
+
+Stack Overflow (https://stackoverflow.com/) – Used for troubleshooting specific coding issues related to key event handling and Turtle movement.
+
+T11
 
 ---
 
