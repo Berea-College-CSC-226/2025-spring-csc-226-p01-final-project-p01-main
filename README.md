@@ -10,19 +10,13 @@
 
 **Title**: `Interactive Calculator with Turtle`
 
-**Purpose**: 'Building an interactive calculator and using a turtle object to write the result.'
+**Purpose**: `Building an interactive calculator and using a turtle object to write the result.`
 
-**Source Assignment(s)**: `We are not going to be working off of any old programs.`
+**Source Assignment(s)**: `RQ18: Chapter 15: Event Driven Programming and GUIs`
 
-❗️**CRC Card(s)**:
-  - Create a CRC card for each class that your project will implement.
-  - See this link for a sample CRC card and a template to use for your own cards (you will have to make a copy to edit):
-    [CRC Card Example](https://docs.google.com/document/d/1JE_3Qmytk_JGztRqkPXWACJwciPH61VCx3idIlBCVFY/edit?usp=sharing)
-  - Tables in markdown are not easy, so we suggest saving your CRC card as an image and including the image(s) in the 
-    README. You can do this by saving an image in the repository and linking to it. See the sample CRC card below - 
-    and REPLACE it with your own:
+**CRC Card(s)**:
   
-![Don't leave me in your README!](image/crc.png "Image of CRC card as an example. Upload your CRC card(s) in place of this one. ")
+![img.png](image/img.png)
 
 **Branches**: This project will **require** effective use of git. 
 
@@ -32,15 +26,12 @@ into your own, following the process we've discussed in previous assignments, th
 
 ```
     Branch 1 starting name: sardart
-    Branch 2 starting name: michaelh
+    Branch 2 starting name: michaelh2
 ```
 
 ### References 
 
-Throughout this project, you will likely use outside resources. Reference all ideas which are not your own, 
-and describe how you integrated the ideas or code into your program. This includes online sources, people who have 
-helped you, AI tools you've used, and any other resources that are not solely your own contribution. Update this 
-section as you go. DO NOT forget about it!
+Julio Jijon
 
 ---
 
