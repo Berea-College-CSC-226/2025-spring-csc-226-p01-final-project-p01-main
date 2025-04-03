@@ -5,19 +5,20 @@
 ❗️Exclamation Marks ❗️indicate action items; you should remove these emoji as you complete/update the items which 
   they accompany. (This means that your final README should have no ❗️in it!)
 
-❗️**Author(s)**: Your name(s) here
+️**Author(s)**: Fatma Sherif, Osita Onwe
 
-❗️**Google Doc Link**: Your link here
+️**Google Doc Link**: https://docs.google.com/document/d/1z3J_wLoDjql1r5OJw3fPv3SdtqX2I-8wqVV92hL8I5M/edit?tab=t.0#heading=h.qg98s23ap4mh
 
 ---
 
 ## Milestone 1: Setup, Planning, Design
 
-❗️**Title**: `What is the title of your project? Be creative! Replace this block of text.`
+**Title**: `FlipWise – Flip cards. Get wiser.`
 
-❗**Purpose**: `In a single sentence, describe WHAT your project will do. Replace this block of text.`
+**Purpose**: `This project will create an interactive flashcard application that allows users to study, 
+quiz themselves, and track their progress using custom decks within a graphical user interface.`
 
-❗️**Source Assignment(s)**: `List which original assignments you will base your project on? Replace this block of text.`
+**Source Assignment(s)**: T11, HW06
 
 ❗️**CRC Card(s)**:
   - Create a CRC card for each class that your project will implement.
@@ -36,7 +37,7 @@ branch) as they work. When you need to bring each others branches together, do s
 into your own, following the process we've discussed in previous assignments, then re-branching out from the merged code.  
 
 ```
-    Branch 1 starting name: _____________
+    Branch 1 starting name: flashwise (sheriff)
     Branch 2 starting name: _____________
 ```
 
