@@ -12,17 +12,13 @@
 
 **Purpose**: `Building an interactive calculator and using a turtle object to write the result.`
 
-**Source Assignment(s)**: `We are not going to be working off of any old programs.`
+**Source Assignment(s)**: `RQ18: Chapter 15: Event Driven Programming and GUIs`
 
 **CRC Card(s)**:
   
 ![img.png](image/img.png)
 
-**Branches**: This project will **require** effective use of git. 
-
-Each partner should create a branch at the beginning of the project, and stay on this branch (or branches of their 
-branch) as they work. When you need to bring each others branches together, do so by merging each other's branches 
-into your own, following the process we've discussed in previous assignments, then re-branching out from the merged code.  
+**Branches**:  
 
 ```
     Branch 1 starting name: sardart
