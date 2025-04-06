@@ -5,3 +5,5 @@ responses.raise_for_status()
 data = responses.json()
 
 question_data = data["results"]
+
+print(question_data)
