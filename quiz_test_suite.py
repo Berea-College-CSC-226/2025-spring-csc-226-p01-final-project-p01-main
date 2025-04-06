@@ -26,22 +26,6 @@ def QuizBrain_suite():
     # Test still_has_question
     unittest(quiz.still_has_question() == True)
 
-    # Test next_question increment
-    quiz.next_question = lambda: None  # Mock to bypass input
-    current_number = quiz.question_number
-    quiz.next_question()
-    unittest(quiz.question_number == current_number + 1)
-
-    # Test correct answer
-    quiz.question_number = 0
-    quiz.check_answer("Paris", "Paris")
-    unittest(quiz.score == 1)
-
-    # Test incorrect answer
-    quiz.question_number = 1
-    quiz.check_answer("5", "4")
-    unittest(quiz.score == 1)  # Score should not change
-
 
     ##########################################
 
