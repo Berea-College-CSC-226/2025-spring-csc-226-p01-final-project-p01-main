@@ -58,7 +58,11 @@ Reflect on what you’ve done so far. How’s it going? Are you feeling behind/a
 What has surprised you so far? Describe your general feelings. Be honest with yourself; this section is for you, not me.
 
 ```
-    **Replace this text with your reflection
+    It's going well. We're making good progress. 
+    Ahna: I think it's going well. I'm learning a lot from Bao, though there's still a lot for me to learn. What surprised 
+    me was how much easier certain lines of code can be when you break things down step by step.
+    Bao: It's going pretty well. I work well with Ahna, and he's a good teammate. I'm surprised by how powerful the open 
+    database is. I can use it to play unlimited time with different choices of levels and so on.
 ```
 
 ---
