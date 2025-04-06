@@ -5,39 +5,39 @@
 ❗️Exclamation Marks ❗️indicate action items; you should remove these emoji as you complete/update the items which 
   they accompany. (This means that your final README should have no ❗️in it!)
 
-❗️**Author(s)**: Your name(s) here
+**Author(s)**: Bao Hoang, Ahna Watt
 
-❗️**Google Doc Link**: Your link here
+**Google Doc Link**: https://docs.google.com/document/d/1xhwgIZ77x40PH8CmxLtbfy5zquaHJfla-Vw4kSF16CM/edit?tab=t.0
 
 ---
 
 ## Milestone 1: Setup, Planning, Design
 
-❗️**Title**: `What is the title of your project? The Quiz of Ultimate Knowledge`
+**Title**: `The Quiz of Ultimate Knowledge`
 
-❗**Purpose**: `In a single sentence, describe WHAT your project will do. We will create a quiz where the user can answer 
-questions on any given category, and it’ll track the scores of how many they got right and wrong.`
+**Purpose**: `We will create a quiz where the user can answer questions on any given category, and it’ll track the scores of how many they got right and wrong.`
 
-❗️**Source Assignment(s)**: `List which original assignments you will base your project on?  https://opentdb.com/ `
+**Source Assignment(s)**: `We are not using any other assignments as sources.`
 
-❗️**CRC Card(s)**:
+**CRC Card(s)**:
   - Create a CRC card for each class that your project will implement.
   - See this link for a sample CRC card and a template to use for your own cards (you will have to make a copy to edit):
     [CRC Card Example](https://docs.google.com/document/d/1JE_3Qmytk_JGztRqkPXWACJwciPH61VCx3idIlBCVFY/edit?usp=sharing)
   - Tables in markdown are not easy, so we suggest saving your CRC card as an image and including the image(s) in the 
     README. You can do this by saving an image in the repository and linking to it. See the sample CRC card below - 
     and REPLACE it with your own:
-  
-![Don't leave me in your README!](image/crc.png "Image of CRC card as an example. Upload your CRC card(s) in place of this one. ")
+  ![CRC Card 1](image/hoangb_watta_CRC1.png)
+  ![CRC Card 2](image/hoangb_watta_CRC2.png)
 
-❗️**Branches**: This project will **require** effective use of git. 
+
+**Branches**: This project will **require** effective use of git. 
 
 Each partner should create a branch at the beginning of the project, and stay on this branch (or branches of their 
 branch) as they work. When you need to bring each others branches together, do so by merging each other's branches 
 into your own, following the process we've discussed in previous assignments, then re-branching out from the merged code.  
 
 ```
-    Branch 1 starting name: haongb
+    Branch 1 starting name: hoangb
     Branch 2 starting name: watta
 ```
 
