@@ -35,10 +35,9 @@ Chapter 17 & 18/ T10-now/ HW9 - now: Classes and Objects – to make our rocket 
     [CRC Card Example](https://docs.google.com/document/d/1JE_3Qmytk_JGztRqkPXWACJwciPH61VCx3idIlBCVFY/edit?usp=sharing)
   - Tables in markdown are not easy, so we suggest saving your CRC card as an image and including the image(s) in the 
     README. You can do this by saving an image in the repository and linking to it. See the sample CRC card below - 
-    and REPLACE it with your own:
-  
-![Don't leave me in your README!](https://docs.google.com/document/d/1KJlmu1N8ecuOCz_Q6Wp6xxB8dUrAiOvsBwJBR0WXhpY/edit?tab=t.0)
-
+    and REPLACE it with your own: 
+[Don't leave me in your README!](image/Final%20Project%20CRC%20cards%20(1).pdf)
+****
 ️**Branches**: This project will **require** effective use of git. 
 
 Each partner should create a branch at the beginning of the project, and stay on this branch (or branches of their 
