@@ -60,7 +60,7 @@ What has surprised you so far? Describe your general feelings. Be honest with yo
 ```
     **Briana: As of today I believe we are neither behind or ahead. I was surprised to see how having more subtasks for
     every task code help us have more confidence in our plans for this project. This project seems to have challenging 
-    bits and while also being very interesting. Working with Cade has actually been pretty decent
+    bits and while also being very interesting. 
 ```
 
 ---
