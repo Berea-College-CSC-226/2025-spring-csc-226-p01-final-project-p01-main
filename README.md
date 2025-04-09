@@ -36,7 +36,10 @@ Chapter 17 & 18/ T10-now/ HW9 - now: Classes and Objects – to make our rocket 
   - Tables in markdown are not easy, so we suggest saving your CRC card as an image and including the image(s) in the 
     README. You can do this by saving an image in the repository and linking to it. See the sample CRC card below - 
     and REPLACE it with your own: 
-[Don't leave me in your README!](image/Final%20Project%20CRC%20cards%20(1).pdf)
+![Don't leave me in your README!](image/Screenshot%202025-04-09%20092702.png)
+![Don't leave me in your README!](image/Screenshot%202025-04-09%20092715.png)
+![Don't leave me in your README!](image/Screenshot%202025-04-09%20092734.png)
+![Don't leave me in your README!](image/Screenshot%202025-04-09%20092752.png)
 ****
 ️**Branches**: This project will **require** effective use of git. 
 
