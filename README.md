@@ -11,7 +11,7 @@
 **Title**: `Interactive Calculator with Turtle`
 
 **Purpose**: `Building an interactive calculator and using a turtle object to write the result.`
-
+ 
 **Source Assignment(s)**: `RQ18: Chapter 15: Event Driven Programming and GUIs`
 
 **CRC Card(s)**:
