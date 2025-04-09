@@ -18,5 +18,6 @@ from tkinter import ttk
 import turtle
 
 class Calculator:
-    def __init__(self):
-        pass
+    def __init__(self, master):
+        self.master = master
+        master.title("Interactive Calculator with turtle")
