@@ -1,3 +1,20 @@
+######################################################################
+# Author: Hope Michael, Tafreed Sardar
+# Username: michaelh, sadart
+#
+# Source Assignment: RQ18 Chapter 15: Event Driven Programming and GUIs
+#
+# Purpose:  Serve as source material for our final project
+######################################################################
+# Acknowledgements: Scott heggens and
+#
+# Based on the WhackAMole class from our textbook:
+# https://runestone.academy/ns/books/published/2025_Spring_CSC_226/gu-iand-event-driven-programming_a-programming-example.html
+
+# licensed under a Creative Commons
+# Attribution-Noncommercial-Share Alike 3.0 United States License.
+####################################################################################
+
 import tkinter as tk
 from tkinter import PhotoImage
 from tkinter import messagebox
