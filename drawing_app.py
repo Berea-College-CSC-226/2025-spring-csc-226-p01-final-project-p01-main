@@ -1,6 +1,20 @@
-import tkinter as tk
-import turtle
+######################################################################
+# Author: Dingani Munsaka, Dumisani Chikomo, Abdou Diop
+# Username: chikomod, munsakad, diopa
+#
+# P01: Drawing App
+#
+# Purpose: Use turtles and tkinter to design a drawing app
+#
 
+#######################################################################
+# Acknowledgements: Dr Heggen
+#
+# Original code written by Dr. Jan Pearce
+
+####################################################################################
+
+import tkinter as tk
 
 class DrawingApp:
     def __init__(self, windowtext=""):
@@ -8,101 +22,65 @@ class DrawingApp:
         self.root.minsize(width=800, height=500)
         self.root.maxsize(width=800, height=500)
         self.root.title(windowtext)
+        self.myTextBox1 = tk.Entry(self.root)
+        self.myTextLabel1Text = tk.StringVar()  # Makes a Tkinter string variable
 
-        # Canvas for turtle
-        self.canvas = tk.Canvas(self.root, width=800, height=400)
-        self.canvas.pack()
-
-        # Turtle setup
-        self.screen = turtle.TurtleScreen(self.canvas)
-        self.screen.bgcolor("white")
-        self.pen = turtle.RawTurtle(self.screen)
-        self.pen.shape("circle")
-        self.pen.speed(0)
-        self.pen.pensize(2)
-        self.pen.color("black")
-
-        self.drawing = False
-        self.erase_mode = False
-
-        # Bind mouse events
-        self.canvas.bind("<Button-1>", self.start_draw)
-        self.canvas.bind("<B1-Motion>", self.draw)
-        self.canvas.bind("<ButtonRelease-1>", self.stop_draw)
-
-        # Create a frame for buttons
+        # Create a frame to hold the buttons
         button_frame = tk.Frame(self.root)
-        button_frame.pack(pady=5)
+        button_frame.pack(pady=10)
 
-        # Create textbox
-        self.textbox = tk.Entry(self.root, width=60)
-        self.textbox.pack(pady=5)
+        # Place buttons side by side
+        btn1 = tk.Button(button_frame, text="Change Pen Color")
+        btn1.pack(side='left', padx=5)
 
-        # Create label
-        self.status_text = tk.StringVar()
-        self.status_label = tk.Label(self.root, textvariable=self.status_text)
-        self.status_label.pack()
+        btn2 = tk.Button(button_frame, text="Change Pen Size")
+        btn2.pack(side='left', padx=5)
 
-        # Buttons with functionality
-        tk.Button(button_frame, text="Change Pen Color", command=self.change_pen_color).pack(side='left', padx=5)
-        tk.Button(button_frame, text="Change Pen Size", command=self.change_pen_size).pack(side='left', padx=5)
-        tk.Button(button_frame, text="Erase", command=self.set_erase_mode).pack(side='left', padx=5)
-        tk.Button(button_frame, text="Save", command=self.save_drawing).pack(side='left', padx=5)
-        tk.Button(button_frame, text="Clear All", command=self.clear_all).pack(side='left', padx=5)
-        tk.Button(button_frame, text="Saved Drawings", command=self.show_saved_drawings).pack(side='left', padx=5)
+        btn3 = tk.Button(button_frame, text="Erase")
+        btn3.pack(side='left', padx=5)
 
-    def start_draw(self, event):
-        self.pen.penup()
-        self.pen.goto(event.x - 400, 200 - event.y)
-        self.pen.pendown()
-        self.drawing = True
+        btn4 = tk.Button(button_frame, text="Save")
+        btn4.pack(side='left', padx=5)
 
-    def draw(self, event):
-        if self.drawing:
-            self.pen.goto(event.x - 400, 200 - event.y)
+        btn5 = tk.Button(button_frame, text="Clear All")
+        btn5.pack(side='left', padx=5)
 
-    def stop_draw(self, event):
-        self.drawing = False
+        btn6 = tk.Button(button_frame, text="Saved Drawings")
+        btn6.pack(side='left', padx=5)
+    def create_textbox1(self):
+        """
+        Creates a textbox into which the user can type
 
-    def change_pen_color(self):
-        color = self.textbox.get().strip().lower()
-        try:
-            self.pen.color(color)
-            self.erase_mode = False
-            self.status_text.set(f"Changed pen color to '{color}'")
-        except turtle.TurtleGraphicsError:
-            self.status_text.set("Invalid color. Try common names like 'red', 'blue', etc.")
+        :return: None
+        """
+        self.myTextBox1 = tk.Text(width =250, height = 250)
+        self.myTextBox1.pack()                      # pack means add to window
 
-    def change_pen_size(self):
-        size_text = self.textbox.get().strip()
-        try:
-            size = int(size_text)
-            self.pen.pensize(size)
-            self.erase_mode = False
-            self.status_text.set(f"Changed pen size to {size}")
-        except ValueError:
-            self.status_text.set("Please enter a valid number for pen size.")
+    def create_label1(self, labeltext=""):
+        """
+        Creates a label on the window and sets the label to labeltext
 
-    def set_erase_mode(self):
-        self.pen.color("white")
-        self.erase_mode = True
-        self.status_text.set("Eraser ON (white color)")
+        :param labeltext: The text on the label
+        :return: None
+        """
 
-    def clear_all(self):
-        self.pen.clear()
-        self.status_text.set("Canvas cleared.")
-
-    def save_drawing(self):
-        # Placeholder: this just updates the label for now
-        self.status_text.set("Saving feature not implemented yet.")
-
-    def show_saved_drawings(self):
-        # Placeholder: this just updates the label for now
-        self.status_text.set("No saved drawings available.")
-
+        self.myTextLabel1Text.set(labeltext)        # Sets the Tkinter string variable
+        self.myTextLabel1 = tk.Label(self.root, textvariable=self.myTextLabel1Text)
+        self.myTextLabel1.pack()
 
 def main():
-    DrawingApp("Welcome To The Drawing App").root.mainloop()
+    """
+    Creates GUI and uses button, textbox and label GUI widgets
+
+    :return: None
+    """
+
+    myGUI = DrawingApp("Welcome To The Drawing App")           # Create a new myTkinter object
+
+    myGUI.create_textbox1()                         # Calls the create textbox method for capturing user input
+    myGUI.create_label1()                           # Create a label to writing text into (empty for now)
+
+    myGUI.root.mainloop()                           # Needed to start the event loop
 
 
 if __name__ == "__main__":
