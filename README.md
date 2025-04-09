@@ -58,7 +58,9 @@ Reflect on what you’ve done so far. How’s it going? Are you feeling behind/a
 What has surprised you so far? Describe your general feelings. Be honest with yourself; this section is for you, not me.
 
 ```
-    **Replace this text with your reflection
+    **Briana: As of today I believe we are neither behind or ahead. I was surprised to see how having more subtasks for
+    every task code help us have more confidence in our plans for this project. This project seems to have challenging 
+    bits and while also being very interesting. Working with Cade has actually been pretty decent
 ```
 
 ---
