@@ -33,15 +33,13 @@ Julio Jijon
 
 ## Milestone 2: Code Setup and Issue Queue
 
-Most importantly, keep your issue queue up to date, and focus on your code. 🙃
-
-Reflect on what you’ve done so far. How’s it going? Are you feeling behind/ahead? What are you worried about? 
-What has surprised you so far? Describe your general feelings. Be honest with yourself; this section is for you, not me.
-
 ```
-    **Replace this text with your reflection
+    So far we have completed milestone 1 and created a unittest file and the main file to write our code. We are pretty 
+    confident in the direction we want to take our code in, so we are feeling satisfied. Understanding issues in github
+    was a little complicated, but in the end we were able to figure it out. Because we have not yet been taught how to test
+    classes using classes, we are using the basic approach taught in class. Our next steps are working on the issues on github.
+    We are confident in our ability to maneuver other issues that will arise.
 ```
-
 ---
 
 ## Milestone 3: Virtual Check-In
