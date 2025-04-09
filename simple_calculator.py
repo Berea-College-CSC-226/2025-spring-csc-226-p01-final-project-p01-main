@@ -19,7 +19,41 @@ import turtle
 
 class Calculator:
     def __init__(self, master):
+        """
+        <write purpose of function>
+        :param master: <what is this parameter for??>
+        """
         self.master = master
         master.title("Interactive Calculator with turtle")
-
         pass
+
+        def create_widgits(self):
+            """
+            <write purpose of function>
+            :param self: 
+            :return: 
+            """
+            pass
+
+        def compute_equation(self):
+            """
+            <write purpose of function>
+            :param self: 
+            :return: 
+            """
+            pass
+
+        def write_result(self):
+            """
+            <write purpose of function>
+            :param self: 
+            :return: 
+            """
+            pass
+
+def main():
+    """
+    <write purpose of function>
+    :return: None
+    """
+    pass
