@@ -19,6 +19,8 @@
   **Purpose**: `TO inform users about planets through an informational game`
 
   **Source Assignment(s)**: 
+We will use HW06: Oh the Places You'll Go! for putting an image of planets as a background. 
+We will use T11: The Legend of Tuna: Breath of Catnip to move the rocket across the planets.
 `Chapter 4/ HW02: Python Turtle Graphics – using Turtle for graphics, this chapter will help us with drawing the rocket, planets, and movement.
 
 Chapter 15/ Teamwork 12: GUI and Event-Driven Programming – Since our project involves holding a key to move the rocket, this chapter will help with handling user input and key events.
@@ -83,7 +85,10 @@ Reflect on what you’ve done so far. How’s it going? Are you feeling behind/a
 What has surprised you so far? Describe your general feelings. Be honest with yourself; this section is for you, not me.
 
 ```
-    **Replace this text with your reflection
+    We did create a structure in the last homework, we are currently working on putting the neccessary stuff on the screen
+     of the pygame. We are having some confusion, but we will communicate throyugh slack and issuing in git and will get it 
+     this week. We are feeling ok abput our progress. We are not worried too much, more surprised by how fast we are 
+     implementing the code. Our general feeling is optimistic.
 ```
 
 ---
