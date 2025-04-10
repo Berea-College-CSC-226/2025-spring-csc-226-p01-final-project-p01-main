@@ -62,7 +62,22 @@ Reflect on what you’ve done so far. How’s it going? Are you feeling behind/a
 What has surprised you so far? Describe your general feelings. Be honest with yourself; this section is for you, not me.
 
 ```
-    **Replace this text with your reflection
+    So far, we feel like we’re somewhere in the middle—not exactly ahead, but not falling too far behind either. We've 
+    made good progress setting up the code structure and have started working on some of the core functionality. The 
+    issue queue has helped guide our tasks, but we definitely need to be better about updating it regularly instead of 
+    all at once.
+
+    One thing we’re a bit concerned about is underestimating how long certain parts of the code will take. Sometimes a small 
+    bug turns into a bigger time sink than expected. We've also noticed that some of our early code might need to be
+    refactored as we move forward, which adds to the workload.
+    
+    What’s surprised us the most is how rewarding it feels when even small parts of the project work as expected. Seeing 
+    things come together, even in tiny steps, has been really motivating. We didn’t anticipate enjoying the debugging 
+    process or the little coding wins this much.
+    
+    Overall, we’re feeling a mix of stress and motivation. There’s still a lot to do, but we’re committed to staying on 
+    track and moving forward one issue at a time.
+
 ```
 
 ---
