@@ -18,42 +18,60 @@ from tkinter import ttk
 import turtle
 
 class Calculator:
-    def __init__(self, master):
+    def __init__(self):
         """
         <write purpose of function>
-        :param master: <what is this parameter for??>
         """
-        self.master = master
-        master.title("Interactive Calculator with turtle")
+        self.master = tk.Tk()
+        self.master.title("Simple Calculator")
+        self.calculator_frame, self.turtle_frame = self.create_frames()
+
+
+
+    def create_frames(self):
+        """
+        <write purpose of function>
+        :return:
+        """
+        calculator_frame = tk.Frame(self.master)
+        calculator_frame.grid(column=2, row=1)
+        turtle_frame = tk.Frame(self.master)
+        turtle_frame.grid(row=0, column=1)
+
+        return calculator_frame, turtle_frame
+
+    def create_widgets(self):
+        """
+        <write purpose of function>
+        :param self:
+        :return:
+        """
         pass
 
-        def create_widgits(self):
-            """
-            <write purpose of function>
-            :param self: 
-            :return: 
-            """
-            pass
+    def compute_equation(self):
+        """
+        <write purpose of function>
+        :param self:
+        :return:
+        """
+        pass
 
-        def compute_equation(self):
-            """
-            <write purpose of function>
-            :param self: 
-            :return: 
-            """
-            pass
-
-        def write_result(self):
-            """
-            <write purpose of function>
-            :param self: 
-            :return: 
-            """
-            pass
+    def write_result(self):
+        """
+        <write purpose of function>
+        :param self:
+        :return:
+        """
+        pass
 
 def main():
     """
     <write purpose of function>
     :return: None
     """
-    pass
+    calculator = Calculator()
+    calculator.master.mainloop()
+
+
+if __name__ == '__main__':
+    main()
