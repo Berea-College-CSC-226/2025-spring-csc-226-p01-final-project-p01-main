@@ -68,6 +68,12 @@ GeeksforGeeks (https://www.geeksforgeeks.org/) – Used for examples on handling
 
 Real Python (https://realpython.com/) – Consulted for best practices in writing modular Python code.
 
+Python Official Documentation (https://docs.python.org/3/library/sys.html) – Referenced for the use of the sys module to handle system-specific parameters and functions like program exit handling.
+
+Pygame Documentation (https://www.pygame.org/docs/) – Used for understanding how to work with images, implement movement, and manage sprite drawing in Pygame.
+
+W3Schools on Python Classes (https://www.w3schools.com/python/python_classes.asp) – Clarifying concepts about object-oriented programming and the structure of classes in Python.
+
 AI & Code Assistance
 ChatGPT – Used for brainstorming ideas, debugging code, and refining program structure. Suggestions were implemented after personal review and modifications.
 
