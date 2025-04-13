@@ -1,10 +1,24 @@
-class Flashcard:
 
-    def __init__(self, term, definition):
+def read_file_to_flashcards(filename):
+    with open(filename, 'r') as file:        # Safely opens and auto-closes the file
+        lines = file.readlines()
 
-        self.term = term        #term: The word or phrase to be studied
-        self.definition = definition   #definition: The explanation of the term
+    flashcards = []
+    for line in lines:
+        line = line.strip()
+        if line:
+            term, definition = line.split(':', 1)
+            flashcards.append((term.strip(), definition.strip()))
+    return flashcards
 
-    def __str__(self):
 
-        return f"{self.term}"   #returns string representation of the object
+flashcards = read_file_to_flashcards('chemistry.txt')
+print(flashcards)
+
+
+
+
+
+
+
+
