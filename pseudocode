@@ -37,6 +37,7 @@ if there is jump to be made, you have to take it, and if there
 if you already jumped piece and there's another jump you double, ONLY same piece
 # +- depends on bottom or top side
 
+
 #TODO make make_piece_king in CheckersPiece Class
 
 #TODO finish the class Game: turn_switcher, game_won, board_state
@@ -46,6 +47,30 @@ if you already jumped piece and there's another jump you double, ONLY same piece
 #TODO Design implementation part
 
 
+
+MOVING ALGORITHM:
+
+conditions for moving
+
+if top piece: can move to that grid if the the row + column number added together are equal to
+or 2 GREATER than the current grid the checker is on.
+
+if bottom piece: can move to that grid if the row + column number added together are equal to
+or 2 LESS than the current grid the checker is on.
+
+thoughts:
+
+self.button_pos = None
+self.pepperoni_pos = None
+self.sausage_pos = None
+
+
+self.button_pos
+
+
+
+def button_handler():
+self.button_pos =
 
 
 
