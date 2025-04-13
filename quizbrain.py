@@ -2,31 +2,24 @@ import html
 
 class QuizBrain:
     def __init__(self, q_list):
-        self.score = 0 # initial score starts at 0
-        self.question_number = 0 # current question starts at 0
-        self.question_list = q_list # stores the list of question object (in question bank)
-
+        self.score = 0
+        self.question_number = 0
+        self.question_list = q_list
+        self.current_question = None
 
     def still_has_question(self):
-        return self.question_number < len(self.question_list)  # returns True if there are still more questions left to ask
+        return self.question_number < len(self.question_list)
 
     def next_question(self):
-        current_question = self.question_list[self.question_number] # gets the current question from the list based on question_number
+        self.current_question = self.question_list[self.question_number]
         self.question_number += 1
-        user_answer = input(f"Q.{self.question_number}: {html.unescape(current_question.text)} ({current_question.options}): ")
-        self.check_answer(user_answer, current_question.answer)
+        q_text = html.unescape(self.current_question.text)
+        return q_text, self.current_question.options
 
-    def check_answer(self, user_answer, correct_answer):
-        if user_answer.lower() == correct_answer.lower(): # checks if the user answer is the same as the correct answer
+    def check_answer(self, user_answer):
+        correct_answer = self.current_question.answer
+        if user_answer.lower() == correct_answer.lower():
             self.score += 1
-            print("Correct!")
-
+            return True
         else:
-            print("Incorrect!")
-
-        print(f"The correct answer is {correct_answer}")
-        print(f"Your score is {self.score}/{self.question_number}")
-        print("\n")
-
-
-
+            return False
