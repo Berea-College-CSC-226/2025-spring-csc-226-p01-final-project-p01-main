@@ -47,6 +47,29 @@ class Calculator:
         :return:
         """
         pass
+        # Create the buttons
+        self.create_button("1", 1, 0)
+        self.create_button("2", 1, 1)
+        self.create_button("3", 1, 2)
+        self.create_button("4", 2, 0)
+        self.create_button("5", 2, 1)
+        self.create_button("6", 2, 2)
+        self.create_button("7", 3, 0)
+        self.create_button("8", 3, 1)
+        self.create_button("9", 3, 2)
+        self.create_button("0", 4, 1)
+        self.create_button(".", 4, 2)
+
+        self.create_button("+", 1, 3)
+        self.create_button("-", 2, 3)
+        self.create_button("*", 3, 3)
+        self.create_button("/", 4, 3)
+
+        self.create_button("=", 4, 0)
+        self.create_button("C", 5, 0)
+        self.create_button("CE", 5, 1)
+        self.create_button("(", 5, 2)
+        self.create_button(")", 5, 3)
 
     def compute_equation(self):
         """
