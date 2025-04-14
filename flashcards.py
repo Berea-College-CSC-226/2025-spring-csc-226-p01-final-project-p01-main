@@ -12,7 +12,7 @@ def read_file_to_flashcards(filename):
     return flashcards
 
 
-flashcards = read_file_to_flashcards('chemistry.txt')
+flashcards = read_file_to_flashcards('programming.txt')
 print(flashcards)
 
 
