@@ -22,10 +22,14 @@ class Calculator:
         """
         <write purpose of function>
         """
-        self.master = tk.Tk()
+        self.master = tk.Tk() #initialize application window
         self.master.title("Simple Calculator")
-        self.calculator_frame, self.turtle_frame = self.create_frames()
-
+        self.calculator_frame, self.turtle_frame = self.create_frames() #create calculator frame and turtle frame
+        # create buttons
+        self.addition, self.subtraction, self.multiplication, self.division, self.power, self.zero, self.one, self.two,
+        self.three, self.four, self.five, self.six, self.seven, self.eight, self.nine = self.create_buttons()
+        self.result = 0
+        #TODO CREATE SINGLE UPDATE LABEL
 
 
     def create_frames(self):
@@ -34,42 +38,27 @@ class Calculator:
         :return:
         """
         calculator_frame = tk.Frame(self.master)
-        calculator_frame.grid(column=2, row=1)
+        calculator_frame.grid(column=0, row=0)
         turtle_frame = tk.Frame(self.master)
         turtle_frame.grid(row=0, column=1)
 
         return calculator_frame, turtle_frame
 
-    def create_widgets(self):
+    def create_buttons(self):
         """
         <write purpose of function>
         :param self:
         :return:
         """
-        pass
-        # Create the buttons
-        self.create_button("1", 1, 0)
-        self.create_button("2", 1, 1)
-        self.create_button("3", 1, 2)
-        self.create_button("4", 2, 0)
-        self.create_button("5", 2, 1)
-        self.create_button("6", 2, 2)
-        self.create_button("7", 3, 0)
-        self.create_button("8", 3, 1)
-        self.create_button("9", 3, 2)
-        self.create_button("0", 4, 1)
-        self.create_button(".", 4, 2)
-
-        self.create_button("+", 1, 3)
-        self.create_button("-", 2, 3)
-        self.create_button("*", 3, 3)
-        self.create_button("/", 4, 3)
-
-        self.create_button("=", 4, 0)
-        self.create_button("C", 5, 0)
-        self.create_button("CE", 5, 1)
-        self.create_button("(", 5, 2)
-        self.create_button(")", 5, 3)
+        command_func_list = [add_event, sub_event, div_event, mul_event, power_event, zero_event, one_event, two_event,
+                             three_event, four_event, five_event, six_event, seven_event, eight_event, nine_event]
+        #TODO: CREATE A FUNCTION STUB FOR EACH FUNCTION REFERENCES IN THE command_func_list LIST
+        buttons = []
+        for command_func in command_func_list:
+            button = tk.Button(self.calculator_frame, command=command_func)
+            button.pack(side=tk.LEFT)
+            buttons.append(button)
+        return tuple(buttons)
 
     def compute_equation(self):
         """
