@@ -2,22 +2,24 @@
 
 ## Instructions
 
-❗️Exclamation Marks ❗️indicate action items; you should remove these emoji as you complete/update the items which 
-  they accompany. (This means that your final README should have no ❗️in it!)
 
-❗️**Author(s)**: Your name(s) here
 
-❗️**Google Doc Link**: Your link here
+Author(s): Faryal Fatima
+
+Google Doc Link: https://docs.google.com/document/d/18Ollp-Q9-JxPCMsv5_5mtRZN1qjXiAV-MKdliw0oUJ8/edit?usp=sharing
 
 ---
 
-## Milestone 1: Setup, Planning, Design
+Milestone 1: Setup, Planning, Design
 
-❗️**Title**: `What is the title of your project? Be creative! Replace this block of text.`
+Title: `POS System With a Creative Twist
 
-❗**Purpose**: `In a single sentence, describe WHAT your project will do. Replace this block of text.`
+Purpose: We are creating a POS system that is more than just that. It will have a Turtle game that you can play inbetween 
+taking the orders so that are user does not get bored.
 
-❗️**Source Assignment(s)**: `List which original assignments you will base your project on? Replace this block of text.`
+Source Assignment(s): My partner wanted to create a POS system and I was interested in the turtles. Therefore, we tried to find the middle ground. 
+We ended up coming up with an idea of making a POS that also has a game feature. I will be coding the entire game while my partner (Shadaria) will be
+coding the POS system. I will be using my assignment
 
 ❗️**CRC Card(s)**:
   - Create a CRC card for each class that your project will implement.
