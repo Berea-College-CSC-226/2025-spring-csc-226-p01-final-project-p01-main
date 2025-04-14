@@ -1,7 +1,11 @@
-from draft1 import Rocket
+import final_code
 from inspect import getframeinfo, stack
+import unittest
 
-def unittest(did_pass):
+from final_game.final_code import Planet, HEIGHT, Rocket
+
+
+def testing(did_pass):
     """
     Print the result of a unit test.
     :param did_pass: a boolean representing the test
@@ -16,5 +20,11 @@ def unittest(did_pass):
         msg = ("Test at line {0} FAILED.".format(linenum))
     print(msg)
 
-def code_test():
-    Rocket.move()
+class TestRocketGame(unittest.TestCase):
+    def test_planet_info(self):
+        planet = Planet("Mars", "The Red Planet.", 400, 460)
+        self.assertEqual(planet.get_info(), "Mars: The Red Planet.")
+
+def main():
+    #code_test()
+main()
