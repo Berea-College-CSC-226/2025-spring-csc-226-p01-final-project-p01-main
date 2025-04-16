@@ -65,6 +65,11 @@ section as you go. DO NOT forget about it!
 
 https://www.pythontutorial.net/tkinter/tkinter-grid/ Using for ideas to set up the board
 https://pythonguides.com/python-for-loop-index/ Refresher on how to find current index in list while looping, using for checker pieces
+https://www.reddit.com/r/learnpython/comments/3osysb/tkinter_making_buttons_from_a_list_of_items_the/ Using func partial tools
+to evalute before runtime
+https://www.reddit.com/r/learnpython/comments/41qxp1/why_use_functoolspartial_instead_of_a_lambda/ Information
+on partial and lambda, explaining why these tools are used and the application of both
+https://emunix.emich.edu/~mevett/AI/Checkers/checkersNotation.html Reference for checkers board + potential matrix
 ## Milestone 2: Code Setup and Issue Queue
 
 Most importantly, keep your issue queue up to date, and focus on your code. 🙃

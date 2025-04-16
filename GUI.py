@@ -1,9 +1,5 @@
 import tkinter as tk
-
-# class CheckerPiece:
-#     def __init__(self):
-#         self.piece = None
-
+from functools import partial
 
 class TkinterGUI:
     def __init__(self):
@@ -15,9 +11,10 @@ class TkinterGUI:
         self.square = None
         self.pepperoni = None
         self.sausage = None
-        self.square_pos = []
-        self.pepperoni_pos = []
-        self.sausage_pos = []
+        self.counter = 0
+        # self.square_pos = []
+        # self.pepperoni_pos = []
+        # self.sausage_pos = []
         # self.piece = None
         # self.board = list(range(1, 65))
         # self.pieces = []
@@ -25,27 +22,41 @@ class TkinterGUI:
     def create_board(self):
         for row in self.rows:
             for col in self.columns:
-                self.square = tk.Button(self.root, width=15, height=3, command=self.button_handler())
-                self.square_pos = row + col
+                command = partial(self.square_handler, square_pos = row + col) # Using regular command or lambda would only store the last value at runtime. Using partial to evaluate each position as they go
+                self.square = tk.Button(self.root, width=15, height=3, command=command)
                 self.square.grid(row = row, column = col)
 
     def create_pieces(self):
         for row in self.rows[:3]: # Puts starting pieces in first 3 rows
             for col in self.columns:
                 if (row + col) % 2 != 0: # Alternates spots for pieces
-                    self.pepperoni = tk.Button(self.root, width=5, height=1)
-                    self.pepperoni_pos = row + col
+                    command = partial(self.pepperoni_handler, pep_pos = row + col)
+                    self.pepperoni = tk.Button(self.root, width=5, height=1, command=command)
                     self.pepperoni.grid(row=row, column=col)
 
         for row in self.rows[5:]: # Puts starting pieces in bottom 3 rows
             for col in self.columns:
                 if (row + col) % 2 != 0:
-                    self.sausage = tk.Button(self.root, width=5, height=1)
-                    self.sausage_pos.append(row + col)
+                    command = partial(self.sausage_handler, sausage_pos = row + col)
+                    self.sausage = tk.Button(self.root, width=5, height=1, command=command)
                     self.sausage.grid(row=row, column=col)
 
-    def button_handler(self):
-        # if self.square_pos == self.sausage_pos + 2 or self.square_pos == self.sausage_pos:
+    def pepperoni_handler(self, pep_pos):
+        self.counter = pep_pos
+        print(self.counter)
+
+    def sausage_handler(self, sausage_pos):
+        print(sausage_pos)
+
+    def square_handler(self, square_pos):
+         print(square_pos)
+             # make button appear there, make other one disappear
+
+
+
+
+
+
 
 
 
