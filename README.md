@@ -69,7 +69,7 @@ What has surprised you so far? Describe your general feelings. Be honest with yo
 
     One thing we’re a bit concerned about is underestimating how long certain parts of the code will take. Sometimes a small 
     bug turns into a bigger time sink than expected. We've also noticed that some of our early code might need to be
-    refactored as we move forward, which adds to the workload.
+     refactored as we move forward, which adds to the workload.
     
     What’s surprised us the most is how rewarding it feels when even small parts of the project work as expected. Seeing 
     things come together, even in tiny steps, has been really motivating. We didn’t anticipate enjoying the debugging 
@@ -86,14 +86,18 @@ What has surprised you so far? Describe your general feelings. Be honest with yo
 
 Indicate what percentage of the project you have left to complete and how confident you feel. 
 
-❗️**Completion Percentage**: `0 - 100%`
+**Completion Percentage**: 50%
 
-❗️**Confidence**: Describe how confident you feel about completing this project, and why. Then, describe some 
+**Confidence**: Describe how confident you feel about completing this project, and why. Then, describe some 
   strategies you can employ to increase the likelihood that you'll be successful in completing this project 
   before the deadline.
 
 ```
-    **Replace this text with your reflection
+    We're feeling a bit uncertain about completing the project exactly as we originally planned. After reviewing what we 
+    have so far, we realized that there’s still a lot of work to do, and some adjustments may be necessary to stay 
+    within the time frame. To increase our chances of finishing on time, we’re planning to revisit our goals, focus on 
+    the most essential parts of the project, and simplify where needed. Staying organized, dividing tasks efficiently, 
+    and sticking to a tighter schedule will help us stay on track.
 ```
 
 ---
