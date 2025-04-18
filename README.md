@@ -46,7 +46,7 @@ branch) as they work. When you need to bring each others branches together, do s
 into your own, following the process we've discussed in previous assignments, then re-branching out from the merged code.  
 
 ```
-    Branch 1 starting name: _____________
+    Branch 1 starting name: __fatimaf_final-project-1___________
     Branch 2 starting name: _____________
 ```
 
