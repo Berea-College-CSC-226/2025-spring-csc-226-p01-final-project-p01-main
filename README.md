@@ -12,15 +12,23 @@ Google Doc Link: https://docs.google.com/document/d/18Ollp-Q9-JxPCMsv5_5mtRZN1qj
 
 Milestone 1: Setup, Planning, Design
 
-Title: `POS System With a Creative Twist
+Title: POS System With a Creative Twist
 
 Purpose: We are creating a POS system that is more than just that. It will have a Turtle game that you can play inbetween 
 taking the orders so that are user does not get bored.
 
 Source Assignment(s): My partner wanted to create a POS system and I was interested in the turtles. Therefore, we tried to find the middle ground. 
 We ended up coming up with an idea of making a POS that also has a game feature. I will be coding the entire game while my partner (Shadaria) will be
-coding the POS system. I will be using my assignment
+coding the POS system. I will be using all of my assignments that have used the concept of turtles and Shadaria will be using her life_path_number assignment.
 
+Assignments that I will be using to code the game:
+
+1) t02- exploring-turtles-t02
+2) hw07-the-game-of-nim
+3) hw05-funky-functions
+4) t03-boustrophen-turtles
+
+hw-loopy-turtles-loopy-languages 
 ❗️**CRC Card(s)**:
   - Create a CRC card for each class that your project will implement.
   - See this link for a sample CRC card and a template to use for your own cards (you will have to make a copy to edit):
@@ -28,8 +36,8 @@ coding the POS system. I will be using my assignment
   - Tables in markdown are not easy, so we suggest saving your CRC card as an image and including the image(s) in the 
     README. You can do this by saving an image in the repository and linking to it. See the sample CRC card below - 
     and REPLACE it with your own:
-  
-![Don't leave me in your README!](image/crc.png "Image of CRC card as an example. Upload your CRC card(s) in place of this one. ")
+
+![Don't leave me in your README!](image/crc.png "Image of CRC card as an example. Upload your CRC card(s) in place of this one.")
 
 ❗️**Branches**: This project will **require** effective use of git. 
 
