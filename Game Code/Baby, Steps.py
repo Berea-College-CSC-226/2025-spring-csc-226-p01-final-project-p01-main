@@ -7,21 +7,26 @@ class TurtlePlayer:
     def __init__(self):
         self.turtle = turtle.Turtle()
         self.turtle.shape("turtle")
+        self.turtle.color("brown")  #Changing turtles color
         self.turtle.penup()
         self.turtle.goto(0, -200)
 
+
     def move_left(self):
         x = self.turtle.xcor()
-        self.turtle.setx(x - 30)
+        if x > -280:                   #Adding screen boundaries
+            self.turtle.setx(x - 30)
 
     def move_right(self):
         x = self.turtle.xcor()
-        self.turtle.setx(x + 30)
+        if x < 280:
+            self.turtle.setx(x + 30)
+
 
 
 def main():
     screen = turtle.Screen()
-    screen.title("Turtle Catch Game")
+    screen.title("Turtle Catch Game")  #Title of the Game
     screen.bgcolor("lightblue")
     screen.setup(width=600, height=600)
 
