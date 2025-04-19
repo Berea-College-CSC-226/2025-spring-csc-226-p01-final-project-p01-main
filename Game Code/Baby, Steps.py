@@ -22,10 +22,18 @@ class TurtlePlayer:
 def main():
     screen = turtle.Screen()
     screen.title("Turtle Catch Game")
-    screen.bgcolor("lightgreen")
+    screen.bgcolor("lightblue")
     screen.setup(width=600, height=600)
 
+    player = TurtlePlayer()
+
+    # Adding KEYBOARD CONTROL
+    turtle.listen()
+    turtle.onkey(player.move_left, "Left")
+    turtle.onkey(player.move_right, "Right")
+
     turtle.done()
+
 
 if __name__ == "__main__":
     main()
