@@ -98,17 +98,41 @@ class GameManager:
         self.writer.clear()
         self.writer.write(f"Score: {self.score}", font=("Arial", 16, "normal"))
 
+class StartScreen:
+    def __init__(self, screen):
+        self.screen = screen
+
+        self.writer = turtle.Turtle()
+        self.writer.hideturtle()
+        self.writer.penup()
+        self.writer.goto(0, 0)
+        self.writer.write(
+            "Welcome to Turtle Catch!\nPress Enter to start",
+            align="center",
+            font=("Comic Sans MS", 22, "bold")  # Or your fun font
+        )
+
+        # Bind Enter key to start the game
+        self.screen.listen()
+        self.screen.onkey(self.start_game, "Return")
+
+    def start_game(self):
+        self.writer.clear()
+
+        # Now create the game when Enter is pressed
+        game = GameManager()
+        game.update()
+
 
 # Step 5: Set up the screen and run the game
+
 def main():
-    # Set up the game window
     screen = turtle.Screen()
     screen.title("Turtle Catch Game")
-    screen.bgcolor("lightblue")           # Set background color
-    screen.setup(width=620, height=620)  # Set screen size
+    screen.bgcolor("lightblue")
+    screen.setup(width=620, height=620)
 
-
-    # Draw a clean dark green frame around the play area
+    # Draw the frame
     frame = turtle.Turtle()
     frame.hideturtle()
     frame.speed(0)
@@ -123,7 +147,7 @@ def main():
         frame.right(90)
     frame.end_fill()
 
-    # Draw the inner light blue play area
+    # Draw the inner game area
     background = turtle.Turtle()
     background.hideturtle()
     background.speed(0)
@@ -138,14 +162,10 @@ def main():
         background.right(90)
     background.end_fill()
 
+    # Show only the welcome screen — no game yet
+    StartScreen(screen)
 
-
-
-    # Start the game
-    game = GameManager()                  # Initialize game objects
-    game.update()                         # Begin game loop
-
-    turtle.done()                         # Keep the window open
+    turtle.done()
 
 
 # Step 6: Run the game if this file is executed
