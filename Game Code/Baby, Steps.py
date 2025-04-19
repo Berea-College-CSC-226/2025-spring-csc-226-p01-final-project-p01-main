@@ -46,20 +46,35 @@ class FoodItem:
     def get_points(self):
         return self.points
 
+class GameManager:
+    def __init__(self):
+        self.player = TurtlePlayer()
+        self.food = FoodItem()
+
+        turtle.listen()
+        turtle.onkey(self.player.move_left, "Left")
+        turtle.onkey(self.player.move_right, "Right")
+
+    def update(self):
+        self.food.fall()
+
+        if self.food.turtle.ycor() < -250:
+            self.food.reset_position()            #resetting the food position
+
+        turtle.ontimer(self.update, 100)
+
+
 def main():
     screen = turtle.Screen()
-    screen.title("Turtle Catch Game")  #Title of the Game
+    screen.title("Turtle Catch Game")
     screen.bgcolor("lightblue")
     screen.setup(width=600, height=600)
 
-    player = TurtlePlayer()
-
-    # Adding KEYBOARD CONTROL
-    turtle.listen()
-    turtle.onkey(player.move_left, "Left")
-    turtle.onkey(player.move_right, "Right")
+    game = GameManager()  # adding the GameManager class to the main
+    game.update()
 
     turtle.done()
+
 
 
 if __name__ == "__main__":
