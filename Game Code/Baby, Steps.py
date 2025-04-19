@@ -21,6 +21,9 @@ class TurtlePlayer:
         x = self.turtle.xcor()
         if x < 280:
             self.turtle.setx(x + 30)
+    def check_collision(self, food):
+        return self.turtle.distance(food.turtle) < 30
+
 
 import random  # Make sure this is at the top
 
@@ -50,6 +53,12 @@ class GameManager:
     def __init__(self):
         self.player = TurtlePlayer()
         self.food = FoodItem()
+        self.score = 0
+        self.writer = turtle.Turtle()
+        self.writer.hideturtle()
+        self.writer.penup()
+        self.writer.goto(-280, 260)
+        self.update_score_display()
 
         turtle.listen()
         turtle.onkey(self.player.move_left, "Left")
@@ -59,9 +68,19 @@ class GameManager:
         self.food.fall()
 
         if self.food.turtle.ycor() < -250:
-            self.food.reset_position()            #resetting the food position
+            self.food.reset_position()
+
+        if self.player.check_collision(self.food):
+            self.score += self.food.get_points()
+            self.food.reset_position()
+            self.update_score_display()
 
         turtle.ontimer(self.update, 100)
+
+    def update_score_display(self):
+        self.writer.clear()
+        self.writer.write(f"Score: {self.score}", font=("Arial", 16, "normal"))
+
 
 
 def main():
