@@ -15,7 +15,6 @@ FOOD_TYPES = [
 # Player class to represent the controllable turtle
 class TurtlePlayer:
     def __init__(self):
-        # Initialize player turtle appearance and position
         self.turtle = turtle.Turtle()
         self.turtle.shape("turtle")
         self.turtle.color("brown")
@@ -23,26 +22,22 @@ class TurtlePlayer:
         self.turtle.goto(0, -200)
 
     def move_left(self):
-        # Move turtle left with boundary check
         x = self.turtle.xcor()
         if x > -280:
             self.turtle.setx(x - 30)
 
     def move_right(self):
-        # Move turtle right with boundary check
         x = self.turtle.xcor()
         if x < 280:
             self.turtle.setx(x + 30)
 
     def check_collision(self, food):
-        # Check distance between player and food for collision
         return self.turtle.distance(food.turtle) < 30
 
 
-# Class representing falling food items
+# Falling food item
 class FoodItem:
     def __init__(self):
-        # Set up food turtle
         self.turtle = turtle.Turtle()
         self.turtle.shape("circle")
         self.turtle.penup()
@@ -53,33 +48,23 @@ class FoodItem:
         self.reset_position()
         self.turtle.showturtle()
 
-
-
     def set_type(self, food_type):
-            self.name = food_type["name"]
-            self.points = food_type["points"]
-            self.is_good = food_type["is_good"]
-            self.turtle.color(food_type["color"])
-            # Set shape depending on whether food is good or junk
-            if self.is_good:
-                self.turtle.shape("circle")  # Good food = circle
-            else:
-                self.turtle.shape("triangle")  # Junk food = triangle
+        self.name = food_type["name"]
+        self.points = food_type["points"]
+        self.is_good = food_type["is_good"]
+        self.turtle.color(food_type["color"])
 
     def fall(self):
-        # Move food downward
         y = self.turtle.ycor()
         self.turtle.sety(y - self.speed)
 
     def reset_position(self):
-        # Randomize food type and position
         self.set_type(random.choice(FOOD_TYPES))
         x = random.randint(-250, 250)
         y = 360
         self.turtle.goto(x, y)
 
     def get_points(self):
-        # Return the point value of this food
         return self.points
 
 
@@ -88,18 +73,16 @@ class GameManager:
     def __init__(self, screen):
         self.screen = screen
         self.player = TurtlePlayer()
-        self.foods = [FoodItem() for _ in range(3)]  # Multiple falling food items
+        self.foods = [FoodItem() for _ in range(3)]
         self.score = 0
         self.lives = 3
 
-        # Set up turtle to draw score
         self.writer = turtle.Turtle()
         self.writer.hideturtle()
         self.writer.penup()
         self.writer.goto(-280, 260)
         self.writer.color("black")
 
-        # Set up turtle to draw hearts
         self.hearts = turtle.Turtle()
         self.hearts.hideturtle()
         self.hearts.penup()
@@ -110,7 +93,6 @@ class GameManager:
         self.update_lives_display()
 
     def start_game(self):
-        # Set up controls and begin update loop
         self.screen.listen()
         self.screen.onkey(self.player.move_left, "Left")
         self.screen.onkey(self.player.move_right, "Right")
@@ -118,12 +100,10 @@ class GameManager:
         turtle.update()
 
     def update(self):
-        # Loop through each food and update their state
         for food in self.foods:
             food.fall()
 
             if food.turtle.ycor() < -250:
-                # Handle missed good food
                 if food.is_good:
                     self.lives -= 1
                     self.update_lives_display()
@@ -133,28 +113,23 @@ class GameManager:
                 food.reset_position()
 
             elif self.player.check_collision(food):
-                # Handle catching food
                 self.score += food.get_points()
                 food.reset_position()
                 self.update_score_display()
 
-        # Refresh screen and continue game loop
         turtle.update()
         turtle.ontimer(self.update, 100)
 
     def update_score_display(self):
-        # Show the current score
         self.writer.clear()
         self.writer.write(f"Score: {self.score}", font=("Arial", 16, "normal"))
 
     def update_lives_display(self):
-        # Show remaining hearts
         self.hearts.clear()
         heart_str = "❤️ " * self.lives
         self.hearts.write(heart_str, font=("Arial", 16, "normal"))
 
     def game_over(self):
-        # Show Game Over message
         game_over_turtle = turtle.Turtle()
         game_over_turtle.hideturtle()
         game_over_turtle.penup()
@@ -168,7 +143,6 @@ class StartScreen:
         self.screen = screen
         self.game = None
 
-        # Draw welcome message
         self.writer = turtle.Turtle()
         self.writer.hideturtle()
         self.writer.penup()
@@ -183,7 +157,6 @@ class StartScreen:
         self.screen.onkey(self.start_game, "Return")
 
     def start_game(self):
-        # Remove welcome text and start game
         self.writer.clear()
         self.game = GameManager(self.screen)
         self.game.start_game()
