@@ -109,17 +109,16 @@ class StartScreen:
         self.writer.write(
             "Welcome to Turtle Catch!\nPress Enter to start",
             align="center",
-            font=("Comic Sans MS", 22, "bold")  # Or your fun font
+            font=("Comic Sans MS", 22, "bold")  # Use your fun font
         )
 
-        # Bind Enter key to start the game
         self.screen.listen()
         self.screen.onkey(self.start_game, "Return")
 
     def start_game(self):
         self.writer.clear()
 
-        # Now create the game when Enter is pressed
+        # Now create the full game only when Enter is pressed
         game = GameManager()
         game.update()
 
@@ -127,45 +126,48 @@ class StartScreen:
 # Step 5: Set up the screen and run the game
 
 def main():
-    screen = turtle.Screen()
-    screen.title("Turtle Catch Game")
-    screen.bgcolor("lightblue")
-    screen.setup(width=620, height=620)
 
-    # Draw the frame
-    frame = turtle.Turtle()
-    frame.hideturtle()
-    frame.speed(0)
-    frame.color("darkgreen", "darkgreen")
-    frame.penup()
-    frame.goto(-310, 310)
-    frame.pendown()
+        screen = turtle.Screen()
+        screen.title("Turtle Catch Game")
+        screen.bgcolor("lightblue")
+        screen.setup(width=620, height=620)
 
-    frame.begin_fill()
-    for _ in range(4):
-        frame.forward(620)
-        frame.right(90)
-    frame.end_fill()
+        turtle.tracer(0)  # Disable real-time drawing
 
-    # Draw the inner game area
-    background = turtle.Turtle()
-    background.hideturtle()
-    background.speed(0)
-    background.color("lightblue", "lightblue")
-    background.penup()
-    background.goto(-290, 290)
-    background.pendown()
+        # Draw the frame
+        frame = turtle.Turtle()
+        frame.hideturtle()
+        frame.speed(0)
+        frame.color("darkgreen", "darkgreen")
+        frame.penup()
+        frame.goto(-310, 310)
+        frame.pendown()
+        frame.begin_fill()
+        for _ in range(4):
+            frame.forward(620)
+            frame.right(90)
+        frame.end_fill()
 
-    background.begin_fill()
-    for _ in range(4):
-        background.forward(580)
-        background.right(90)
-    background.end_fill()
+        # Draw the inner game area
+        background = turtle.Turtle()
+        background.hideturtle()
+        background.speed(0)
+        background.color("lightblue", "lightblue")
+        background.penup()
+        background.goto(-290, 290)
+        background.pendown()
+        background.begin_fill()
+        for _ in range(4):
+            background.forward(580)
+            background.right(90)
+        background.end_fill()
 
-    # Show only the welcome screen — no game yet
-    StartScreen(screen)
+        turtle.update()  #  Instantly show everything drawn above
 
-    turtle.done()
+        # Show the welcome screen
+        StartScreen(screen)
+
+        turtle.done()
 
 
 # Step 6: Run the game if this file is executed
