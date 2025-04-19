@@ -22,7 +22,29 @@ class TurtlePlayer:
         if x < 280:
             self.turtle.setx(x + 30)
 
+import random  # Make sure this is at the top
 
+class FoodItem:
+    def __init__(self):
+        self.turtle = turtle.Turtle()
+        self.turtle.shape("circle")    #This is the shape of the food
+        self.turtle.color("red")
+        self.turtle.penup()
+        self.reset_position()
+        self.speed = 5
+        self.points = 1
+
+    def fall(self):
+        y = self.turtle.ycor()
+        self.turtle.sety(y - self.speed)
+
+    def reset_position(self):
+        x = random.randint(-250, 250)
+        y = 250
+        self.turtle.goto(x, y)
+
+    def get_points(self):
+        return self.points
 
 def main():
     screen = turtle.Screen()
