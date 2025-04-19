@@ -88,5 +88,31 @@ class GameManager:
         if self.player.check_collision(self.food):
             self.score += self.food.get_points()   # Add points to score
             self.food.reset_position()             # Respawn food
-            self.update_score_
+            self.update_score_display()            # Update score text
+
+        # Keep the loop going using ontimer
+        turtle.ontimer(self.update, 100)
+
+    def update_score_display(self):
+        # Show the current score at top left of screen
+        self.writer.clear()
+        self.writer.write(f"Score: {self.score}", font=("Arial", 16, "normal"))
+
+
+# Step 5: Set up the screen and run the game
+def main():
+    screen = turtle.Screen()
+    screen.title("Turtle Catch Game")
+    screen.bgcolor("lightblue")           # Set background color
+    screen.setup(width=600, height=600)   # Set screen size
+
+    game = GameManager()                  # Initialize the game logic
+    game.update()                         # Start the game loop
+
+    turtle.done()                         # Keeps window open
+
+
+# Step 6: Run the game if this file is executed
+if __name__ == "__main__":
+    main()
 
