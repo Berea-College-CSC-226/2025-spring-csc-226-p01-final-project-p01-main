@@ -68,7 +68,7 @@ class GameManager:
         self.writer = turtle.Turtle()
         self.writer.hideturtle()
         self.writer.penup()
-        self.writer.goto(-280, 260)
+        self.writer.goto(-280, 240)
         self.update_score_display()
 
         # Bind keys to player movement
@@ -101,15 +101,51 @@ class GameManager:
 
 # Step 5: Set up the screen and run the game
 def main():
+    # Set up the game window
     screen = turtle.Screen()
     screen.title("Turtle Catch Game")
     screen.bgcolor("lightblue")           # Set background color
-    screen.setup(width=600, height=600)   # Set screen size
+    screen.setup(width=620, height=620)  # Set screen size
 
-    game = GameManager()                  # Initialize the game logic
-    game.update()                         # Start the game loop
 
-    turtle.done()                         # Keeps window open
+    # Draw a clean dark green frame around the play area
+    frame = turtle.Turtle()
+    frame.hideturtle()
+    frame.speed(0)
+    frame.color("darkgreen", "darkgreen")
+    frame.penup()
+    frame.goto(-310, 310)
+    frame.pendown()
+
+    frame.begin_fill()
+    for _ in range(4):
+        frame.forward(620)
+        frame.right(90)
+    frame.end_fill()
+
+    # Draw the inner light blue play area
+    background = turtle.Turtle()
+    background.hideturtle()
+    background.speed(0)
+    background.color("lightblue", "lightblue")
+    background.penup()
+    background.goto(-290, 290)
+    background.pendown()
+
+    background.begin_fill()
+    for _ in range(4):
+        background.forward(580)
+        background.right(90)
+    background.end_fill()
+
+
+
+
+    # Start the game
+    game = GameManager()                  # Initialize game objects
+    game.update()                         # Begin game loop
+
+    turtle.done()                         # Keep the window open
 
 
 # Step 6: Run the game if this file is executed
