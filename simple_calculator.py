@@ -24,31 +24,37 @@ class Calculator:
         """
         self.master = tk.Tk() #initialize application window
         self.master.title("Simple Calculator")
+        self.expression = ""  # Holds the current mathematical expression
         self.calculator_frame, self.turtle_frame = self.create_frames() #create calculator frame and turtle frame
         # create buttons
-        self.addition, self.subtraction, self.multiplication, self.division, self.power, self.zero, self.one, self.two,
-        self.three, self.four, self.five, self.six, self.seven, self.eight, self.nine = self.create_buttons()
-        self.result = 0
+        # self.addition, self.subtraction, self.multiplication, self.division, self.power, self.zero, self.one, self.two,
+        # self.three, self.four, self.five, self.six, self.seven, self.eight, self.nine = self.create_buttons()
+        # self.result = 0
         #TODO CREATE SINGLE UPDATE LABEL
+        # Create display label
+        self.display = tk.Label(self.calculator_frame, text="", font=("Arial", 24), bg="white", anchor="e", width=25)
+        self.display.grid(row=0, column=0, columnspan=4, pady=10)
+
+        # Create calculator buttons
+        self.create_buttons()
 
 
     def create_frames(self):
         """
-        <write purpose of function>
-        :return:
+        Creates and returns calculator and turtle frames.
+        :return: tuple containing calculator and turtle frames
         """
-        calculator_frame = tk.Frame(self.master)
+        calculator_frame = tk.Frame(self.master, padx=10, pady=10)
         calculator_frame.grid(column=0, row=0)
-        turtle_frame = tk.Frame(self.master)
+
+        turtle_frame = tk.Frame(self.master, padx=10, pady=10)
         turtle_frame.grid(row=0, column=1)
 
         return calculator_frame, turtle_frame
 
     def create_buttons(self):
         """
-        <write purpose of function>
-        :param self:
-        :return:
+        Creates and places calculator buttons on the calculator frame.
         """
         command_func_list = [add_event, sub_event, div_event, mul_event, power_event, zero_event, one_event, two_event,
                              three_event, four_event, five_event, six_event, seven_event, eight_event, nine_event]
