@@ -2,6 +2,16 @@
 import turtle
 import random
 
+# Global reference to the frame turtle
+frame = None
+
+FOOD_TYPES = [
+    {"name": "apple", "color": "green", "points": 10, "is_good": True},
+    {"name": "carrot", "color": "orange", "points": 10, "is_good": True},
+    {"name": "burger", "color": "brown", "points": -2, "is_good": False}
+]
+
+
 # Player class to represent the controllable turtle
 class TurtlePlayer:
     def __init__(self):
@@ -42,7 +52,7 @@ class FoodItem:
 
     def reset_position(self):
         x = random.randint(-250, 250)
-        y = 250
+        y = 360
         self.turtle.goto(x, y)  # Reset food to top with new x
 
     def get_points(self):
@@ -64,6 +74,8 @@ class GameManager:
         self.writer.goto(-280, 240)
         self.update_score_display()
 
+
+
     def start_game(self):
         # Bind keys to player control
         self.screen.listen()
@@ -72,6 +84,7 @@ class GameManager:
 
         # Start update loop
         self.update()
+
         turtle.update()
 
     def update(self):
@@ -87,6 +100,7 @@ class GameManager:
             self.score += self.food.get_points()
             self.food.reset_position()
             self.update_score_display()
+
 
         # Redraw screen and schedule next update
         turtle.update()
@@ -135,6 +149,7 @@ def main():
     turtle.tracer(0)  # Disable real-time drawing
 
     # Draw outer frame
+    global frame
     frame = turtle.Turtle()
     frame.hideturtle()
     frame.speed(0)
