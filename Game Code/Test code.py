@@ -23,24 +23,24 @@ FOOD_TYPES = [
     {"name": "pizza", "points": -2, "is_good": False, "shape": "pizza.gif"}
 ]
 
-# Player class controls the turtle and handles movement/collision
+# Player class to represent the controllable turtle
 class TurtlePlayer:
     def __init__(self):
         self.turtle = turtle.Turtle()
         self.turtle.shape("turtle")
-        self.turtle.color("dark green")
-        self.turtle.shapesize(stretch_wid=2.5, stretch_len=2.2)
+        self.turtle.color("brown")
+        self.turtle.shapesize(stretch_wid=2, stretch_len=2)
         self.turtle.penup()
         self.turtle.goto(0, -200)
-        self.velocity = 0  # speed and direction
+        self.velocity = 0
 
     def move_left(self):
         self.turtle.setheading(180)
-        self.velocity = -10
+        self.velocity = -5
 
     def move_right(self):
         self.turtle.setheading(0)
-        self.velocity = 10
+        self.velocity = 5
 
     def stop(self):
         self.velocity = 0
@@ -48,22 +48,21 @@ class TurtlePlayer:
     def update_position(self):
         x = self.turtle.xcor()
         new_x = x + self.velocity
-        # Prevents player from going outside the screen
         if -280 <= new_x <= 280:
             self.turtle.setx(new_x)
 
     def check_collision(self, food):
         return self.turtle.distance(food.turtle) < 30
 
-# FoodItem class for falling food with random types and positions
+# Class representing falling food items
 class FoodItem:
     def __init__(self):
         self.turtle = turtle.Turtle()
         self.turtle.penup()
         self.turtle.speed(0)
         self.turtle.hideturtle()
-        self.speed = 5
-        self.set_type(random.choice(FOOD_TYPES))  # Set random type
+        self.speed = 7
+        self.set_type(random.choice(FOOD_TYPES))
         self.reset_position()
         self.turtle.showturtle()
 
@@ -87,23 +86,29 @@ class FoodItem:
     def get_points(self):
         return self.points
 
-# Manages the main game logic, updates, and display
+    def hide(self):
+        self.turtle.hideturtle()
+
+# Manages game state
 class GameManager:
     def __init__(self, screen):
         self.screen = screen
+        self.message = turtle.Turtle()
+        self.message.hideturtle()
+        self.reset_game()
+
+    def reset_game(self):
         self.player = TurtlePlayer()
         self.foods = [FoodItem() for _ in range(3)]
         self.score = 0
         self.lives = 5
 
-        # Score display turtle
         self.writer = turtle.Turtle()
         self.writer.hideturtle()
         self.writer.penup()
         self.writer.goto(-280, 260)
-        self.writer.color("#004d40")
+        self.writer.color("blue")
 
-        # Lives display turtle (with hearts)
         self.hearts = turtle.Turtle()
         self.hearts.hideturtle()
         self.hearts.penup()
@@ -112,25 +117,25 @@ class GameManager:
 
         self.update_score_display()
         self.update_lives_display()
+        self.message.clear()
+        self.start_game()
 
     def start_game(self):
-        # Keyboard controls
         self.screen.listen()
         self.screen.onkeypress(self.player.move_left, "Left")
         self.screen.onkeypress(self.player.move_right, "Right")
         self.screen.onkeyrelease(self.player.stop, "Left")
         self.screen.onkeyrelease(self.player.stop, "Right")
+        self.screen.onkey(self.restart_game, "Return")
         self.update()
         turtle.update()
 
     def update(self):
-        # Update player position
         self.player.update_position()
 
         for food in self.foods:
             food.fall()
 
-            # Missed good food
             if food.turtle.ycor() < -250:
                 if food.is_good:
                     self.lives -= 1
@@ -140,39 +145,44 @@ class GameManager:
                         return
                 food.reset_position()
 
-            # Collision with food
             elif self.player.check_collision(food):
                 self.score += food.get_points()
                 food.reset_position()
                 self.update_score_display()
 
         turtle.update()
-        turtle.ontimer(self.update, 30)  # Game loop every 30ms
+        turtle.ontimer(self.update, 30)
 
     def update_score_display(self):
         self.writer.clear()
-        self.writer.write(f"Score: {self.score}", font=("Arial", 16, "normal"))
+        self.writer.write(f"Score: {self.score}", font=("Segoe Print", 16, "bold"))
 
     def update_lives_display(self):
         self.hearts.clear()
         heart_str = " ".join(["❤️" for _ in range(self.lives)])
-        self.hearts.write(heart_str, font=("Arial", 16, "normal"))
+        self.hearts.write(heart_str, font=("Segoe Print", 16, "bold"))
 
     def game_over(self):
-        game_over_turtle = turtle.Turtle()
-        game_over_turtle.hideturtle()
-        game_over_turtle.penup()
-        game_over_turtle.goto(0, 0)
-        game_over_turtle.color("#d32f2f")
-        game_over_turtle.write("Game Over", align="center", font=("Arial", 24, "bold"))
+        self.message.clear()
+        self.message.penup()
+        self.message.goto(0, 0)
+        self.message.write("Game Over\nPress Enter to Play Again", align="center", font=("Segoe Print", 20, "bold"))
 
-# First screen before game starts
+    def restart_game(self):
+        for food in self.foods:
+            food.hide()
+        self.player.turtle.hideturtle()
+        self.writer.clear()
+        self.hearts.clear()
+        self.message.clear()
+        self.reset_game()
+
+# Initial welcome screen
 class StartScreen:
     def __init__(self, screen):
         self.screen = screen
         self.game = None
 
-        # Welcome message
         self.writer = turtle.Turtle()
         self.writer.hideturtle()
         self.writer.penup()
@@ -189,23 +199,21 @@ class StartScreen:
     def start_game(self):
         self.writer.clear()
         self.game = GameManager(self.screen)
-        self.game.start_game()
 
-# Set up screen, draw frame and background
+# Main screen setup
 def main():
     global frame
     screen = turtle.Screen()
     screen.title("Turtle Catch Game")
-    screen.bgcolor("#e0f7fa")  # Outer background
+    screen.bgcolor("lightblue")
     screen.setup(width=620, height=620)
 
     turtle.tracer(0)
 
-    # Draw green frame
     frame = turtle.Turtle()
     frame.hideturtle()
     frame.speed(0)
-    frame.color("#00796b", "#00796b")
+    frame.color("darkgreen", "darkgreen")
     frame.penup()
     frame.goto(-310, 310)
     frame.pendown()
@@ -215,7 +223,6 @@ def main():
         frame.right(90)
     frame.end_fill()
 
-    # Inner light blue background
     background = turtle.Turtle()
     background.hideturtle()
     background.speed(0)
@@ -231,10 +238,8 @@ def main():
 
     turtle.update()
 
-    # Show start screen
     StartScreen(screen)
     turtle.done()
 
-# Run the game
 if __name__ == "__main__":
     main()

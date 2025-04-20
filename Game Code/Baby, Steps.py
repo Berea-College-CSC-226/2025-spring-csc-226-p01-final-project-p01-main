@@ -2,9 +2,10 @@
 import turtle
 import random
 
-# Global reference to the frame turtle
+# Global reference to the frame turtle (used for drawing the border)
 frame = None
-# Register custom shapes for foods
+
+# Register custom shapes (must be .gif files in your project folder)
 turtle.register_shape("apple.gif")
 turtle.register_shape("banana.gif")
 turtle.register_shape("burger.gif")
@@ -12,15 +13,15 @@ turtle.register_shape("candy.gif")
 turtle.register_shape("salad.gif")
 turtle.register_shape("pizza.gif")
 
-# Food types and their properties
-FOOD_TYPES =  [{"name": "apple", "points": 10, "is_good": True, "shape": "apple.gif"},
-    {"name": "carrot", "points": 10, "is_good": True, "shape": "carrot.gif"},
+# Food types with properties: name, point value, if it's good, and shape
+FOOD_TYPES = [
+    {"name": "apple", "points": 10, "is_good": True, "shape": "apple.gif"},
     {"name": "banana", "points": 10, "is_good": True, "shape": "banana.gif"},
     {"name": "salad", "points": 10, "is_good": True, "shape": "salad.gif"},
     {"name": "burger", "points": -2, "is_good": False, "shape": "burger.gif"},
     {"name": "candy", "points": -2, "is_good": False, "shape": "candy.gif"},
-    {"name": "pizza", "points": -2, "is_good": False, "shape": "pizza.gif"}]
-
+    {"name": "pizza", "points": -2, "is_good": False, "shape": "pizza.gif"}
+]
 
 # Player class to represent the controllable turtle
 class TurtlePlayer:
@@ -35,11 +36,11 @@ class TurtlePlayer:
 
     def move_left(self):
         self.turtle.setheading(180)
-        self.velocity = -15
+        self.velocity = -10
 
     def move_right(self):
         self.turtle.setheading(0)
-        self.velocity = 15
+        self.velocity = 10
 
     def stop(self):
         self.velocity = 0
@@ -53,16 +54,14 @@ class TurtlePlayer:
     def check_collision(self, food):
         return self.turtle.distance(food.turtle) < 30
 
-
 # Class representing falling food items
 class FoodItem:
     def __init__(self):
         self.turtle = turtle.Turtle()
-        self.turtle.shape("circle")
         self.turtle.penup()
         self.turtle.speed(0)
         self.turtle.hideturtle()
-        self.speed = 5
+        self.speed = 7
         self.set_type(random.choice(FOOD_TYPES))
         self.reset_position()
         self.turtle.showturtle()
@@ -71,11 +70,8 @@ class FoodItem:
         self.name = food_type["name"]
         self.points = food_type["points"]
         self.is_good = food_type["is_good"]
-        # self.turtle.color(food_type["color"])
-        if self.is_good:
-            self.turtle.shape("circle")
-        else:
-            self.turtle.shape("triangle")
+        self.turtle.shape(food_type["shape"])
+        self.turtle.shapesize(stretch_wid=0.5, stretch_len=0.5)
 
     def fall(self):
         y = self.turtle.ycor()
@@ -84,17 +80,24 @@ class FoodItem:
     def reset_position(self):
         self.set_type(random.choice(FOOD_TYPES))
         x = random.randint(-250, 250)
-        y = 360 + random.randint(0, 150)  # Add random vertical spacing to stagger food drops
+        y = 360 + random.randint(0, 150)
         self.turtle.goto(x, y)
 
     def get_points(self):
         return self.points
 
+    def hide(self):
+        self.turtle.hideturtle()
 
 # Manages game state
 class GameManager:
     def __init__(self, screen):
         self.screen = screen
+        self.message = turtle.Turtle()
+        self.message.hideturtle()
+        self.reset_game()
+
+    def reset_game(self):
         self.player = TurtlePlayer()
         self.foods = [FoodItem() for _ in range(3)]
         self.score = 0
@@ -104,7 +107,7 @@ class GameManager:
         self.writer.hideturtle()
         self.writer.penup()
         self.writer.goto(-280, 260)
-        self.writer.color("black")
+        self.writer.color("blue")
 
         self.hearts = turtle.Turtle()
         self.hearts.hideturtle()
@@ -114,6 +117,8 @@ class GameManager:
 
         self.update_score_display()
         self.update_lives_display()
+        self.message.clear()
+        self.start_game()
 
     def start_game(self):
         self.screen.listen()
@@ -121,6 +126,7 @@ class GameManager:
         self.screen.onkeypress(self.player.move_right, "Right")
         self.screen.onkeyrelease(self.player.stop, "Left")
         self.screen.onkeyrelease(self.player.stop, "Right")
+        self.screen.onkey(self.restart_game, "Return")
         self.update()
         turtle.update()
 
@@ -149,20 +155,27 @@ class GameManager:
 
     def update_score_display(self):
         self.writer.clear()
-        self.writer.write(f"Score: {self.score}", font=("Arial", 16, "normal"))
+        self.writer.write(f"Score: {self.score}", font=("Segoe Print", 16, "bold"))
 
     def update_lives_display(self):
         self.hearts.clear()
         heart_str = " ".join(["❤️" for _ in range(self.lives)])
-        self.hearts.write(heart_str, font=("Arial", 16, "normal"))
+        self.hearts.write(heart_str, font=("Segoe Print", 16, "bold"))
 
     def game_over(self):
-        game_over_turtle = turtle.Turtle()
-        game_over_turtle.hideturtle()
-        game_over_turtle.penup()
-        game_over_turtle.goto(0, 0)
-        game_over_turtle.write("Game Over", align="center", font=("Arial", 24, "bold"))
+        self.message.clear()
+        self.message.penup()
+        self.message.goto(0, 0)
+        self.message.write("Game Over\nPress Enter to Play Again", align="center", font=("Segoe Print", 20, "bold"))
 
+    def restart_game(self):
+        for food in self.foods:
+            food.hide()
+        self.player.turtle.hideturtle()
+        self.writer.clear()
+        self.hearts.clear()
+        self.message.clear()
+        self.reset_game()
 
 # Initial welcome screen
 class StartScreen:
@@ -177,7 +190,7 @@ class StartScreen:
         self.writer.write(
             "Welcome to Turtle Catch!\nPress Enter to start",
             align="center",
-            font=("Comic Sans MS", 22, "bold")
+            font=("Segoe Print", 22, "bold")
         )
 
         self.screen.listen()
@@ -186,13 +199,9 @@ class StartScreen:
     def start_game(self):
         self.writer.clear()
         self.game = GameManager(self.screen)
-        self.game.start_game()
-
 
 # Main screen setup
-
 def main():
-
     global frame
     screen = turtle.Screen()
     screen.title("Turtle Catch Game")
@@ -231,7 +240,6 @@ def main():
 
     StartScreen(screen)
     turtle.done()
-
 
 if __name__ == "__main__":
     main()
