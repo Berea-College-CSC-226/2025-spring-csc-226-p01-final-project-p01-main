@@ -4,13 +4,23 @@ import random
 
 # Global reference to the frame turtle
 frame = None
+# Register custom shapes for foods
+turtle.register_shape("apple.gif")
+turtle.register_shape("banana.gif")
+turtle.register_shape("burger.gif")
+turtle.register_shape("candy.gif")
+turtle.register_shape("salad.gif")
+turtle.register_shape("pizza.gif")
 
 # Food types and their properties
-FOOD_TYPES = [
-    {"name": "apple", "color": "green", "points": 10, "is_good": True},
-    {"name": "carrot", "color": "orange", "points": 10, "is_good": True},
-    {"name": "burger", "color": "brown", "points": -2, "is_good": False}
-]
+FOOD_TYPES =  [{"name": "apple", "points": 10, "is_good": True, "shape": "apple.gif"},
+    {"name": "carrot", "points": 10, "is_good": True, "shape": "carrot.gif"},
+    {"name": "banana", "points": 10, "is_good": True, "shape": "banana.gif"},
+    {"name": "salad", "points": 10, "is_good": True, "shape": "salad.gif"},
+    {"name": "burger", "points": -2, "is_good": False, "shape": "burger.gif"},
+    {"name": "candy", "points": -2, "is_good": False, "shape": "candy.gif"},
+    {"name": "pizza", "points": -2, "is_good": False, "shape": "pizza.gif"}]
+
 
 # Player class to represent the controllable turtle
 class TurtlePlayer:
@@ -61,7 +71,7 @@ class FoodItem:
         self.name = food_type["name"]
         self.points = food_type["points"]
         self.is_good = food_type["is_good"]
-        self.turtle.color(food_type["color"])
+        # self.turtle.color(food_type["color"])
         if self.is_good:
             self.turtle.shape("circle")
         else:
@@ -182,6 +192,7 @@ class StartScreen:
 # Main screen setup
 
 def main():
+
     global frame
     screen = turtle.Screen()
     screen.title("Turtle Catch Game")
