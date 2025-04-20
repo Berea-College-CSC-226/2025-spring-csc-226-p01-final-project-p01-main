@@ -27,6 +27,7 @@ Assignments that I will be using to code the game:
 2) hw07-the-game-of-nim
 3) hw05-funky-functions
 4) t03-boustrophen-turtles
+5) HW08 for test suite
 
 hw-loopy-turtles-loopy-languages 
 
