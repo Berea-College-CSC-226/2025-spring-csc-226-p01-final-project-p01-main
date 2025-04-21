@@ -18,6 +18,11 @@ rocket_img = pygame.transform.scale(rocket_img, (30, 30))
 rocket_img.set_colorkey((255, 255, 255))
 
 color = (255,255,255)
+color_light = (170,170,170)
+color_dark = (100,100,100)
+width = screen.get_width()
+height = screen.get_height()
+mouse = pygame.mouse.get_pos()
 smallfont = pygame.font.SysFont('Corbel', 35)
 text = smallfont.render('land', True, color)
 
@@ -95,6 +100,9 @@ while running:
                 rocket.reset()
                 for p in planet_zones:
                     p.hit = False
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if width / 2 <= mouse[0] <= width / 2 + 140 and height / 2 <= mouse[1] <= height / 2 + 40:
+            # open new screen
 
     found_planet = rocket.check_planet()
     rocket.draw()
@@ -103,7 +111,12 @@ while running:
         pygame.draw.rect(screen, (0, 0, 0), (20, 20, 500, 40))
         info_text = font.render(rocket.current_planet.get_info(), True, (255, 255, 255))
         screen.blit(info_text, (30, 30))
+        if width/2.5 <= mouse[0] <= width/2+140 and height/1.58 <= mouse[1] <= height/1.58+30:
+            pygame.draw.rect(screen, color_light, [width / 2.5, height / 1.58, 140, 40])
+        else:
+            pygame.draw.rect(screen, color_dark, [width / 2.5, height / 1.58, 140, 40])
 
+        screen.blit(text, (width / 2.5 + 40, height / 1.58))
     pygame.display.update()
     clock.tick(30)
 
