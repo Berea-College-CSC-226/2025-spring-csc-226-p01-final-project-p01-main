@@ -83,3 +83,7 @@ counter = piece_pos
 if grid clicked:
 if moving algorithm is true:
 make button at
+
+if square clicked:
+if piece at counter position == square_pos
+for now print something to test, eventually make that one disappear, row = pep_pos[0] col = [1]
