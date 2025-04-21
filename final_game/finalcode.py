@@ -8,12 +8,19 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Rocket Lands on Planets")
 
 # Load Images
+WIDTH, HEIGHT = 1000, 189
 background = pygame.image.load("planets.gif").convert_alpha()
 background = pygame.transform.scale(background, (WIDTH, HEIGHT))
 
+WIDTH, HEIGHT = 1000, 300
 rocket_img = pygame.image.load("rocket.png").convert_alpha()
-rocket_img = pygame.transform.scale(rocket_img, (60, 60))
+rocket_img = pygame.transform.scale(rocket_img, (30, 30))
 rocket_img.set_colorkey((255, 255, 255))
+
+color = (255,255,255)
+smallfont = pygame.font.SysFont('Corbel', 35)
+text = smallfont.render('land', True, color)
+
 
 # Planet class
 class Planet:
@@ -32,12 +39,12 @@ class Planet:
 
 planet_zones = [
     Planet("Venus", "Second planet from the Sun.", 200, 260),
-    Planet("Mercury", "Closest to the Sun.", 270, 305),
-    Planet("Earth", "Our home planet.", 310, 380),
-    Planet("Mars", "The Red Planet.", 400, 460),
+    Planet("Mercury", "Closest to the Sun.", 265, 305),
+    Planet("Earth", "Our home planet.", 340, 380),
+    Planet("Mars", "The Red Planet.", 430, 460),
     Planet("Jupiter", "The largest planet.", 470, 560),
-    Planet("Saturn", "Famous for its rings.", 580, 670),
-    Planet("Uranus", "Has a tilted rotation.", 680, 770),
+    Planet("Saturn", "Famous for its rings.", 600, 670),
+    Planet("Uranus", "Has a tilted rotation.", 710, 770),
     Planet("Neptune", "Furthest from the Sun.", 790, 860),
 ]
 
@@ -48,7 +55,7 @@ class Rocket:
 
     def reset(self):
         self.x = 0
-        self.y = HEIGHT // 2 - 30
+        self.y = HEIGHT // 2 - 70
         self.speed = 20  # Smaller step = better planet detection accuracy
         self.current_planet = None
 
@@ -102,3 +109,7 @@ while running:
 
 pygame.quit()
 sys.exit()
+
+
+'''important note *** when we integrate a button we should have the event handler for text, we just have a button pop up
+when a planet is hit then we handle screen and changing them'''
