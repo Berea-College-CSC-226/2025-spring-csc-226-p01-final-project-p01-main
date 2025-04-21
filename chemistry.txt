@@ -1,5 +1,5 @@
-•	atom: The basic unit of matter consisting of a nucleus containing protons and neutrons, surrounded by electrons
-•	element: A substance that cannot be broken down into simpler substances by chemical means
+•	atom:: The basic unit of matter consisting of a nucleus containing protons and neutrons, surrounded by electrons
+•	element:: A substance that cannot be broken down into simpler substances by chemical means
 •	compound: A substance formed when two or more elements are chemically bonded together
 •	molecule: A group of atoms bonded together, representing the smallest unit of a chemical compound
 •	periodic table: A tabular arrangement of chemical elements organized by atomic number, electron configuration, and recurring chemical properties

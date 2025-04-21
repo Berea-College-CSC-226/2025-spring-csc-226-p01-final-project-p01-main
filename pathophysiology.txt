@@ -1,20 +1,20 @@
 inflammation:: The body's protective response to injury or infection, characterized by redness, heat, swelling, and pain
 necrosis:: The premature death of cells and living tissue due to factors such as infection, toxins, or trauma
-•	apoptosis: Programmed cell death that occurs as a normal and controlled part of an organism's development
-•	hypertrophy: An increase in the size of an organ or tissue due to the enlargement of its cells
-•	hyperplasia: An increase in the number of cells in an organ or tissue that appears normal under a microscope
-•	metaplasia: The transformation of one differentiated cell type into another differentiated cell type
-•	dysplasia: Abnormal changes in cells in terms of size, shape, and organization
-•	ischemia: Inadequate blood supply to an organ or part of the body, especially the heart muscles
-•	hypoxia: A condition in which the body or a region of the body is deprived of adequate oxygen supply at the tissue level
-•	thrombosis: The formation of a blood clot inside a blood vessel, obstructing the flow of blood
-•	embolism: The obstruction of a blood vessel by a foreign substance or a blood clot
-•	edema: The abnormal accumulation of fluid in tissues, causing swelling
-•	sepsis: A life-threatening condition caused by the body's response to an infection that damages its own tissues and organs
-•	fibrosis: The formation of excess fibrous connective tissue in an organ or tissue in a reparative or reactive process
-•	cirrhosis: A late stage of scarring (fibrosis) of the liver caused by many forms of liver diseases and conditions
-•	atherosclerosis: The buildup of fats, cholesterol, and other substances in and on artery walls
-•	autoimmunity: A condition in which the immune system mistakenly attacks the body's own tissues
-•	anaphylaxis: A severe, potentially life-threatening allergic reaction that can occur within seconds or minutes of exposure to an allergen
-•	carcinogenesis: The formation of a cancer, whereby normal cells are transformed into cancer cells
-•	neuropathy: A disease or dysfunction of one or more peripheral nerves, typically causing numbness or weakness
+apoptosis::Programmed cell death that occurs as a normal and controlled part of an organism's development
+hypertrophy::An increase in the size of an organ or tissue due to the enlargement of its cells
+hyperplasia:: An increase in the number of cells in an organ or tissue that appears normal under a microscope
+metaplasia::The transformation of one differentiated cell type into another differentiated cell type
+dysplasia:: Abnormal changes in cells in terms of size, shape, and organization
+ischemia:: Inadequate blood supply to an organ or part of the body, especially the heart muscles
+hypoxia:: A condition in which the body or a region of the body is deprived of adequate oxygen supply at the tissue level
+thrombosis:: The formation of a blood clot inside a blood vessel, obstructing the flow of blood
+embolism:: The obstruction of a blood vessel by a foreign substance or a blood clot
+edema:: The abnormal accumulation of fluid in tissues, causing swelling
+sepsis:: A life-threatening condition caused by the body's response to an infection that damages its own tissues and organs
+fibrosis:: The formation of excess fibrous connective tissue in an organ or tissue in a reparative or reactive process
+cirrhosis:: A late stage of scarring (fibrosis) of the liver caused by many forms of liver diseases and conditions
+atherosclerosis:: The buildup of fats, cholesterol, and other substances in and on artery walls
+autoimmunity:: A condition in which the immune system mistakenly attacks the body's own tissues
+anaphylaxis:: A severe, potentially life-threatening allergic reaction that can occur within seconds or minutes of exposure to an allergen
+carcinogenesis:: The formation of a cancer, whereby normal cells are transformed into cancer cells
+neuropathy:: A disease or dysfunction of one or more peripheral nerves, typically causing numbness or weakness
