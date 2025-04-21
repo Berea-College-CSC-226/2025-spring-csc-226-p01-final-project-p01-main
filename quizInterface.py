@@ -19,6 +19,8 @@ class QuizInterface:
         self.score_label = None
         self.buttons_frame = None
 
+        self.final_frame = None
+
         self.categories = fetch_categories()
 
         self.setup_frame = tk.Frame(window, bg="#00ffff")
@@ -70,10 +72,10 @@ class QuizInterface:
             random.shuffle(options)
             question_bank.append(Question(q["question"], options, q["correct_answer"]))
 
-            self.quiz = QuizBrain(question_bank)
+        self.quiz = QuizBrain(question_bank)
 
-            self.setup_frame.pack_forget()
-            self.show_quiz_screen()
+        self.setup_frame.pack_forget()
+        self.show_quiz_screen()
 
     def show_quiz_screen(self):
         self.score_label = tk.Label(text="Score: 0", bg="#00ffff", fg="black", font=("Times New Roman", 11))
@@ -105,21 +107,69 @@ class QuizInterface:
 
         self.get_next_question()
 
+    def check_answer(self, user_choice):
+        correct_answer = self.quiz.current_question.answer
+
+        for btn in self.buttons:
+            btn.config(state="disabled")
+
+            if btn["text"] == user_choice:
+                if user_choice == correct_answer:
+                    btn.config(bg="green", fg="white", activebackground="green", activeforeground="white", disabledforeground="white")
+                    self.quiz.score += 1
+
+                else:
+                    btn.config(bg="red", fg="white", activebackground="red", activeforeground="white", disabledforeground="white")
+
+            elif btn["text"] == correct_answer:
+                btn.config(bg="green", fg="white", activebackground="green", activeforeground="white", disabledforeground="white")
+
+        self.score_label.config(text=f"Score: {self.quiz.score}")
+        self.window.after(750, self.get_next_question)
+
     def get_next_question(self):
         self.canvas.config(bg="white")
         if self.quiz.still_has_question():
             q_text, options = self.quiz.next_question()
             self.canvas.itemconfig(self.question_text, text=q_text)
 
-        for i in range(4):
-            option_text = html.unescape(options[i])
-            self.buttons[i].config(
-                text=option_text,
-                command=lambda opt=option_text: self.check_answer(opt),
-                state="normal",
-                bg="white",
-                fg="black",
-                activebackground="white", activeforeground="black",
-                disabledforeground="black"
-            )
-    def check_answer(self):
+            for i in range(4):
+                option_text = html.unescape(options[i])
+                self.buttons[i].config(
+                    text=option_text,
+                    command=lambda opt=option_text: self.check_answer(opt),
+                    state="normal",
+                    bg="white",
+                    fg="black",
+                    activebackground="white", activeforeground="black",
+                    disabledforeground="black"
+                )
+
+        else:
+            self.show_final_screen()
+
+    def show_final_screen(self):
+        self.canvas.pack_forget()
+        self.buttons_frame.pack_forget()
+        self.score_label.pack_forget()
+
+        self.final_frame = tk.Frame(self.window, bg="#00ffff")
+        self.final_frame.pack(pady=50)
+
+        final_msg = tk.Label(self.final_frame, text=f"Final score: {self.quiz.score}/{self.quiz.question_number}", font=("Times New Roman", 14), fg="black", bg="#00ffff", justify="center")
+        final_msg.pack(pady=20)
+
+        continue_msg = tk.Label(self.final_frame, text="Do you want to keep playing?", font=("Times New Roman", 14), fg="black", bg="#00ffff", justify="center")
+        continue_msg.pack(pady=20)
+
+        btn_row = tk.Frame(self.final_frame, bg="#00ffff")
+        btn_row.pack()
+
+        play_again_btn = tk.Button(btn_row, text="Play Again", font=("Times New Roman", 14), width=15, command=self.restart_quiz)
+        play_again_btn.grid(row=0, column=0, padx=10)
+
+        exit_btn = tk.Button(btn_row, text="Exit", font=("Times New Roman", 14), width=15, command=self.window.quit)
+        exit_btn.grid(row=0, column=1, padx=10)
+
+    def restart_quiz(self):
+        pass
