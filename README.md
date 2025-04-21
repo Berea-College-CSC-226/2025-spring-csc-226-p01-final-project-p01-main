@@ -70,6 +70,8 @@ to evalute before runtime
 https://www.reddit.com/r/learnpython/comments/41qxp1/why_use_functoolspartial_instead_of_a_lambda/ Information
 on partial and lambda, explaining why these tools are used and the application of both
 https://emunix.emich.edu/~mevett/AI/Checkers/checkersNotation.html Reference for checkers board + potential matrix
+https://stackoverflow.com/questions/68191068/how-to-disappear-a-button-after-clicking-on-it-in-tkinter How to get rid of buttons
+https://stackoverflow.com/questions/11541262/basic-query-regarding-bindtags-in-tkinter bindtags in tkinter
 ## Milestone 2: Code Setup and Issue Queue
 
 Most importantly, keep your issue queue up to date, and focus on your code. 🙃
