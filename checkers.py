@@ -22,9 +22,14 @@ class TkinterGUI:
         '''
         for row in self.rows:
             for col in self.columns:
-                command = partial(self.square_handler, square_pos = [row, col]) # Command called when any square is clicked
-                square = tk.Button(self.root, width = 15, height = 3, command = command )
-                square.grid(row = row, column = col)
+                if (row + col) % 2 != 0:
+                    command = partial(self.square_handler, square_pos = [row, col]) # Command called when any square is clicked
+                    square = tk.Button(self.root, width = 15, height = 3, command = command, bg = 'brown')
+                    square.grid(row = row, column = col)
+                else:
+                    command = partial(self.square_handler, square_pos=[row, col])  # Command called when any square is clicked
+                    square = tk.Button(self.root, width=15, height=3, command=command, bg='red')
+                    square.grid(row=row, column=col)
 
 
 
@@ -48,7 +53,7 @@ class TkinterGUI:
             for col in range(1, 9):
                 if (row + col) % 2 != 0: # Alternates Squares
                     command = partial(self.piece_handler, tag = self.pep_tag, piece_pos = [row, col])
-                    pepperoni = tk.Button(self.root, width=5, height=1, command=command)
+                    pepperoni = tk.Button(self.root, width=5, height=1, command=command, bg = 'yellow')
                     pepperoni.grid(row=row, column=col)
                     pepperoni.tag = self.pep_tag # Gives pepperoni "tag" attribute, recognizes pieces as 'pep'
                     self.pepperonis[row, col] = pepperoni # Stores the position of pepperoni pieces in a dictionary; do print(self.pepperonis) to see result
@@ -57,7 +62,7 @@ class TkinterGUI:
             for col in range(1, 9):
                 if (row + col) % 2 != 0: # Alternates squares
                     command = partial(self.piece_handler, tag = self.sas_tag, piece_pos = [row, col])
-                    sausage = tk.Button(self.root, width=5, height=1,command=command)
+                    sausage = tk.Button(self.root, width=5, height=1,command=command, bg = 'grey')
                     sausage.grid(row=row, column=col)
                     sausage.tag = self.sas_tag # Gives sausage "tag" attribute, recognizes pieces as 'sas'
                     self.sausages[row,col] = sausage # Sausage pieces stored in dict
@@ -82,7 +87,7 @@ class TkinterGUI:
         if self.current_tag == self.pep_tag:
             if square_num == selected_piece_pos or square_num == selected_piece_pos + 2 or square_num == selected_piece_pos + 4 or square_num == selected_piece_pos - 2 or square_num == selected_piece_pos - 4: # Pepperoni can move in all valid directions, including hops and kinged movement
                 command = partial(self.piece_handler, tag = self.current_tag, piece_pos = square_pos)
-                button = tk.Button(self.root, width=5, height=1, command=command)
+                button = tk.Button(self.root, width=5, height=1, command=command, bg = 'yellow')
                 button.grid(row=square_pos[0], column=square_pos[1])
                 button.tag = current_tag
                 self.pepperonis[square_pos_tuple] = button # Stores piece into the correct dictionary
@@ -93,7 +98,7 @@ class TkinterGUI:
         if self.current_tag == self.sas_tag:
             if square_num == selected_piece_pos or square_num == selected_piece_pos - 2 or square_num == selected_piece_pos - 4 or square_num == selected_piece_pos + 2 or square_num == selected_piece_pos + 4: # Sausage can move in all valid directions, including hops and kinged movement
                 command = partial(self.piece_handler, tag = self.current_tag, piece_pos = square_pos)
-                button = tk.Button(self.root, width=5, height=1, command=command)
+                button = tk.Button(self.root, width=5, height=1, command=command, bg = 'grey')
                 button.grid(row=square_pos[0], column=square_pos[1])
                 button.tag = current_tag
                 self.sausages[square_pos_tuple] = button
@@ -109,6 +114,7 @@ class TkinterGUI:
         elif self.current_tag == 'pep':
             selected_piece = self.pepperonis[piece_tuple]
             selected_piece.grid_forget()
+
 
 
 
