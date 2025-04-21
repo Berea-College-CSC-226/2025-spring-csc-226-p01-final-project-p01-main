@@ -11,7 +11,7 @@ pygame.display.set_caption("Rocket Lands on Planets")
 background = pygame.image.load("planets.gif").convert_alpha()
 background = pygame.transform.scale(background, (WIDTH, HEIGHT))
 
-rocket_img = pygame.image.load("vector-illustration-rocket-icon-image-png-701751694966760xqxrwxd6te.png").convert_alpha()
+rocket_img = pygame.image.load("rocket.png").convert_alpha()
 rocket_img = pygame.transform.scale(rocket_img, (60, 60))
 rocket_img.set_colorkey((255, 255, 255))
 
