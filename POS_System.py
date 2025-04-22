@@ -1,6 +1,5 @@
-# Username:
-#
-# Name:
+# Username: micklers
+# Name: Shadaria Mickler
 #
 #
 ########################################################################################
@@ -17,7 +16,7 @@ import customtkinter,random
 class LeftFrame(customtkinter.CTkFrame):
     """ This Frame will display a toggle menu with general buttons and some more buttons"""
     def __init__(self, master, mid_frame):
-        super().__init__(master, width=200, height=864)
+        super().__init__(master, width=230, height=864, fg_color = "#181818")
 
         self.pack_propagate(False)  # ChatGPT
         self.mid_frame = mid_frame # Store a reference to the MiddleFrame instance so methods can be called from LeftFrame
@@ -26,7 +25,7 @@ class LeftFrame(customtkinter.CTkFrame):
         self.menu_visible = True
 
         # Toggle Button
-        self.toggle_btn = customtkinter.CTkButton(self, text="☰", width=35, corner_radius = 1, command=self.toggle_menu)
+        self.toggle_btn = customtkinter.CTkButton(self, text="☰", width=35, corner_radius = 3, command=self.toggle_menu)
         self.toggle_btn.pack(pady=15, padx=10, anchor="nw")
 
         # Container Widget
@@ -41,7 +40,7 @@ class LeftFrame(customtkinter.CTkFrame):
             btn = customtkinter.CTkButton(
                 self.menu_container,
                 text=text,
-                corner_radius = 1,
+                corner_radius = 3,
                 height = 50,
                 command = lambda category=text: self.call_specific_button(category)
             )
@@ -53,7 +52,7 @@ class LeftFrame(customtkinter.CTkFrame):
         spacer.pack(expand=True)  # Expands and fills space between buttons and exit
 
         # Exit Button
-        self.exit_btn = customtkinter.CTkButton(self.menu_container, text = "Exit", corner_radius = 1, height = 50)
+        self.exit_btn = customtkinter.CTkButton(self.menu_container, text = "Exit", corner_radius = 3, height = 50)
         self.exit_btn.pack(pady = 20, fill = "x")
 
     def toggle_menu(self):
@@ -73,21 +72,26 @@ class LeftFrame(customtkinter.CTkFrame):
 class MiddleFrame(customtkinter.CTkFrame):
     """ This frame is where the buttons will go"""
     def __init__(self,master):
-        super().__init__(master, width = 900)
+        super().__init__(master, width = 500, fg_color = "#121212")
+        self.specific_btn_ref = {}  # Store references to specific buttons
 
-        # Grid Layout (4x4)
-        for row in range(4):
-            self.grid_rowconfigure(row, weight=1)
-        for col in range(4):
-            self.grid_columnconfigure(col, weight=1)
+        # Search Bar (Entry Widget)
+        self.search_bar = customtkinter.CTkEntry(self, placeholder_text = "Search for products . . .", width = 710, height = 35, corner_radius=3, fg_color = "#282828")
+        self.search_bar.pack(anchor = "nw", padx = 15, pady = 15, expand = True)
+
+        # # Grid Layout (4x4)
+        # for row in range(4):
+        #     self.grid_rowconfigure(row, weight=1)
+        # for col in range(4):
+        #     self.grid_columnconfigure(col, weight=1)
 
         # Buttons Data
-        self.button_date = {
+        self.button_data = {
             "Combos": [
-                ("Combo 1 - Classic Chicken Sandwich", 7.99),
-                ("Combo 2 - Honey BBQ Sandwich", 7.99),
-                ("Combo 3 - Lemon Pepper Sandwich", 7.99),
-                ("Combo 4 - Buffalo Chicken Sandwich", 7.99)
+                ("The Classic Crunch Combo", 7.99),
+                ("Smoky BBQ Bliss Combo", 7.99),
+                ("Zesty Lemon Kick Combo", 7.99),
+                ("Fiery Buffalo Heat Combo", 7.99)
             ],
             "Sandwiches": [
                 ("Classic Chicken Sandwich", 5.49),
@@ -119,30 +123,59 @@ class MiddleFrame(customtkinter.CTkFrame):
             ]
         }
 
-        def display_specific_buttons(self, p_category):
-            """ When a category is selected, update the display with the specific buttons for that category """
+    def display_specific_buttons(self, p_category):
+        """ When a category is selected, update the display with specific buttons for that category """
+        # Clear any existing specific buttons
+        for widget in self.winfo_children():
+            widget.destroy()
 
-            # Clear any existing specific buttons
-            for widget in self.winfo_children():
-                widget.destroy()
+        # Create colorful frames for button layout (4x4 grid)
+        self.frames = []  # Store references to rows
+        color_pal = ["#1CCEE8", "#27EEC4", "#1BE37E", "#28A71A"]
 
-            # Get the list of specific items based on the general button selected
+        for row in range(4):  # Iterate through the four rows
+            color = color_pal[row]  # Pick color for this row
+            row_frames = []
+            for col in range(4):  # Iterate through the four columns
+                cell = customtkinter.CTkFrame(self, fg_color=color, corner_radius=3)
+                cell.grid(row=row, column=col, sticky="nsew", padx=2, pady=2)
+                row_frames.append(cell)  # Store the frame reference
+            self.frames.append(row_frames)  # Store the row in the frames list
 
-            # Create specific buttons for each item in the category
+
+
+
+        # Display category button based of the general button clicked
+
+        # item_lis = [] # Create a list to store all menu items
+        # counter = 0
+        # # Iterate through items, ignoring their prices
+        # for item,_ in self.button_data.get(p_category,[]): # Empty list is returned if key doesn't exist
+        #     # Create a button for each item
+        #     btn = customtkinter.CTkButton(self, text = f"{item}", corner_radius=1)
+        #     # Place the buttons in Grid Layout
+        #     btn.grid(row = counter//4, column = counter%4, padx = 5, pady = 5, sticky = "nsew")
+        #     # Increment Counter
+        #     counter+=1
+
+        #self.specific_btn_ref += [i]
+
+        # Create specific buttons for each item in the category
 
 
 
 class RightFrame(customtkinter.CTkFrame):
     """ This frame will be where orders show"""
     def __init__(self, master, **kwargs):
-        super().__init__(master, width = 800, height=864, corner_radius = 1) # Remove color
+        super().__init__(master, width = 550, height=864, corner_radius = 1,fg_color = "#121212")
+        self.pack_propagate(False)  # ChatGPT
 
         # All Checks Button
-        self.all_check_btn = customtkinter.CTkButton(self, text="All checks", corner_radius=1, width= 125, height = 30)
+        self.all_check_btn = customtkinter.CTkButton(self, text="All checks", corner_radius=3, width= 125, height = 35)
         self.all_check_btn.pack(anchor="ne", padx= 15, pady = 15)
 
         # Divider Line (Upper)
-        divider1 = customtkinter.CTkFrame(self, height=2, width=800, fg_color="grey30")
+        divider1 = customtkinter.CTkFrame(self, height=2, width=800, fg_color="#404040")
         divider1.pack(fill = "both", pady = 10)
 
         # Save, Cancel, Delete Button Container Frame
@@ -150,19 +183,19 @@ class RightFrame(customtkinter.CTkFrame):
         button_row.pack(fill="x", pady=5, padx=10)
 
         # Cancel Button (Left)
-        self.cancel_btn = customtkinter.CTkButton(button_row, text="Cancel", corner_radius=1, height=40, width=125)
+        self.cancel_btn = customtkinter.CTkButton(button_row, text="Cancel", corner_radius=3, height=40, width=125)
         self.cancel_btn.pack(side="left", padx=(5, 5))
 
         # Delete Button (Right)
-        self.delete_btn = customtkinter.CTkButton(button_row, text="Delete", corner_radius=1, height=40, width=125)
+        self.delete_btn = customtkinter.CTkButton(button_row, text="Delete", corner_radius=3, height=40, width=125)
         self.delete_btn.pack(side="right", padx=(5, 5))
 
         # Save Button (Center)
-        self.save_btn = customtkinter.CTkButton(button_row, text = "Save", corner_radius=1, height=40, width = 125)
+        self.save_btn = customtkinter.CTkButton(button_row, text = "Save", corner_radius=3, height=40, width = 125)
         self.save_btn.pack(padx = (5,5))
 
         # Divide Line
-        divider2 = customtkinter.CTkFrame(self, height=2, width=800, fg_color="grey30")
+        divider2 = customtkinter.CTkFrame(self, height=2, width=800, fg_color="#404040")
         divider2.pack(fill = "both", pady = 20)
 
         self.order_number = 0 # Order number Accumulator
@@ -186,11 +219,11 @@ class RightFrame(customtkinter.CTkFrame):
         button_row2.pack(fill="x", pady=15, padx=10)
 
         # Discount Button (Left)
-        self.discount_btn = customtkinter.CTkButton(button_row2, text="Discount", corner_radius=1, height=40)
+        self.discount_btn = customtkinter.CTkButton(button_row2, text="Discount", corner_radius=3, height=40)
         self.discount_btn.pack(side="left", expand=True, fill="x", padx=(0, 5))
 
         # Pay Button (Right)
-        self.pay_btn = customtkinter.CTkButton(button_row2, text="Pay", corner_radius=1, height=40, command=self.update_order_number)
+        self.pay_btn = customtkinter.CTkButton(button_row2, text="Pay", corner_radius=3, height=40, command=self.update_order_number)
         self.pay_btn.pack(side="right", expand=True, fill="x", padx=(5, 0))
 
 
