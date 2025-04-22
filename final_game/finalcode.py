@@ -1,21 +1,25 @@
 import pygame
 import sys
 
+## <<<<<<< conwelld
 # Setup
-pygame.init()
-WIDTH, HEIGHT = 1000, 300
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("Rocket Lands on Planets")
+# pygame.init()
+# WIDTH, HEIGHT = 1000, 300
+# screen = pygame.display.set_mode((WIDTH, HEIGHT))
+# pygame.display.set_caption("Rocket Lands on Planets")
 
-# Load Images
-WIDTH, HEIGHT = 1000, 189
-background = pygame.image.load("planets.gif").convert_alpha()
-background = pygame.transform.scale(background, (WIDTH, HEIGHT))
+# # Load Images
+# WIDTH, HEIGHT = 1000, 189
+# background = pygame.image.load("planets.gif").convert_alpha()
+# background = pygame.transform.scale(background, (WIDTH, HEIGHT))
 
-WIDTH, HEIGHT = 1000, 300
-rocket_img = pygame.image.load("rocket.png").convert_alpha()
-rocket_img = pygame.transform.scale(rocket_img, (30, 30))
-rocket_img.set_colorkey((255, 255, 255))
+# WIDTH, HEIGHT = 1000, 300
+# rocket_img = pygame.image.load("rocket.png").convert_alpha()
+# rocket_img = pygame.transform.scale(rocket_img, (30, 30))
+# rocket_img.set_colorkey((255, 255, 255))
+##=======
+from dataclasses import dataclass
+
 
 color = (255,255,255)
 color_light = (170,170,170)
@@ -28,6 +32,7 @@ text = smallfont.render('land', True, color)
 
 
 # Planet class
+@dataclass
 class Planet:
     def __init__(self, name, description, x_start, x_end):
         self.name = name
@@ -42,23 +47,27 @@ class Planet:
     def get_info(self):
         return f"{self.name}: {self.description}"
 
-planet_zones = [
-    Planet("Venus", "Second planet from the Sun.", 200, 260),
-    Planet("Mercury", "Closest to the Sun.", 265, 305),
-    Planet("Earth", "Our home planet.", 340, 380),
-    Planet("Mars", "The Red Planet.", 430, 460),
-    Planet("Jupiter", "The largest planet.", 470, 560),
-    Planet("Saturn", "Famous for its rings.", 600, 670),
-    Planet("Uranus", "Has a tilted rotation.", 710, 770),
-    Planet("Neptune", "Furthest from the Sun.", 790, 860),
-]
+# <<<<<<< conwelld
+# planet_zones = [
+#     Planet("Venus", "Second planet from the Sun.", 200, 260),
+#     Planet("Mercury", "Closest to the Sun.", 265, 305),
+#     Planet("Earth", "Our home planet.", 340, 380),
+#     Planet("Mars", "The Red Planet.", 430, 460),
+#     Planet("Jupiter", "The largest planet.", 470, 560),
+#     Planet("Saturn", "Famous for its rings.", 600, 670),
+#     Planet("Uranus", "Has a tilted rotation.", 710, 770),
+#     Planet("Neptune", "Furthest from the Sun.", 790, 860),
+# ]
 
-# Rocket
+# # Rocket
+# =======
+
+
 class Rocket:
     def __init__(self):
         self.reset()
 
-    def reset(self):
+    def reset(self, HEIGHT=300):
         self.x = 0
         self.y = HEIGHT // 2 - 70
         self.speed = 20  # Smaller step = better planet detection accuracy
@@ -71,58 +80,121 @@ class Rocket:
     def draw(self):
         screen.blit(rocket_img, (self.x, self.y))
 
-    def check_planet(self):
-        for planet in planet_zones:
-            if planet.is_hit(self.x) and not planet.hit:
-                planet.hit = True
+    def check_planet(self, planetS, testing=False):
+        for planet in planetS:
+            if testing:
                 self.current_planet = planet
+                return planet
+
+# <<<<<<< conwelld
+# running = True
+# while running:
+#     screen.blit(background, (0, 0))
+
+#     for event in pygame.event.get():
+#         if event.type == pygame.QUIT:
+#             running = False
+
+#         if event.type == pygame.KEYDOWN:
+#             if event.key == pygame.K_RIGHT: #Moves the rocket to the right by using the key "right"
+#                 rocket.move_right()
+#             elif event.key == pygame.K_r: #Key "R" sets the rocket to the start
+#                 rocket.reset()
+#                 for p in planet_zones:
+#                     p.hit = False
+#         if event.type == pygame.MOUSEBUTTONDOWN:
+#             if width / 2 <= mouse[0] <= width / 2 + 140 and height / 2 <= mouse[1] <= height / 2 + 40:
+#             # open new screen
+# =======
+            if planet.is_hit(self.x) and not planet.hit:
+
+                self.current_planet = planet
+
+# <<<<<<< conwelld
+#     if rocket.current_planet:
+#         pygame.draw.rect(screen, (0, 0, 0), (20, 20, 500, 40))
+#         info_text = font.render(rocket.current_planet.get_info(), True, (255, 255, 255))
+#         screen.blit(info_text, (30, 30))
+#         if width/2.5 <= mouse[0] <= width/2+140 and height/1.58 <= mouse[1] <= height/1.58+30:
+#             pygame.draw.rect(screen, color_light, [width / 2.5, height / 1.58, 140, 40])
+#         else:
+#             pygame.draw.rect(screen, color_dark, [width / 2.5, height / 1.58, 140, 40])
+
+#         screen.blit(text, (width / 2.5 + 40, height / 1.58))
+#     pygame.display.update()
+#     clock.tick(30)
+
+# pygame.quit()
+# sys.exit()
+
+
+# '''important note *** when we integrate a button we should have the event handler for text, we just have a button pop up
+# when a planet is hit then we handle screen and changing them'''
+# =======
                 return planet
         return None
 
 
-# Setup game
-rocket = Rocket()
-clock = pygame.time.Clock()
-font = pygame.font.SysFont(None, 30)
+if __name__ == "__main__":
+    # Setup
+    pygame.init()
+    WIDTH, HEIGHT = 1000, 300
+    screen = pygame.display.set_mode((WIDTH, HEIGHT))
+    pygame.display.set_caption("Rocket Lands on Planets")
 
-running = True
-while running:
-    screen.blit(background, (0, 0))
+    # Load Images
+    background = pygame.image.load("planets.gif").convert_alpha()
+    background = pygame.transform.scale(background, (WIDTH, HEIGHT))
 
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
+    rocket_img = pygame.image.load("rocket.png").convert_alpha()
+    rocket_img = pygame.transform.scale(rocket_img, (60, 60))
+    rocket_img.set_colorkey((255, 255, 255))
 
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_RIGHT: #Moves the rocket to the right by using the key "right"
-                rocket.move_right()
-            elif event.key == pygame.K_r: #Key "R" sets the rocket to the start
-                rocket.reset()
-                for p in planet_zones:
-                    p.hit = False
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            if width / 2 <= mouse[0] <= width / 2 + 140 and height / 2 <= mouse[1] <= height / 2 + 40:
-            # open new screen
+    planet_zones = [
+        Planet("Venus", "Second planet from the Sun.", 200, 260),
+        Planet("Mercury", "Closest to the Sun.", 270, 305),
+        Planet("Earth", "Our home planet.", 310, 380),
+        Planet("Mars", "The Red Planet.", 400, 460),
+        Planet("Jupiter", "The largest planet.", 470, 560),
+        Planet("Saturn", "Famous for its rings.", 580, 670),
+        Planet("Uranus", "Has a tilted rotation.", 680, 770),
+        Planet("Neptune", "Furthest from the Sun.", 790, 860),
+    ]
 
-    found_planet = rocket.check_planet()
-    rocket.draw()
-
-    if rocket.current_planet:
-        pygame.draw.rect(screen, (0, 0, 0), (20, 20, 500, 40))
-        info_text = font.render(rocket.current_planet.get_info(), True, (255, 255, 255))
-        screen.blit(info_text, (30, 30))
-        if width/2.5 <= mouse[0] <= width/2+140 and height/1.58 <= mouse[1] <= height/1.58+30:
-            pygame.draw.rect(screen, color_light, [width / 2.5, height / 1.58, 140, 40])
-        else:
-            pygame.draw.rect(screen, color_dark, [width / 2.5, height / 1.58, 140, 40])
-
-        screen.blit(text, (width / 2.5 + 40, height / 1.58))
-    pygame.display.update()
-    clock.tick(30)
-
-pygame.quit()
-sys.exit()
+    # Rocket
 
 
-'''important note *** when we integrate a button we should have the event handler for text, we just have a button pop up
-when a planet is hit then we handle screen and changing them'''
+    # Setup game
+    rocket = Rocket()
+    clock = pygame.time.Clock()
+    font = pygame.font.SysFont(None, 30)
+
+    running = True
+    while running:
+        screen.blit(background, (0, 0))
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RIGHT: #Moves the rocket to the right by using the key "right"
+                    rocket.move_right()
+                elif event.key == pygame.K_r: #Key "R" sets the rocket to the start
+                    rocket.reset()
+                    for p in planet_zones:
+                        p.hit = False
+
+        found_planet = rocket.check_planet(planet_zones)
+        rocket.draw()
+
+        if rocket.current_planet:
+            pygame.draw.rect(screen, (0, 0, 0), (20, 20, 500, 40))
+            info_text = font.render(rocket.current_planet.get_info(), True, (255, 255, 255))
+            screen.blit(info_text, (30, 30))
+
+        pygame.display.update()
+        clock.tick(30)
+
+    pygame.quit()
+    sys.exit()
