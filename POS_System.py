@@ -4,21 +4,23 @@
 #
 #
 ########################################################################################
-#
-#
-#
-#
-#
-#
+# Acknowledgements
+# ChatGPT - Interaction between frames - https://chatgpt.com/c/6806f27a-25e4-800a-b15f-08fb55fa6eb9
+# ChatGPT - Maintaining Frame Sizes - https://chatgpt.com/c/6806f327-1668-800a-8461-e50208d39257
+# ChatGPT - Toggle Menu Walkthrough Steps - https://chatgpt.com/c/6806f391-ead8-800a-bac4-1192ead61ae6
+# ChatGPT - Lambda in Command -
+# ChatGPT - Spacer -
 #######################################################################################
 import customtkinter,random
 
 
 class LeftFrame(customtkinter.CTkFrame):
     """ This Frame will display a toggle menu with general buttons and some more buttons"""
-    def __init__(self,master):
-        super().__init__(master, width=200, height=864) # Remove color
+    def __init__(self, master, mid_frame):
+        super().__init__(master, width=200, height=864)
+
         self.pack_propagate(False)  # ChatGPT
+        self.mid_frame = mid_frame # Store a reference to the MiddleFrame instance so methods can be called from LeftFrame
 
         # Track Menu Visibility
         self.menu_visible = True
@@ -31,11 +33,20 @@ class LeftFrame(customtkinter.CTkFrame):
         self.menu_container = customtkinter.CTkFrame(self, fg_color="transparent")
         self.menu_container.pack(fill="both", expand=True, padx=0, pady=10)
 
-        # Button (in container widget)
-        buttons = ["Combos", "Sandwiches", "Sides", "Desserts", "Drinks"]
-        for text in buttons:
-            self.btn = customtkinter.CTkButton(self.menu_container, text=text,corner_radius = 1, height = 50 )
-            self.btn.pack(pady=20, fill="x")
+        # Button Data
+        btn_name = ["Combos", "Sandwiches", "Sides", "Desserts", "Drinks"]
+        self.btn_ref = {}  # Instant var to store references to each button
+
+        for index, text in enumerate(btn_name):
+            btn = customtkinter.CTkButton(
+                self.menu_container,
+                text=text,
+                corner_radius = 1,
+                height = 50,
+                command = lambda category=text: self.call_specific_button(category)
+            )
+            btn.pack(pady=20, fill="x")
+            self.btn_ref[index] = btn # Store button ref
 
         # Spacer to push Exit button to bottom (ChatGPT)
         spacer = customtkinter.CTkLabel(self.menu_container, text="")
@@ -45,16 +56,17 @@ class LeftFrame(customtkinter.CTkFrame):
         self.exit_btn = customtkinter.CTkButton(self.menu_container, text = "Exit", corner_radius = 1, height = 50)
         self.exit_btn.pack(pady = 20, fill = "x")
 
-
     def toggle_menu(self):
+        """ Checks to see if toggle menu is visible or not to determine whether to display toggle elements"""
         if self.menu_visible:
             self.menu_container.pack_forget() # Hide the container widget
         else:
             self.menu_container.pack(fill="both", expand=True, padx=10, pady=(0, 10)) # Show the container widget
         self.menu_visible = not self.menu_visible
 
-
-
+    def call_specific_button(self, p_category):
+        """ When a general button is clicked, initialize specific buttons related to that category. """
+        self.mid_frame.display_specific_buttons(p_category) # Call the method in MiddleFrame from the LeftFrame class and pass the categories of that general button
 
 
 
@@ -69,7 +81,55 @@ class MiddleFrame(customtkinter.CTkFrame):
         for col in range(4):
             self.grid_columnconfigure(col, weight=1)
 
-        # Buttons (Only visible when a general button clicked)
+        # Buttons Data
+        self.button_date = {
+            "Combos": [
+                ("Combo 1 - Classic Chicken Sandwich", 7.99),
+                ("Combo 2 - Honey BBQ Sandwich", 7.99),
+                ("Combo 3 - Lemon Pepper Sandwich", 7.99),
+                ("Combo 4 - Buffalo Chicken Sandwich", 7.99)
+            ],
+            "Sandwiches": [
+                ("Classic Chicken Sandwich", 5.49),
+                ("Honey BBQ Sandwich", 5.49),
+                ("Lemon Pepper Sandwich", 5.49),
+                ("Buffalo Chicken Sandwich", 5.49)
+            ],
+            "Sides": [
+                ("Fries", 2.49),
+                ("Side Salad", 3.29),
+                ("Coleslaw", 1.79),
+                ("Onion Rings", 2.49)
+            ],
+            "Desserts": [
+                ("Strawberry Shortcake", 3.99),
+                ("Banana Pudding", 3.49),
+                ("Vanilla Ice Cream", 2.49),
+                ("Chocolate Ice Cream", 2.49)
+            ],
+            "Drinks": [
+                ("Coke", 2.29),
+                ("Diet Coke", 2.29),
+                ("Sweet Tea", 2.29),
+                ("Unsweet Tea", 2.29),
+                ("Hi-C", 2.29),
+                ("Sprite", 2.29),
+                ("Dr Pepper", 2.29),
+                ("Water", 0)
+            ]
+        }
+
+        def display_specific_buttons(self, p_category):
+            """ When a category is selected, update the display with the specific buttons for that category """
+
+            # Clear any existing specific buttons
+            for widget in self.winfo_children():
+                widget.destroy()
+
+            # Get the list of specific items based on the general button selected
+
+            # Create specific buttons for each item in the category
+
 
 
 class RightFrame(customtkinter.CTkFrame):
@@ -163,12 +223,15 @@ class GUI (customtkinter.CTk):
         self.geometry(f"{width}x{height}")
         customtkinter.set_appearance_mode("dark") # Dark Theme
 
+
+        # MIDDLE FRAME (Create mid_frame first so it to can be passed to the left_frame)
+        self.mid_frame = MiddleFrame(self)
+
         # LEFT FRAME (Toggle Menu)
-        self.left_frame = LeftFrame(self)
+        self.left_frame = LeftFrame(self, self.mid_frame) # Pass mid_frame object to the left frame (references the mid_frame object inside the LeftFrame instance)
         self.left_frame.pack(side="left", fill="y")
 
-        # MIDDLE FRAME (Button Area)
-        self.mid_frame = MiddleFrame(self)
+        # Pack the mid_frame(after the left_frame)
         self.mid_frame.pack(side="left", fill="both", expand=True)
 
         # RIGHT FRAME (Display Area)
