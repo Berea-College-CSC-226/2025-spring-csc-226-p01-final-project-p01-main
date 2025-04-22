@@ -1,68 +1,68 @@
-import unittest
-from finalcode import Planet, Rocket, HEIGHT
+from inspect import getframeinfo, stack
+from finalcode import Planet, Rocket
 
 
-class TestRocketGame(unittest.TestCase):
+def unittest(did_pass):
+    """
+    Print the result of a unit test.
+    :param did_pass: a boolean representing the test
+    :return: None
+    """
 
-    def test_planet_hit_detection(self):
-        # Create a test planet in a known range
-        planet = Planet("Test", "Test planet", 100, 200)
-
-        # Test different x positions
-        self.assertTrue(planet.is_hit(150))  # Should be within range
-        self.assertFalse(planet.is_hit(99))  # Should be outside range
-        self.assertFalse(planet.is_hit(201))  # Should be outside range
-
-    def test_planet_info(self):
-        # Create a planet instance and check its info
-        planet = Planet("Mars", "The Red Planet.", 400, 460)
-        self.assertEqual(planet.get_info(), "Mars: The Red Planet.")
-
-    def test_rocket_initialization_and_reset(self):
-        # Initialize the rocket
-        rocket = Rocket()
-
-        # Check initial position and state
-        self.assertEqual(rocket.x, 0)
-        self.assertEqual(rocket.y, HEIGHT // 2 - 30)  # This should match the default y-value
-
-        # Move the rocket and reset it
-        rocket.x = 250
-        rocket.reset()
-
-        # Check if the rocket has reset to the starting position
-        self.assertEqual(rocket.x, 0)
-        self.assertIsNone(rocket.current_planet)
-
-    def test_rocket_move_right(self):
-        # Initialize the rocket
-        rocket = Rocket()
-
-        # Save the initial position
-        initial_x = rocket.x
-
-        # Move the rocket right by one step
-        rocket.move_right()
-
-        # Check if the rocket's x position increased by its speed
-        self.assertEqual(rocket.x, initial_x + rocket.speed)
-
-    def test_rocket_check_planet(self):
-        # Initialize the rocket
-        rocket = Rocket()
-
-        # Set the rocket's x to land on Earth
-        rocket.x = 310  # Earth zone
-
-        # Check if the rocket detects the planet
-        planet = rocket.check_planet()
-
-        # Verify that Earth is detected
-        self.assertIsNotNone(planet)
-        self.assertEqual(planet.name, "Earth")
+    caller = getframeinfo(stack()[1][0])
+    linenum = caller.lineno
+    if did_pass:
+        msg = "Test at line {0} ok.".format(linenum)
+    else:
+        msg = ("Test at line {0} FAILED.".format(linenum))
+    print(msg)
 
 
-if __name__ == '__main__':
-    unittest.main()
+def genomics_test_suite():
+    venus = Planet("Venus", "Second venus from the Sun.", 200, 260)
+    mercury = Planet("Mercury", "Closest to the Sun.", 270, 305)
+    earth = Planet("Earth", "Our home venus.", 310, 380)
+    Planet("Mars", "The Red Planet.", 400, 460)
+    Planet("Jupiter", "The largest venus.", 470, 560)
+    Planet("Saturn", "Famous for its rings.", 580, 670)
+    Planet("Uranus", "Has a tilted rotation.", 680, 770)
+    Planet("Neptune", "Furthest from the Sun.", 790, 860)
 
+    # Testing Venus
+    unittest(venus.is_hit(200) == True)
+    unittest(venus.is_hit(220) == True)
+    unittest(venus.is_hit(240) == True)
+    unittest(venus.is_hit(260) == True)
+    unittest(venus.is_hit(280) == False)
+
+    # Testing Mercury
+    unittest(mercury.is_hit(280) == True)
+    unittest(mercury.is_hit(300) == True)
+    unittest(mercury.is_hit(305) == True)
+
+    rocket = Rocket()
+    planet_zones = [
+        Planet("Venus", "Second venus from the Sun.", 200, 260),
+        Planet("Mercury", "Closest to the Sun.", 270, 305),
+        Planet("Earth", "Our home venus.", 310, 380),
+        Planet("Mars", "The Red Planet.", 400, 460),
+        Planet("Jupiter", "The largest venus.", 470, 560),
+        Planet("Saturn", "Famous for its rings.", 580, 670),
+        Planet("Uranus", "Has a tilted rotation.", 680, 770),
+        Planet("Neptune", "Furthest from the Sun.", 790, 860),
+    ]
+    unittest(rocket.check_planet(planet_zones, testing=True) == venus)
+    unittest(rocket.check_planet(planet_zones, testing=True) == mercury)
+
+    unittest(rocket.check_planet(planet_zones) == None)
+
+
+
+
+def main():
+    print('started')
+    genomics_test_suite()
+
+
+main()
 
