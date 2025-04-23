@@ -4,6 +4,8 @@ from functools import partial
 class TkinterGUI:
     def __init__(self):
         self.root = tk.Tk()
+        self.last_clicked_piece = None
+        self.root.bind('<BackSpace>', self.delete_piece)
         self.root.minsize(width=100, height=100)
         self.root.maxsize(width=1000, height=500)
         self.rows = [1,2,3,4,5,6,7,8]
@@ -76,6 +78,12 @@ class TkinterGUI:
         '''
         self.current_tag = tag # Tag flips between pepperoni and sausage, whatever one is clicked
         self.selected_piece = piece_pos # Clicked piece shows its position
+
+        # Save the actual widget so we can delete it later
+        widget = self.root.grid_slaves(row=piece_pos[0], column=piece_pos[1])
+        if widget:
+            self.last_clicked_piece = widget[0]
+
         return piece_pos
 
 
@@ -114,6 +122,25 @@ class TkinterGUI:
         elif self.current_tag == 'pep':
             selected_piece = self.pepperonis[piece_tuple]
             selected_piece.grid_forget()
+
+    def delete_piece(self, event):
+        '''
+        Deletes the selected piece when Backspace is pressed
+        '''
+        if self.last_clicked_piece:
+            self.last_clicked_piece.grid_forget()
+            piece_pos = tuple(self.selected_piece)
+
+            # Also remove it from the dictionaries
+            if self.current_tag == self.pep_tag and piece_pos in self.pepperonis:
+                del self.pepperonis[piece_pos]
+            elif self.current_tag == self.sas_tag and piece_pos in self.sausages:
+                del self.sausages[piece_pos]
+
+            self.last_clicked_piece = None
+            self.selected_piece = None
+
+
 
 
 
