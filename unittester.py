@@ -44,42 +44,4 @@ def calculator_test_suite():
     """
 
     # Tests encrypting a normal string
-    caesar = CaesarCipher("encrypt")
-    caesar.key = 3
-    caesar.message = "A test string"
-    caesar.encrypt()
-    unittest(caesar.cipher == "D WHVW VWULQJ")
-
-    # Tests encrypting a string with punctuation
-    caesar.key = 13
-    caesar.message = "It's a so-so kind of day!"
-    caesar.encrypt()
-    unittest(caesar.cipher == "VG'F N FB-FB XVAQ BS QNL!")
-
-    #Tests encrypting a string with negative key
-    caesar.key = -23
-    caesar.message = "A test string"
-    caesar.encrypt()
-    unittest(caesar.cipher == "D WHVW VWULQJ")
-
-    # Tests decrypting a normal string
-    caesar.key = 3
-    caesar.cipher = "D WHVW VWULQJ"
-    caesar.crypt_type = "decrypt"
-    caesar.decrypt()
-    unittest(caesar.message == "A TEST STRING")
-
-    # Tests decrypting a string with punctuation
-    caesar.key = 6
-    caesar.cipher = "OZ'Y G YU-YU QOTJ UL JGE!"
-    caesar.decrypt()
-    unittest(caesar.message == "IT'S A SO-SO KIND OF DAY!")
-
-    # Tests decrypting a string with negative key
-    caesar.key = -20
-    caesar.cipher = "OZ'Y G YU-YU QOTJ UL JGE!"
-    caesar.decrypt()
-    unittest(caesar.message == "IT'S A SO-SO KIND OF DAY!")
-
-
-CaesarCipher_test_suite()
+    calculator = Calculator()

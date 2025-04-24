@@ -28,6 +28,9 @@
 ### References 
 
 Julio Jijon
+Sami
+https://stackoverflow.com/questions/44634947/how-to-set-a-turtle-to-a-turtle-screen/44639041#44639041
+https://www.w3schools.com/python/ref_func_eval.asp
 
 ---
 
