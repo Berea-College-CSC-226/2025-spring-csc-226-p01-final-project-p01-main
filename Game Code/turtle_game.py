@@ -1,6 +1,8 @@
 # Import necessary modules
 import turtle
 import random
+import threading
+from playsound import playsound
 
 # Global reference to the frame turtle (used for drawing the border)
 frame = None
@@ -36,11 +38,11 @@ class TurtlePlayer:
 
     def move_left(self):
         self.turtle.setheading(180)
-        self.velocity = -10
+        self.velocity = -15
 
     def move_right(self):
         self.turtle.setheading(0)
-        self.velocity = 10
+        self.velocity = 15
 
     def stop(self):
         self.velocity = 0
@@ -200,6 +202,11 @@ class StartScreen:
         self.writer.clear()
         self.game = GameManager(self.screen)
 
+# Function to play background music in a thread
+
+def play_music():
+    playsound("background_music.wav", block=False)
+
 # Main screen setup
 def main():
     global frame
@@ -207,6 +214,8 @@ def main():
     screen.title("Turtle Catch Game")
     screen.bgcolor("lightblue")
     screen.setup(width=620, height=620)
+
+    threading.Thread(target=play_music, daemon=True).start()
 
     turtle.tracer(0)
 

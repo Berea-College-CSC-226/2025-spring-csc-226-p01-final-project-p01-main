@@ -51,7 +51,54 @@ and describe how you integrated the ideas or code into your program. This includ
 helped you, AI tools you've used, and any other resources that are not solely your own contribution. Update this 
 section as you go. DO NOT forget about it!
 
----
+https://docs.python.org/3/library/tkinter.html
+https://docs.python.org/3/library/tkinter.html#tkinter-modules
+https://docs.python.org/3/library/tkinter.html#the-index-parameter
+https://docs.python.org/3/library/subprocess.html
+https://www.geeksforgeeks.org/python-tkinter-mainloop/
+https://www.activestate.com/resources/quick-reads/how-to-use-pack-in-tkinter/
+https://realpython.com/python-gui-tkinter/
+https://www.datacamp.com/tutorial/python-subprocess
+https://www.tutorialspoint.com/run-process-with-realtime-output-to-a-tkinter-gui
+https://docs.python.org/3/library/turtle.html
+https://www.geeksforgeeks.org/create-a-snake-game-using-turtle-in-python
+https://stackoverflow.com/questions/30050194/snake-game-in-python-using-turtle-graphics
+https://www.geeksforgeeks.org/python-catching-the-ball-game
+https://stackoverflow.com/questions/43461566/detecting-collision-in-python-turtle-game
+https://www.geeksforgeeks.org/turtle-register_shape-function-in-python
+https://www.tutorialspoint.com/how-to-create-custom-turtle-shapes-in-python
+https://www.geeksforgeeks.org/turtle-onkey-function-in-python
+https://www.techwithtim.net/tutorials/python-module-walk-throughs/turtle-module/key-presses-events
+https://www.geeksforgeeks.org/turtle-ontimer-function-in-python
+https://www.youtube.com/watch?v=xex0_PT3S-k
+https://www.geeksforgeeks.org/python-turtle-screen-setup-method
+https://stackoverflow.com/questions/48081195/change-the-on-screen-position-of-the-turtle-graphics-window
+https://realpython.com/build-python-turtle-game-space-invaders-clone/
+https://www.geeksforgeeks.org/create-a-snake-game-using-turtle-in-python/
+https://medium.com/@sjalexandre/python-tutorial-game-development-fundamentals-21a6575e0e30
+https://stackoverflow.com/questions/43461566/detecting-collision-in-python-turtle-game
+https://www.tutorialspoint.com/how-to-create-custom-turtle-shapes-in-python
+https://www.geeksforgeeks.org/turtle-register_shape-function-in-python
+https://www.geeksforgeeks.org/python-turtle-graphics-keyboard-commands/
+https://www.codetoday.co.uk/post/how-to-pass-the-key-pressed-to-the-function-when-using-onkeypress-in-python-s-turtle-module
+https://www.geeksforgeeks.org/turtle-ontimer-function-in-python/
+https://www.youtube.com/watch?v=xex0_PT3S-k
+https://www.geeksforgeeks.org/python-turtle-screen-setup-method/
+https://stackoverflow.com/questions/48081195/change-the-on-screen-position-of-the-turtle-graphics-window
+https://docs.python.org/3/library/tkinter.html
+https://docs.python.org/3/library/subprocess.html
+https://www.geeksforgeeks.org/how-to-open-external-programs-using-tkinter
+https://stackoverflow.com/questions/52268570/launching-a-subprocess-by-pressing-a-tkinter-button
+https://gist.github.com/RhetTbull/c61df45c317eb8004adee87334298298
+https://realpython.com/python-gui-tkinter/
+https://www.tutorialspoint.com/python/python_gui_programming.htm
+https://tkdocs.com/tutorial/
+https://medium.com/@fareedkhandev/modern-gui-using-tkinter-12da0b983e22
+https://customtkinter.tomschimansky.com/
+https://www.youtube.com/watch?v=epDKamC-V-8
+https://www.youtube.com/watch?v=mop6g-c5HEY
+https://www.geeksforgeeks.org/how-to-use-images-as-backgrounds-in-tkinter/
+
 
 ## Milestone 2: Code Setup and Issue Queue
 
