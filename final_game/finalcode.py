@@ -1,10 +1,10 @@
 import pygame
 import sys
 from dataclasses import dataclass
-
 # Planet class
 # dataclass was explained by TA (Nauka) for unit test file in order to test "check_planet" method
 @dataclass
+
 class Planet:
     def __init__(self, name, description, x_start, x_end):
         self.name = name
@@ -20,6 +20,7 @@ class Planet:
         return f"{self.name}: {self.description}"
 
 
+# Rocket
 class Rocket:
     def __init__(self):
         self.reset()
@@ -44,6 +45,7 @@ class Rocket:
                 return planet
 
             if planet.is_hit(self.x) and not planet.hit:
+                planet.hit = True
                 self.current_planet = planet
                 return planet
         return None
@@ -111,22 +113,28 @@ if __name__ == "__main__":
                 # if width / 2 <= mouse[0] <= width / 2 + 140 and height / 2 <= mouse[1] <= height / 2 + 40:
                 # open new screen
 
-        found_planet = rocket.check_planet(planet_zones)
+        rocket.current_planet = None
+        for planet in planet_zones:
+            if planet.is_hit(rocket.x):
+                rocket.current_planet = planet
+                break
         rocket.draw()
 
         if rocket.current_planet:
-            pygame.draw.rect(screen, (0, 0, 0), (20, 20, 500, 40))
-            info_text = font.render(rocket.current_planet.get_info(), True, (255, 255, 255))
-            screen.blit(info_text, (30, 30))
-            if width / 2.5 <= mouse[0] <= width / 2 + 140 and height / 1.58 <= mouse[1] <= height / 1.58 + 30:
-                pygame.draw.rect(screen, color_light, [width / 2.5, height / 1.58, 140, 40])
-            else:
-                pygame.draw.rect(screen, color_dark, [width / 2.5, height / 1.58, 140, 40])
 
+            pygame.draw.rect(screen, color_light, [width / 2.5, height / 1.58, 140, 40])
             screen.blit(text, (width / 2.5 + 40, height / 1.58))
+        else:
+            pygame.draw.rect(screen, (0,0,0), [width / 2.5, height / 1.58, 140, 40])
+
+        screen.blit(text, (width / 2.5 + 40, height / 1.58))
 
         pygame.display.update()
         clock.tick(30)
 
     pygame.quit()
     sys.exit()
+
+
+'''important note *** when we integrate a button we should have the event handler for text, we just have a button pop up
+when a planet is hit then we handle screen and changing them'''
