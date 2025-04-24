@@ -24,6 +24,8 @@ class MyTkinterApp:
         self.t.color('black')
         self.t.penup()
 
+        square = self.canvas.create_rectangle(0, 0, 25, 25, fill="black")
+
         self.root.title(windowtext)
 
         # Binding Key events to methods

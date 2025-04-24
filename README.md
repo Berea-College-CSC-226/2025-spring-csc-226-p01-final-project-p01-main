@@ -69,16 +69,15 @@ What has surprised you so far? Describe your general feelings. Be honest with yo
 
 Indicate what percentage of the project you have left to complete and how confident you feel. 
 
-❗️**Completion Percentage**: `0 - 100%`
-
-❗️**Confidence**: Describe how confident you feel about completing this project, and why. Then, describe some 
+️**Completion Percentage**: '60%'
+️**Confidence**: Describe how confident you feel about completing this project, and why. Then, describe some 
   strategies you can employ to increase the likelihood that you'll be successful in completing this project 
   before the deadline.
 
 ```
-    **Replace this text with your reflection
-```
-
+    **We can get this project completed because we understand what our issues and have taken measures to 
+get a better understanfing in what we need to do to fix them.Need to communicate more often and meet up more so we can 
+finalize coding decisions before the end of the week.We need to also comment way more on our issue que.
 ---
 
 ## Milestone 4: Final Code, Presentation, Demo

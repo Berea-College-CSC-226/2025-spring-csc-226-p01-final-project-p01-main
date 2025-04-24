@@ -1,124 +1,63 @@
+import pygame
 import tkinter
 import tkinter as tk
 import tkinter.font as tkfont
-from turtle import RawTurtle, TurtleScreen
-import random
-import pygame
-
-key_events = set()
-class MyTkinterApp:
-    def __init__(self, windowtext="SneakySnake"):
-        self.root = tk.Tk()
-        self.canvas = tk.Canvas(self.root, width=800, height=600)
-        self.canvas.pack()
-
-        self.screen = TurtleScreen(self.canvas)
-        self.screen.bgcolor("White")
-        self.screen.tracer(0)
 
 
-        self.t = RawTurtle(self.screen)
-        self.t.shape('square')
-        self.t.color('black')
-        self.count = 0
-        self.t.penup()
+class Game:
+    def __init__(self):
+        self.size = 800, 600
+        self.running = True
+        pygame.init()
+        self.screen = pygame.display.set_mode(self.size)
+        self.screen.fill('#FFFFFF')
+        self.clock = pygame.time.Clock()
+        self.snake = Snake(self.size)
 
-        #self.movement()
-        self.root.title(windowtext)
+    def run(self):
+        while self.running:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    self.running = False
 
-        #Binding Key events
-        self.screen.listen()
-        self.screen.onkey(Up, "Up")
-        self.screen.onkey(Down, "Down")
-        self.screen.onkey(Left, "Left")
-        self.screen.onkey(Right, "Right")
+                keys = pygame.key.get_pressed() #new line added
+                self.snake.update_direction(keys)
+                self.snake.movement() #edited
+                self.screen.fill('#FFFFFF')
+                self.screen.blit(self.snake.surf, self.snake.rect)
+            pygame.display.update()
+            self.clock.tick(60) #changed from 25 to 60
 
-
-        self.key_event_handlers = {
-            ('UP',): move_up,
-            ('DOWN',): move_down,
-            ('LEFT',): move_left,
-            ('RIGHT',): move_right,
-            ('RIGHT', 'UP'): move_up_right,
-            ('DOWN', 'RIGHT'): move_down_right,
-            ('LEFT', 'UP'): move_up_left,
-            ('DOWN', 'LEFT'): move_down_left,
-            }
-
-        self.process_events()
+        pygame.quit()
 
 
+class Snake(pygame.sprite.Sprite):
+    def __init__(self, screen_size):
+        super().__init__()
+        self.screen_size = screen_size
+        self.surf = self.image = pygame.Surface((25, 25))
+        self.surf.set_colorkey((255, 255, 255), pygame.RLEACCEL)
+        self.rect = self.surf.get_rect()
+        self.rect.move_ip(self.screen_size[0] // 2, self.screen_size[1] // 2)
+        self.direction = pygame.Vector2(0,0) #new line of code added
+        self.speed = 5 #new line of code, smaller step size for more smooth movement
 
-def Up():
-    key_events.add('UP')
+    def update_direction(self, keys): #new class name and conditions
+        if keys[pygame.K_UP]:
+            self.direction = pygame.Vector2(0,-1)
+        elif keys[pygame.K_DOWN]:
+            self.direction = pygame.Vector2(0,1)
+        if keys[pygame.K_RIGHT]:
+            self.direction = pygame.Vector2(1,0)
+        elif keys[pygame.K_LEFT]:
+            self.direction = pygame.Vector2(-1,0)
 
-def Down():
-    key_events.add('DOWN')
-
-def Left():
-    key_events.add('LEFT')
-
-def Right():
-    key_events.add('RIGHT')
-
-def process_events(self):
-    events = tuple(sorted(key_events))
-
-    if events and events in self.key_event_handlers:
-        self.key_event_handlers[events]()
-
-    key_events.clear()
-    self.screen.update()
-    self.screen.ontimer(process_events, 200)
-
-
-
-def move_up(self):
-    self.t.setheading(90)
-    self.t.forward(25)
-
-def move_down(self):
-    self.t.setheading(270)
-    self.t.forward(20)
-
-def move_left(self):
-    self.t.setheading(180)
-    self.t.forward(20)
-
-def move_right(self):
-    self.t.setheading(0)
-    self.t.forward(20)
-
-def move_up_right(self):
-    self.t.setheading(45)
-    self.t.forward(20)
-
-def move_down_right(self):
-    self.t.setheading(-45)
-    self.t.forward(20)
-
-def move_up_left(self):
-    self.t.setheading(135)
-    self.t.forward(20)
-
-def move_down_left(self):
-    self.t.setheading(225)
-    self.t.forward(20)
-
-
-
-
-
-
-
-
-
+    def movement(self):
+        self.rect.move_ip(self.direction * self.speed)  #changed class to make smooth move
 
 def main():
-    myGUI = MyTkinterApp("SneakySnake")
-    myGUI.root.mainloop()
-
-
+    game = Game()
+    game.run()
 
 
 if __name__ == "__main__":
