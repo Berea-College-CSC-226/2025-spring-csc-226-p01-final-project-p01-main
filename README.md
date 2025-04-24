@@ -48,6 +48,11 @@ and describe how you integrated the ideas or code into your program. This includ
 helped you, AI tools you've used, and any other resources that are not solely your own contribution. Update this 
 section as you go. DO NOT forget about it!
 
+    https://www.geeksforgeeks.org/how-to-clear-out-a-frame-in-the-tkinter/
+    https://opentdb.com/
+    https://www.geeksforgeeks.org/python-mcq-quiz-game-using-tkinter/
+    ctypes.windll.shcore.SetProcessDpiAwareness(1) (got it from chatGPT)
+    activebackground="white", activeforeground="black", disabledforeground="black" (got it from chatGPT)
 ---
 
 ## Milestone 2: Code Setup and Issue Queue
@@ -64,7 +69,7 @@ What has surprised you so far? Describe your general feelings. Be honest with yo
     Bao: It's going pretty well. I work well with Ahna, and he's a good teammate. I'm surprised by how powerful the open 
     database is. I can use it to play unlimited time with different choices of levels and so on.
 ```
-
+    
 ---
 
 ## Milestone 3: Virtual Check-In

@@ -4,6 +4,12 @@ from quizbrain import QuizBrain
 from questions import Question
 
 def unittest(did_pass):
+    """
+    Prints whether a test passed or failed, along with the line number.
+
+    :param did_pass: Boolean result of a test condition.
+    :return: None
+    """
     caller = getframeinfo(stack()[1][0])
     linenum = caller.lineno
     if did_pass:
@@ -12,6 +18,17 @@ def unittest(did_pass):
         print(f"Test at line {linenum} FAILED.")
 
 def QuizBrain_suite():
+    """
+    Runs a series of unit tests on the QuizBrain class to check:
+
+    - If there are questions left at the start.
+    - If the next question returns valid data.
+    - Correct answers increase the score.
+    - Incorrect answers are recognized.
+    - The quiz ends after all questions are used.
+
+    :return: None
+    """
     # Fetch 5 questions for testing
     raw_questions = fetch_questions(5, 9, "easy")  # Category 9 = General Knowledge
 
@@ -46,6 +63,11 @@ def QuizBrain_suite():
     unittest(quiz.still_has_question() == False)
 
 def main():
+    """
+    Main function to run the QuizBrain test suite.
+
+    :return: None
+    """
     QuizBrain_suite()
 
 if __name__ == "__main__":
