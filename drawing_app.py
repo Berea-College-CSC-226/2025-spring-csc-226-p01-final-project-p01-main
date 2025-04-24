@@ -6,18 +6,17 @@
 #
 # Purpose: Use turtles and tkinter to design a drawing app
 #
-
 #######################################################################
 # Acknowledgements: Dr Heggen
 #
-# Original code written by Dr. Jan Pearce
 # https://chatgpt.com/share/67faccee-4d40-8008-bfc6-1197659d7563 reference for GUI Implementation
 
 ####################################################################################
 
 import tkinter as tk
 import turtle
-
+import os
+import datetime
 
 class DrawingApp:
     def __init__(self, windowtext=""):
@@ -110,8 +109,12 @@ class DrawingApp:
         self.status_text.set("Canvas cleared.")
 
     def save_drawing(self):
-        # Placeholder: this just updates the label for now
-        self.status_text.set("Saving feature not implemented yet.")
+        drawings = os.listdir("saved_drawings")
+        current_date = datetime.datetime.now().strftime("%Y-%m-%d")
+        filename = "saved_drawings/drawing"+str(len(drawings) + 1)+"_"+current_date+".eps"
+
+        self.screen.getcanvas().postscript(file=filename)
+        self.status_text.set('Saved drawing to '+filename)
 
     def show_saved_drawings(self):
         # Placeholder: this just updates the label for now
