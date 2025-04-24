@@ -8,6 +8,7 @@
 ️**Author(s)**: Shadaria Mickler
 
 **Google Doc Link**: https://docs.google.com/document/d/18Ollp-Q9-JxPCMsv5_5mtRZN1qjXiAV-MKdliw0oUJ8/edit?usp=sharing
+**Repo Link: https://github.com/Berea-College-CSC-226/p01-final-project-fatimaf_shadaria/tree/main
 
 ---
 
