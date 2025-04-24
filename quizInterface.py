@@ -8,10 +8,16 @@ from data import fetch_categories, fetch_questions
 
 class QuizInterface:
     def __init__(self, window):
+        """
+        Initialize the interface
+        :param window: the tkinter window
+        :return: None
+        """
         self.window = window
         self.window.title("Trivia Quiz Game")
         self.window.config(bg="#660033")
 
+        #The quiz screen
         self.quiz = None
         self.buttons = []
         self.canvas = None
@@ -26,6 +32,7 @@ class QuizInterface:
         self.setup_frame = tk.Frame(window, bg="#660033")
         self.setup_frame.pack(pady=20, padx=20)
 
+        #The inputs at the beginning
         self.category_var = tk.StringVar()
         self.difficulty_var = tk.StringVar()
         self.amount_var = tk.StringVar()
@@ -34,16 +41,23 @@ class QuizInterface:
 
 
     def create_setup_screen(self):
+        """
+        The method create the setup screen
+        :return: None
+        """
         tk.Label(self.setup_frame, text="Welcome To The Quiz Game", bg="#660033", fg="white", font=("Times New Roman", 14)).grid(row=0, column=0, columnspan=2, padx=10, pady=10)#title of the screen
 
+        #Asks for category input
         tk.Label(self.setup_frame, text="Select Category", bg="#660033", fg="white", font=("Times New Roman", 14)).grid(row=1, column=0, sticky="w", padx=10)
         category_dropdown = ttk.Combobox(self.setup_frame, textvariable=self.category_var, values=list(self.categories.keys()), width=30)
         category_dropdown.grid(row=1, column=1)
 
+        #Asks for difficulty input
         tk.Label(self.setup_frame, text="Select Difficulty", bg="#660033", fg="white", font=("Times New Roman", 14)).grid(row=2, column=0, sticky="w", padx=10)
         difficulty_dropdown = ttk.Combobox(self.setup_frame, textvariable=self.difficulty_var, values=["Easy", "Medium", "Hard"], width=30)
         difficulty_dropdown.grid(row=2, column=1)
 
+        #Asks for difficulty input
         tk.Label(self.setup_frame, text="Number of Questions", bg="#660033", fg="white", font=("Times New Roman", 14)).grid(row=3, column=0, sticky="w", padx=10)
         amount_entry = tk.Entry(self.setup_frame, textvariable=self.amount_var, width=33)
         amount_entry.grid(row=3, column=1)
@@ -52,20 +66,27 @@ class QuizInterface:
         start_button.grid(row=4, column=0, columnspan=2, pady=10)
 
     def start_quiz(self):
+        """
+        The method gets input from the user and starts the quiz
+        :return: None
+        """
         cat_name = self.category_var.get()
         diff = self.difficulty_var.get().lower()
         amount = self.amount_var.get()
 
+        #Check if inputs are valid
         if cat_name not in self.categories or diff not in ["easy", "medium", "hard"] or not amount.isdigit():
             messagebox.showwarning(title="Invalid Input", message="Make sure all inputs are valid")
             return
 
+        #Fetch data
         try:
             data = fetch_questions(int(amount), self.categories[cat_name], diff)
         except Exception as e:
             messagebox.showerror(title="Error", message=f"Couldn't fetch questions. \n{e}")
             return
 
+        #Create question bank
         question_bank = []
         for q in data:
             options = q["incorrect_answers"] + [q["correct_answer"]]
@@ -78,16 +99,22 @@ class QuizInterface:
         self.show_quiz_screen()
 
     def show_quiz_screen(self):
+        """
+        The method shows the quiz screen with the questions and answers buttons
+        :return: None
+        """
+        #Set up the layout
         self.score_label = tk.Label(text="Score: 0", bg="#660033", fg="white", font=("Times New Roman", 11))
         self.score_label.pack(anchor="ne", padx=20, pady=10)
 
-        self.canvas = tk.Canvas(width=500, height=250, bg="white")
-        self.question_text = self.canvas.create_text(250, 125, width= 420, text="Placeholder", fill="black", font=("Times New Roman", 14, "bold"))
+        self.canvas = tk.Canvas(width=600, height=300, bg="white")
+        self.question_text = self.canvas.create_text(300, 150, width= 420, text="Placeholder", fill="black", font=("Times New Roman", 16, "bold"))
         self.canvas.pack(padx=30, pady=30)
 
         self.buttons_frame = tk.Frame(self.window, bg="#660033")
         self.buttons_frame.pack()
 
+        #Create the button
         for i in range(4):
             btn = tk.Button(
                 self.buttons_frame,
@@ -108,8 +135,14 @@ class QuizInterface:
         self.get_next_question()
 
     def check_answer(self, user_choice):
+        """
+        The method checks the user choice and change the colors of the backgrounds correspondingly
+        :param user_choice: the user choice
+        :return: None
+        """
         correct_answer = self.quiz.current_question.answer
 
+        #Check the answers and change the colors of the backgrounds
         for btn in self.buttons:
             btn.config(state="disabled")
 
@@ -124,11 +157,18 @@ class QuizInterface:
             elif btn["text"] == correct_answer:
                 btn.config(bg="green", fg="white", activebackground="green", activeforeground="white", disabledforeground="white")
 
+        #Update the score label as needed
         self.score_label.config(text=f"Score: {self.quiz.score}")
         self.window.after(750, self.get_next_question)
 
     def get_next_question(self):
+        """
+        The method resets the quiz screen and shows the next question
+        :return: None
+        """
         self.canvas.config(bg="white")
+
+        #Check if there are still questions
         if self.quiz.still_has_question():
             q_text, options = self.quiz.next_question()
             self.canvas.itemconfig(self.question_text, text=q_text)
@@ -149,6 +189,11 @@ class QuizInterface:
             self.show_final_screen()
 
     def show_final_screen(self):
+        """
+        The method shows the final score and asks if the user wants to continue playing
+        :return: None
+        """
+        #Forget the old layout
         self.canvas.pack_forget()
         self.buttons_frame.pack_forget()
         self.score_label.pack_forget()
@@ -156,15 +201,18 @@ class QuizInterface:
         self.final_frame = tk.Frame(self.window, bg="#660033")
         self.final_frame.pack(pady=50)
 
+        #Show the final score
         final_msg = tk.Label(self.final_frame, text=f"Final score: {self.quiz.score}/{self.quiz.question_number}", font=("Times New Roman", 14), fg="white", bg="#660033", justify="center")
         final_msg.pack(pady=20)
 
+        #Asks if the user wants to continue
         continue_msg = tk.Label(self.final_frame, text="Do you want to keep playing?", font=("Times New Roman", 14), fg="white", bg="#660033", justify="center")
         continue_msg.pack(pady=20)
 
         btn_row = tk.Frame(self.final_frame, bg="#660033")
         btn_row.pack()
 
+        #Buttons to choose between play again and quit
         play_again_btn = tk.Button(btn_row, text="Play Again", font=("Times New Roman", 14), width=15, command=self.restart_quiz)
         play_again_btn.grid(row=0, column=0, padx=10)
 
@@ -172,6 +220,10 @@ class QuizInterface:
         exit_btn.grid(row=0, column=1, padx=10)
 
     def restart_quiz(self):
+        """
+        The method restarts the quiz screen if the user wants to continue playing
+        :return:
+        """
         if hasattr(self, 'final_frame'):
             self.final_frame.pack_forget()
 
