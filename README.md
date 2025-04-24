@@ -49,14 +49,19 @@ https://www.w3schools.com/python/ref_func_eval.asp
 
 Indicate what percentage of the project you have left to complete and how confident you feel. 
 
-❗️**Completion Percentage**: `0 - 100%`
+❗️**Completion Percentage**: 90%
 
 ❗️**Confidence**: Describe how confident you feel about completing this project, and why. Then, describe some 
   strategies you can employ to increase the likelihood that you'll be successful in completing this project 
   before the deadline.
 
 ```
-    **Replace this text with your reflection
+    We are sure that we can complete this Python calculator project since we have a solid understanding of fundamental 
+    Python syntax, functions, and control structures, which will be the building blocks of building a calculator. To 
+    increase the probability of the project being completed on schedule, we broke down the job into small manageable 
+    tasks such as user interface designing, testing and coding each operation (addition, subtraction, etc.), so that we 
+    can see how much work has been accomplished. Additionally, we will ask for help if needed, and allocate regular 
+    time each day to work on the project.
 ```
 
 ---
