@@ -54,7 +54,7 @@ class Rocket:
 if __name__ == "__main__":
     # Setup
     pygame.init()
-    WIDTH, HEIGHT = 1000, 189
+    WIDTH, HEIGHT = 1000, 300
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
     pygame.display.set_caption("Rocket Lands on Planets")
 
@@ -68,21 +68,23 @@ if __name__ == "__main__":
     text = smallfont.render('land', True, color)
 
     # Load Images
+    WIDTH, HEIGHT = 1000, 189
     background = pygame.image.load("planets.gif").convert_alpha()
     background = pygame.transform.scale(background, (WIDTH, HEIGHT))
 
+    WIDTH, HEIGHT = 1000, 300
     rocket_img = pygame.image.load("rocket.png").convert_alpha()
-    rocket_img = pygame.transform.scale(rocket_img, (60, 60))
+    rocket_img = pygame.transform.scale(rocket_img, (45, 45))
     rocket_img.set_colorkey((255, 255, 255))
 
     planet_zones = [
-        Planet("Venus", "Second planet from the Sun.", 200, 260),
-        Planet("Mercury", "Closest to the Sun.", 265, 305),
+        Planet("Venus", "Second planet from the Sun.", 200, 230),
+        Planet("Mercury", "Closest to the Sun.", 255, 295),
         Planet("Earth", "Our home planet.", 340, 380),
-        Planet("Mars", "The Red Planet.", 430, 460),
+        Planet("Mars", "The Red Planet.", 420, 450),
         Planet("Jupiter", "The largest planet.", 470, 560),
         Planet("Saturn", "Famous for its rings.", 600, 670),
-        Planet("Uranus", "Has a tilted rotation.", 710, 770),
+        Planet("Uranus", "Has a tilted rotation.", 700, 770),
         Planet("Neptune", "Furthest from the Sun.", 790, 860),
     ]
 
@@ -125,9 +127,7 @@ if __name__ == "__main__":
             pygame.draw.rect(screen, color_light, [width / 2.5, height / 1.58, 140, 40])
             screen.blit(text, (width / 2.5 + 40, height / 1.58))
         else:
-            pygame.draw.rect(screen, (0,0,0), [width / 2.5, height / 1.58, 140, 40])
-
-        screen.blit(text, (width / 2.5 + 40, height / 1.58))
+            pygame.draw.rect(screen, (0, 0, 0), [width / 2.5, height / 1.58, 140, 40])
 
         pygame.display.update()
         clock.tick(30)
