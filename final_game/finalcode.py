@@ -50,6 +50,29 @@ class Rocket:
                 return planet
         return None
 
+def show_planet_screen(self):
+    showing = True
+    font = pygame.font.SysFont(None, 40)
+    while showing:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    showing = False
+        screen.fill((0,0,50))
+        name_text = font.render(f"Welcome to {planet.name}!", True, (255,255,255))
+        desc_text = font.render(planet.description, True, (150,150,150))
+        tip_text = font.render("Press ESC to return", True, (150,150,150))
+
+        screen.blit(name_text, (WIDTH // 4, HEIGHT // 3))
+        screen.blit(desc_text, (WIDTH // 4, HEIGHT // 3 + 40))
+        screen.blit(tip_text, (WIDTH // 4, HEIGHT // 3 + 80))
+
+        pygame.display.update()
+
+
 
 if __name__ == "__main__":
     # Setup
@@ -63,7 +86,6 @@ if __name__ == "__main__":
     color_dark = (100, 100, 100)
     width = screen.get_width()
     height = screen.get_height()
-    mouse = pygame.mouse.get_pos()
     smallfont = pygame.font.SysFont('Corbel', 35)
     text = smallfont.render('land', True, color)
 
@@ -87,7 +109,6 @@ if __name__ == "__main__":
         Planet("Uranus", "Has a tilted rotation.", 700, 770),
         Planet("Neptune", "Furthest from the Sun.", 790, 860),
     ]
-
     # Rocket
 
 
@@ -98,6 +119,7 @@ if __name__ == "__main__":
 
     running = True
     while running:
+        screen.fill((0,0,0))
         screen.blit(background, (0, 0))
 
         for event in pygame.event.get():
@@ -111,9 +133,11 @@ if __name__ == "__main__":
                     rocket.reset()
                     for p in planet_zones:
                         p.hit = False
-            # if event.type == pygame.MOUSEBUTTONDOWN:
-                # if width / 2 <= mouse[0] <= width / 2 + 140 and height / 2 <= mouse[1] <= height / 2 + 40:
-                # open new screen
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                mouse = pygame.mouse.get_pos()
+                if rocket.current_planet and width / 2.5 <= mouse[0] <= width / 2.5 + 140 and height / 1.58 <= mouse[1] <= height / 1.58 + 40:
+                    show_planet_screen(rocket.current_planet)
+
 
         rocket.current_planet = None
         for planet in planet_zones:
