@@ -6,11 +6,12 @@ from dataclasses import dataclass
 @dataclass
 
 class Planet:
-    def __init__(self, name, description, x_start, x_end):
+    def __init__(self, name, description, x_start, x_end, image):
         self.name = name
         self.description = description
         self.x_start = x_start
         self.x_end = x_end
+        self.image = image
         self.hit = False  # Controls if popup was already shown
 
     def is_hit(self, x):
@@ -77,37 +78,44 @@ def show_planet_screen(self):
 if __name__ == "__main__":
     # Setup
     pygame.init()
-    WIDTH, HEIGHT = 1000, 300
+    WIDTH, HEIGHT = 1280, 655
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
     pygame.display.set_caption("Rocket Lands on Planets")
 
     color = (255, 255, 255)
     color_light = (170, 170, 170)
     color_dark = (100, 100, 100)
+
     width = screen.get_width()
     height = screen.get_height()
     smallfont = pygame.font.SysFont('Corbel', 35)
     text = smallfont.render('land', True, color)
 
     # Load Images
-    WIDTH, HEIGHT = 1000, 189
     background = pygame.image.load("planets.gif").convert_alpha()
-    background = pygame.transform.scale(background, (WIDTH, HEIGHT))
+    background = pygame.transform.scale(background, (1280, 330))
+    back_rect = background.get_rect()
+    back_rect.center = (screen.get_width() // 2, screen.get_height() // 2)
+    screen.blit(background, back_rect)
 
-    WIDTH, HEIGHT = 1000, 300
+
+
+
+
+
     rocket_img = pygame.image.load("rocket.png").convert_alpha()
     rocket_img = pygame.transform.scale(rocket_img, (45, 45))
     rocket_img.set_colorkey((255, 255, 255))
 
     planet_zones = [
-        Planet("Venus", "Second planet from the Sun.", 200, 230),
-        Planet("Mercury", "Closest to the Sun.", 255, 295),
-        Planet("Earth", "Our home planet.", 340, 380),
-        Planet("Mars", "The Red Planet.", 420, 450),
-        Planet("Jupiter", "The largest planet.", 470, 560),
-        Planet("Saturn", "Famous for its rings.", 600, 670),
-        Planet("Uranus", "Has a tilted rotation.", 700, 770),
-        Planet("Neptune", "Furthest from the Sun.", 790, 860),
+        Planet("Venus", "Second planet from the Sun.", 200, 230, "venus-mariner-10-pia23791-fig2.jpg"),
+        Planet("Mercury", "Closest to the Sun.", 255, 295, "Mercury_in_true_color.jpg"),
+        Planet("Earth", "Our home planet.", 340, 380, "The_Earth_seen_from_Apollo_17.jpg"),
+        Planet("Mars", "The Red Planet.", 420, 450, "Mars_-_August_30_2021_-_Flickr_-_Kevin_M._Gill.png"),
+        Planet("Jupiter", "The largest planet.", 470, 560, "Jupiter.jpg"),
+        Planet("Saturn", "Famous for its rings.", 600, 670, "Saturn_during_Equinox.jpg"),
+        Planet("Uranus", "Has a tilted rotation.", 700, 770, "Uranus.avif"),
+        Planet("Neptune", "Furthest from the Sun.", 790, 860, "pia01492-neptune-full-disk-16x9-1.webp"),
     ]
     # Rocket
 
@@ -120,7 +128,7 @@ if __name__ == "__main__":
     running = True
     while running:
         screen.fill((0,0,0))
-        screen.blit(background, (0, 0))
+        screen.blit(background, back_rect)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
