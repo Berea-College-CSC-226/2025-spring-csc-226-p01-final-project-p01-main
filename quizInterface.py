@@ -15,7 +15,7 @@ class QuizInterface:
         # Initialize main window and UI settings
         self.window = window
         self.window.title("Trivia Quiz Game")
-        self.window.config(bg="#93066f")  # Set background color (purple theme)
+        self.window.config(bg="#660033")  # Set background color (purple theme)
 
         # Timer setup
         self.timer_label = None
@@ -36,7 +36,7 @@ class QuizInterface:
         self.categories = fetch_categories()
 
         # Create the setup screen
-        self.setup_frame = tk.Frame(window, bg="#93066f")
+        self.setup_frame = tk.Frame(window, bg="#660033")
         self.setup_frame.pack(pady=20, padx=20)
 
         # Form variables for the quiz configuration
@@ -51,25 +51,25 @@ class QuizInterface:
         Create the setup screen and asks for user's inputs
         :return: None
         """
-        tk.Label(self.setup_frame, text="Welcome to the Trivia Quiz Game", font=("Arial", 12), bg="#93066f", fg="white").grid(row=0, column=0, columnspan=2, padx=10, pady=10)
+        tk.Label(self.setup_frame, text="Welcome to the Trivia Quiz Game", font=("Times New Roman", 12), bg="#660033", fg="white").grid(row=0, column=0, columnspan=2, padx=10, pady=10)
 
         # Dropdown for category
-        tk.Label(self.setup_frame, text="Select Category", font=("Arial", 12), bg="#93066f", fg="white").grid(row=1, column=0, sticky="w", padx=10)
+        tk.Label(self.setup_frame, text="Select Category", font=("Times New Roman", 12), bg="#660033", fg="white").grid(row=1, column=0, sticky="w", padx=10)
         category_dropdown = ttk.Combobox(self.setup_frame, textvariable=self.category_var, values=list(self.categories.keys()), width=30)
         category_dropdown.grid(row=1, column=1)
 
         # Dropdown for difficulty
-        tk.Label(self.setup_frame, text="Select Difficulty", font=("Arial", 12), bg="#93066f", fg="white").grid(row=2, column=0, sticky="w", padx=10)
+        tk.Label(self.setup_frame, text="Select Difficulty", font=("Times New Roman", 12), bg="#660033", fg="white").grid(row=2, column=0, sticky="w", padx=10)
         difficulty_dropdown = ttk.Combobox(self.setup_frame, textvariable=self.difficulty_var, values=["Easy", "Medium", "Hard"], width=30)
         difficulty_dropdown.grid(row=2, column=1)
 
         # Entry for number of questions
-        tk.Label(self.setup_frame, text="Number of Questions", font=("Arial", 12), bg="#93066f", fg="white").grid(row=3, column=0, sticky="w", padx=10)
+        tk.Label(self.setup_frame, text="Number of Questions", font=("Times New Roman", 12), bg="#660033", fg="white").grid(row=3, column=0, sticky="w", padx=10)
         amount_entry = tk.Entry(self.setup_frame, textvariable=self.amount_var, width=33)
         amount_entry.grid(row=3, column=1)
 
         # Start button
-        start_button = tk.Button(self.setup_frame, text="Start Quiz", font=("Arial", 14), command=self.start_quiz)
+        start_button = tk.Button(self.setup_frame, text="Start Quiz", font=("Times New Roman", 14), command=self.start_quiz)
         start_button.grid(row=4, column=0, columnspan=2, pady=20)
 
     def start_quiz(self):
@@ -112,29 +112,29 @@ class QuizInterface:
         :return: None
         """
         # Score and Timer section
-        self.top_frame = tk.Frame(self.window, bg="#93066f")
+        self.top_frame = tk.Frame(self.window, bg="#660033")
         self.top_frame.pack(fill="x", padx=20, pady=(10, 0))
 
-        self.timer_label = tk.Label(self.top_frame, text="Time Left: 10s", fg="white", bg="#93066f", font=("Arial", 12))
+        self.timer_label = tk.Label(self.top_frame, text="Time Left: 10s", fg="white", bg="#660033", font=("Times New Roman", 12))
         self.timer_label.pack(side="left")
 
-        self.score_label = tk.Label(self.top_frame, text="Score: 0", fg="white", bg="#93066f", font=("Arial", 12))
+        self.score_label = tk.Label(self.top_frame, text="Score: 0", fg="white", bg="#660033", font=("Times New Roman", 12))
         self.score_label.pack(side="right")
 
         # Question area
         self.canvas = tk.Canvas(width=500, height=250, bg="white")
         self.question_text = self.canvas.create_text(
             250, 125, width=420, text="Question here",
-            fill="black", font=("Arial", 16, "bold")
+            fill="black", font=("Times New Roman", 16, "bold")
         )
         self.canvas.pack(padx=30, pady=30)
 
         # Answer buttons frame (2x2 grid)
-        self.buttons_frame = tk.Frame(self.window, bg="#93066f")
+        self.buttons_frame = tk.Frame(self.window, bg="#660033")
         self.buttons_frame.pack()
 
         for i in range(4):
-            btn = tk.Button(self.buttons_frame, text="Option", font=("Arial", 12), width=25, height=2,
+            btn = tk.Button(self.buttons_frame, text="Option", font=("Times New Roman", 12), width=25, height=2,
                             bg="#f0f0f0", fg="black", wraplength=350, justify="center", anchor="center", relief="raised"
             )
             btn.grid(row=i // 2, column=i % 2, padx=10, pady=10)
@@ -226,28 +226,28 @@ class QuizInterface:
         self.top_frame.pack_forget()
 
         # Create final screen with score and options
-        self.final_frame = tk.Frame(self.window, bg="#93066f")
+        self.final_frame = tk.Frame(self.window, bg="#660033")
         self.final_frame.pack(pady=50)
 
         final_msg = tk.Label(self.final_frame, text=f"Final Score: {self.quiz.score}/{self.quiz.question_number}",
-                             font=("Arial", 16), fg="white", bg="#93066f", justify="center"
+                             font=("Times New Roman", 16), fg="white", bg="#660033", justify="center"
         )
         final_msg.pack(pady=20)
 
         continue_msg = tk.Label(self.final_frame, text="Do you want to continue playing?",
-                                font=("Arial", 16), fg="white", bg="#93066f", justify="center"
+                                font=("Times New Roman", 16), fg="white", bg="#660033", justify="center"
         )
         continue_msg.pack(padx=20, pady=20)
 
-        btn_row = tk.Frame(self.final_frame, bg="#93066f")
+        btn_row = tk.Frame(self.final_frame, bg="#660033")
         btn_row.pack()
 
         btn_width = 15
 
-        again_btn = tk.Button(btn_row, text="Play Again", font=("Arial", 12),width=btn_width,command=self.restart_quiz)
+        again_btn = tk.Button(btn_row, text="Play Again", font=("Times New Roman", 12),width=btn_width,command=self.restart_quiz)
         again_btn.grid(row=0, column=0, padx=10)
 
-        exit_btn = tk.Button(btn_row, text="Exit", font=("Arial", 12), width=btn_width, command=self.window.quit)
+        exit_btn = tk.Button(btn_row, text="Exit", font=("Times New Roman", 12), width=btn_width, command=self.window.quit)
         exit_btn.grid(row=0, column=1, padx=10)
 
     def restart_quiz(self):
