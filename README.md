@@ -120,7 +120,24 @@ Each partner should write three to four well-written paragraphs address the foll
 - How well did you work with your partner? What made it go well? What made it challenging?
 
 ```
-    Partner 1: **Replace this text with your reflection
+    Partner 1: We chose this project because Bao came up with it and I liked it. It was a good idea that didn't seem crazy 
+    hard and doable in the amount of time that we had. I think for the most part, we did everything that we had designed in
+    the CRC card. The only difference, which wasn't major, was that we didn't end up using the title that we initially thought 
+    up in the beginning. 
+    I learned a lot from this project. I better understood codes, what they do, and leared a lot more functions and operations. 
+    The hardest part was, undoutebdly, the coding part, and putting our ideas into practice. Through the whole process, there
+    were a lot of things that seemed to mess up, as well as tiny errors that were annoying to debug. I remember trying to 
+    set the background color to the color that we had picked and I forgot to add the "#" before it and was figuring out why it 
+    didn't work. Also, when trying to increment the score, I had "=+" instead of "+=". 
+    I don't know if I would do anything different. What me and Bao had seemed to work pretty well and we managed to finish 
+    the project on time. To add on, we worked pretty well together. Bao is a much better programmer than I am, so I asked 
+    a lot of questions, and she was more than willing to answer them and was very patient. She taught me a whole lot during 
+    this this time we worked together. Dr. Heggen did mention this to me, but what made it kind of challenging was that sometimes 
+    we'll be working on it and I'd be really stuck and I'll have to keep asking Bao questions and for help, and I, sometimes, felt like 
+    I was holding her back and having imposter syndrome because I was like "Wow she's so smart, and I'm no where near the level
+    she is." In the end, though, we managed to make it work and finished the project, which was very reliving and lifted 
+    a huge weight and stress off my shoulders. 
+        
 ```
 
 ```
