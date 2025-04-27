@@ -28,7 +28,7 @@ class Rocket:
 
     def reset(self, HEIGHT=300):
         self.x = 0
-        self.y = HEIGHT // 2 - 70
+        self.y = HEIGHT // 2 + 150
         self.speed = 20  # Smaller step = better planet detection accuracy
         self.current_planet = None
 
@@ -104,18 +104,18 @@ if __name__ == "__main__":
 
 
     rocket_img = pygame.image.load("rocket.png").convert_alpha()
-    rocket_img = pygame.transform.scale(rocket_img, (45, 45))
+    rocket_img = pygame.transform.scale(rocket_img, (50, 50))
     rocket_img.set_colorkey((255, 255, 255))
 
     planet_zones = [
-        Planet("Venus", "Second planet from the Sun.", 200, 230, "venus-mariner-10-pia23791-fig2.jpg"),
-        Planet("Mercury", "Closest to the Sun.", 255, 295, "Mercury_in_true_color.jpg"),
-        Planet("Earth", "Our home planet.", 340, 380, "The_Earth_seen_from_Apollo_17.jpg"),
-        Planet("Mars", "The Red Planet.", 420, 450, "Mars_-_August_30_2021_-_Flickr_-_Kevin_M._Gill.png"),
-        Planet("Jupiter", "The largest planet.", 470, 560, "Jupiter.jpg"),
-        Planet("Saturn", "Famous for its rings.", 600, 670, "Saturn_during_Equinox.jpg"),
-        Planet("Uranus", "Has a tilted rotation.", 700, 770, "Uranus.avif"),
-        Planet("Neptune", "Furthest from the Sun.", 790, 860, "pia01492-neptune-full-disk-16x9-1.webp"),
+        Planet("Venus", "Second planet from the Sun.", 240, 280, "venus-mariner-10-pia23791-fig2.jpg"),
+        Planet("Mercury", "Closest to the Sun.", 340, 380, "Mercury_in_true_color.jpg"),
+        Planet("Earth", "Our home planet.", 440, 480, "The_Earth_seen_from_Apollo_17.jpg"),
+        Planet("Mars", "The Red Planet.", 540, 560, "Mars_-_August_30_2021_-_Flickr_-_Kevin_M._Gill.png"),
+        Planet("Jupiter", "The largest planet.", 620, 700, "Jupiter.jpg"),
+        Planet("Saturn", "Famous for its rings.", 760, 840, "Saturn_during_Equinox.jpg"),
+        Planet("Uranus", "Has a tilted rotation.", 900, 960, "Uranus.avif"),
+        Planet("Neptune", "Furthest from the Sun.", 1020, 1100, "pia01492-neptune-full-disk-16x9-1.webp"),
     ]
     # Rocket
 
@@ -143,7 +143,7 @@ if __name__ == "__main__":
                         p.hit = False
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mouse = pygame.mouse.get_pos()
-                if rocket.current_planet and width / 2.5 <= mouse[0] <= width / 2.5 + 140 and height / 1.58 <= mouse[1] <= height / 1.58 + 40:
+                if rocket.current_planet and width / 2.37 <= mouse[0] <= width / 2.37 + 140 and height / 1.33 <= mouse[1] <= height / 1.33 + 40:
                     show_planet_screen(rocket.current_planet)
 
 
@@ -156,10 +156,10 @@ if __name__ == "__main__":
 
         if rocket.current_planet:
 
-            pygame.draw.rect(screen, color_light, [width / 2.5, height / 1.58, 140, 40])
-            screen.blit(text, (width / 2.5 + 40, height / 1.58))
+            pygame.draw.rect(screen, color_light, [width / 2.37, height / 1.33, 140, 40])
+            screen.blit(text, (width / 2.37 + 40, height / 1.33))
         else:
-            pygame.draw.rect(screen, (0, 0, 0), [width / 2.5, height / 1.58, 140, 40])
+            pygame.draw.rect(screen, (0, 0, 0), [width / 2.37, height / 1.33, 140, 40])
 
         pygame.display.update()
         clock.tick(30)
