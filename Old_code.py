@@ -60,3 +60,15 @@
 #
 #
 # # Specific buttons (initialize specific buttons, pack them into the colorful frames)
+# # Create colorful frames for button layout (4x4 grid)
+# self.frames = []  # Store references to rows
+# color_pal = ["#1CCEE8", "#27EEC4", "#1BE37E", "#28A71A"]
+#
+# for row in range(4):  # Iterate through the four rows
+#     color = color_pal[row]  # Pick color for this row
+#     row_frames = []
+#     for col in range(4):  # Iterate through the four columns
+#         cell = customtkinter.CTkFrame(self, fg_color=color, corner_radius=3)
+#         cell.grid(row=row, column=col, sticky="nsew", padx=2, pady=2)
+#         row_frames.append(cell)  # Store the frame reference
+#     self.frames.append(row_frames)  # Store the row in the frames list

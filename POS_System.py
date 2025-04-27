@@ -30,7 +30,7 @@ class LeftFrame(customtkinter.CTkFrame):
 
         # Container Widget
         self.menu_container = customtkinter.CTkFrame(self, fg_color="transparent")
-        self.menu_container.pack(fill="both", expand=True, padx=0, pady=10)
+        self.menu_container.pack(fill="both", expand=True, padx=0, pady=20)
 
         # Button Data
         btn_name = ["Combos", "Sandwiches", "Sides", "Desserts", "Drinks"]
@@ -44,7 +44,7 @@ class LeftFrame(customtkinter.CTkFrame):
                 height = 50,
                 command = lambda category=text: self.call_specific_button(category)
             )
-            btn.pack(pady=20, fill="x")
+            btn.pack(pady=15, fill="x")
             self.btn_ref[index] = btn # Store button ref
 
         # Spacer to push Exit button to bottom (ChatGPT)
@@ -77,13 +77,11 @@ class MiddleFrame(customtkinter.CTkFrame):
 
         # Search Bar (Entry Widget)
         self.search_bar = customtkinter.CTkEntry(self, placeholder_text = "Search for products . . .", width = 710, height = 35, corner_radius=3, fg_color = "#282828")
-        self.search_bar.pack(anchor = "nw", padx = 15, pady = 15, expand = True)
+        self.search_bar.pack(anchor = "nw", padx = 15, pady = (15,5), fill = "x")
 
-        # # Grid Layout (4x4)
-        # for row in range(4):
-        #     self.grid_rowconfigure(row, weight=1)
-        # for col in range(4):
-        #     self.grid_columnconfigure(col, weight=1)
+        # Container Frame for Buttons (below search bar)
+        self.specific_btn_frame = customtkinter.CTkFrame(self, fg_color="transparent")
+        self.specific_btn_frame.pack(anchor="nw", padx=15, pady=(35, 0), fill="both")
 
         # Buttons Data
         self.button_data = {
@@ -125,42 +123,28 @@ class MiddleFrame(customtkinter.CTkFrame):
 
     def display_specific_buttons(self, p_category):
         """ When a category is selected, update the display with specific buttons for that category """
-        # Clear any existing specific buttons
-        for widget in self.winfo_children():
+
+        # Clear any existing specific buttons in the button frame
+        for widget in self.specific_btn_frame.winfo_children():
             widget.destroy()
 
-        # Create colorful frames for button layout (4x4 grid)
-        self.frames = []  # Store references to rows
-        color_pal = ["#1CCEE8", "#27EEC4", "#1BE37E", "#28A71A"]
+        # Create menu items
+        counter = 0
+        menu_item = self.button_data.get(p_category,[]) # Grabs key from dictionary
 
-        for row in range(4):  # Iterate through the four rows
-            color = color_pal[row]  # Pick color for this row
-            row_frames = []
-            for col in range(4):  # Iterate through the four columns
-                cell = customtkinter.CTkFrame(self, fg_color=color, corner_radius=3)
-                cell.grid(row=row, column=col, sticky="nsew", padx=2, pady=2)
-                row_frames.append(cell)  # Store the frame reference
-            self.frames.append(row_frames)  # Store the row in the frames list
+        # Iterate through menu items (Key), ignoring their prices
+        for item_name,_ in menu_item:
+            # Create a button for each item
+            btn = customtkinter.CTkButton(self.specific_btn_frame, text = item_name, corner_radius=3, height = 175)
+            # Place the buttons in Grid Layout
+            btn.grid(row = counter//4, column = counter % 4, padx = 3, pady = 3, sticky = "nsew")
+            counter+=1 # Increment Counter
+
+        # Makes columns expandable in the button frame
+        for col in range(4):
+            self.specific_btn_frame.grid_columnconfigure(col, weight=1)
 
 
-
-
-        # Display category button based of the general button clicked
-
-        # item_lis = [] # Create a list to store all menu items
-        # counter = 0
-        # # Iterate through items, ignoring their prices
-        # for item,_ in self.button_data.get(p_category,[]): # Empty list is returned if key doesn't exist
-        #     # Create a button for each item
-        #     btn = customtkinter.CTkButton(self, text = f"{item}", corner_radius=1)
-        #     # Place the buttons in Grid Layout
-        #     btn.grid(row = counter//4, column = counter%4, padx = 5, pady = 5, sticky = "nsew")
-        #     # Increment Counter
-        #     counter+=1
-
-        #self.specific_btn_ref += [i]
-
-        # Create specific buttons for each item in the category
 
 
 
@@ -171,16 +155,16 @@ class RightFrame(customtkinter.CTkFrame):
         self.pack_propagate(False)  # ChatGPT
 
         # All Checks Button
-        self.all_check_btn = customtkinter.CTkButton(self, text="All checks", corner_radius=3, width= 125, height = 35)
-        self.all_check_btn.pack(anchor="ne", padx= 15, pady = 15)
+        self.all_check_btn = customtkinter.CTkButton(self, text="All checks", corner_radius=3, width= 125, height = 40)
+        self.all_check_btn.pack(anchor="ne", padx= 10, pady = (15,15))
 
         # Divider Line (Upper)
         divider1 = customtkinter.CTkFrame(self, height=2, width=800, fg_color="#404040")
-        divider1.pack(fill = "both", pady = 10)
+        divider1.pack(fill = "both", pady = (25,5))
 
         # Save, Cancel, Delete Button Container Frame
         button_row = customtkinter.CTkFrame(self, fg_color = "transparent")
-        button_row.pack(fill="x", pady=5, padx=10)
+        button_row.pack(fill="x", pady=5, padx=5)
 
         # Cancel Button (Left)
         self.cancel_btn = customtkinter.CTkButton(button_row, text="Cancel", corner_radius=3, height=40, width=125)
@@ -194,9 +178,9 @@ class RightFrame(customtkinter.CTkFrame):
         self.save_btn = customtkinter.CTkButton(button_row, text = "Save", corner_radius=3, height=40, width = 125)
         self.save_btn.pack(padx = (5,5))
 
-        # Divide Line
+        # Divider Line
         divider2 = customtkinter.CTkFrame(self, height=2, width=800, fg_color="#404040")
-        divider2.pack(fill = "both", pady = 20)
+        divider2.pack(fill = "both", pady = (5,5))
 
         self.order_number = 0 # Order number Accumulator
 
