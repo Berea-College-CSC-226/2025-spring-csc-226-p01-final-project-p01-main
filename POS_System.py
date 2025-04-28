@@ -9,6 +9,7 @@
 # ChatGPT - Toggle Menu Walkthrough Steps - https://chatgpt.com/c/6806f391-ead8-800a-bac4-1192ead61ae6
 # ChatGPT - Lambda in Command -
 # ChatGPT - Spacer -
+# ChatGPT - Implicit Grid -
 #######################################################################################
 import customtkinter,random
 
@@ -53,7 +54,7 @@ class LeftFrame(customtkinter.CTkFrame):
 
         # Exit Button
         self.exit_btn = customtkinter.CTkButton(self.menu_container, text = "Exit", corner_radius = 3, height = 50)
-        self.exit_btn.pack(pady = 20, fill = "x")
+        self.exit_btn.pack(pady = 0, fill = "x")
 
     def toggle_menu(self):
         """ Checks to see if toggle menu is visible or not to determine whether to display toggle elements"""
@@ -73,7 +74,9 @@ class MiddleFrame(customtkinter.CTkFrame):
     """ This frame is where the buttons will go"""
     def __init__(self,master):
         super().__init__(master, width = 500, fg_color = "#121212")
+
         self.specific_btn_ref = {}  # Store references to specific buttons
+        self.right_frame = None # Placeholder (ChatGPT)
 
         # Search Bar (Entry Widget)
         self.search_bar = customtkinter.CTkEntry(self, placeholder_text = "Search for products . . .", width = 710, height = 35, corner_radius=3, fg_color = "#282828")
@@ -121,6 +124,10 @@ class MiddleFrame(customtkinter.CTkFrame):
             ]
         }
 
+    def set_right_frame(self, right_frame):
+        """ This sets the reference to the right frame after it's created """
+        self.right_frame = right_frame
+
     def display_specific_buttons(self, p_category):
         """ When a category is selected, update the display with specific buttons for that category """
 
@@ -132,10 +139,16 @@ class MiddleFrame(customtkinter.CTkFrame):
         counter = 0
         menu_item = self.button_data.get(p_category,[]) # Grabs key from dictionary
 
-        # Iterate through menu items (Key), ignoring their prices
-        for item_name,_ in menu_item:
+        # Iterate through menu items (Key) & prices (Value)
+        for item_name, item_price in menu_item:
             # Create a button for each item
-            btn = customtkinter.CTkButton(self.specific_btn_frame, text = item_name, corner_radius=3, height = 175)
+            btn = customtkinter.CTkButton(
+                self.specific_btn_frame,
+                text = item_name,
+                corner_radius=3,
+                height = 175,
+                command = lambda name = item_name, price = item_price: self.call_right_frame(name,price) # When specific button clicked pass button's data
+            )
             # Place the buttons in Grid Layout
             btn.grid(row = counter//4, column = counter % 4, padx = 3, pady = 3, sticky = "nsew")
             counter+=1 # Increment Counter
@@ -144,14 +157,21 @@ class MiddleFrame(customtkinter.CTkFrame):
         for col in range(4):
             self.specific_btn_frame.grid_columnconfigure(col, weight=1)
 
+    # When a specific button is pressed call a method (from: Middle Frame to: RightFrame) and pass button data
+    def call_right_frame(self, p_name, p_price):
+        """ This method will call a method from RightFrame """
 
+        # if true invoke the method display_menu_item method in the right frame class and pass menu_item and its price
+        if self.right_frame:
+            self.right_frame.display_menu_item(p_name,p_price)
 
 
 
 class RightFrame(customtkinter.CTkFrame):
     """ This frame will be where orders show"""
-    def __init__(self, master, **kwargs):
+    def __init__(self, master):
         super().__init__(master, width = 550, height=864, corner_radius = 1,fg_color = "#121212")
+
         self.pack_propagate(False)  # ChatGPT
 
         # All Checks Button
@@ -182,11 +202,31 @@ class RightFrame(customtkinter.CTkFrame):
         divider2 = customtkinter.CTkFrame(self, height=2, width=800, fg_color="#404040")
         divider2.pack(fill = "both", pady = (5,5))
 
-        self.order_number = 0 # Order number Accumulator
+        # Detail Frame (Hold label widgets "Name" "QTY" "Each" "Total")
+        self.detail_frame = customtkinter.CTkFrame(self, fg_color="#181818", corner_radius=3, height=30)
+        self.detail_frame.pack(fill="both", padx=10, pady=(5, 0), expand=False)
 
-        # Order Number Label (Updated when Pay is clicked)
-        self.order_label = customtkinter.CTkLabel(self, text = f"Ch. #{self.order_number}", font=("Arial", 20) )
-        self.order_label.pack(padx = 10, pady = 1)
+        # Name (inside the detail_frame)
+        label_one = customtkinter.CTkLabel(self.detail_frame, text="Name")
+        label_one.grid(row=0, column=0, sticky="w", padx=(25, 15))
+
+        # QTY (inside the detail_frame)
+        qty_label = customtkinter.CTkLabel(self.detail_frame, text="Qty")
+        qty_label.grid(row=0, column=1, sticky="ew", padx=(20, 20))
+
+        # Total (inside the detail_frame)
+        total_label = customtkinter.CTkLabel(self.detail_frame, text="Total")
+        total_label.grid(row=0, column=2, sticky="e", padx=(10, 30))
+
+        # Even columns
+        for index in range(3):
+            self.detail_frame.grid_columnconfigure(index, weight=1)
+
+
+        # Order Scrollable Frame (where orders will be displayed)
+        self.order_frame = customtkinter.CTkScrollableFrame(self, fg_color="#181818", width = 400, height = 450, corner_radius=3)
+        self.order_frame.pack(fill="both", padx=10, expand = True)
+
 
         # Total & Sub-tax (Label)
 
@@ -200,25 +240,51 @@ class RightFrame(customtkinter.CTkFrame):
 
         # Discount & Pay Button (in a frame)
         button_row2 = customtkinter.CTkFrame(self, fg_color = "transparent")
-        button_row2.pack(fill="x", pady=15, padx=10)
+        button_row2.pack(fill="x", pady=20, padx=10)
 
         # Discount Button (Left)
-        self.discount_btn = customtkinter.CTkButton(button_row2, text="Discount", corner_radius=3, height=40)
+        self.discount_btn = customtkinter.CTkButton(button_row2, text="Discount", corner_radius=3, height=45)
         self.discount_btn.pack(side="left", expand=True, fill="x", padx=(0, 5))
 
         # Pay Button (Right)
-        self.pay_btn = customtkinter.CTkButton(button_row2, text="Pay", corner_radius=3, height=40, command=self.update_order_number)
+        self.pay_btn = customtkinter.CTkButton(button_row2, text="Pay", corner_radius=3, height=45)
         self.pay_btn.pack(side="right", expand=True, fill="x", padx=(5, 0))
 
 
-    def update_order_number(self):
-        """
-        When the Pay button is clicked the order number is incremented
-        :return:
-        """
-        self.order_number+=1
-        self.order_label.configure(text=f"Ch. #{self.order_number}") # Currently the order number is not being saved once the pos system is exited
 
+
+    # def update_order_number(self):
+    #     """
+    #     When the Pay button is clicked the order number is incremented
+    #     :return:
+    #     """
+    #     self.order_number+=1
+    #     self.order_label.configure(text=f"Ch. #{self.order_number}") # Currently the order number is not being saved once the pos system is exited
+
+    def display_menu_item(self,p_name, p_price):
+        """ This method takes input parameter from another method and uses it to create a label widgets in the Order Frame (container widget)"""
+
+        if p_name and (p_price is not None): # if the parameters are not empty
+
+            # Row count = how many items (name + price) have already been added - ChatGPT
+            row_count = len(self.order_frame.winfo_children())  # length of total number of widgets
+
+            # Create a frame to hold the name and price labels together
+            item_frame = customtkinter.CTkFrame(self.order_frame, fg_color="transparent")
+            item_frame.grid(row=row_count, column=0, columnspan=2, sticky="w", padx=(10, 5), pady=5)
+
+
+            # Create label for item name (left)
+            name_label = customtkinter.CTkLabel(item_frame, text=p_name, fg_color="transparent", anchor="w")
+            name_label.grid(row=0, column=0, sticky="w", padx=(10, 5), pady=5)
+
+            # Create label for item price (right)
+            price_label = customtkinter.CTkLabel(item_frame, text=f"${p_price:.2f}", fg_color="transparent", anchor="e")
+            price_label.grid(row=0, column=1, sticky="e", padx=(210, 5), pady=5)
+
+            # Make columns expand nicely in the frame (two columns) & ensure all columns are the same no matter the length of the item_frame
+            item_frame.grid_columnconfigure(0, weight=1, uniform = "column")
+            item_frame.grid_columnconfigure(1, weight=1, uniform = "column")
 
 
 
@@ -244,16 +310,19 @@ class GUI (customtkinter.CTk):
         # MIDDLE FRAME (Create mid_frame first so it to can be passed to the left_frame)
         self.mid_frame = MiddleFrame(self)
 
-        # LEFT FRAME (Toggle Menu)
-        self.left_frame = LeftFrame(self, self.mid_frame) # Pass mid_frame object to the left frame (references the mid_frame object inside the LeftFrame instance)
-        self.left_frame.pack(side="left", fill="y")
-
-        # Pack the mid_frame(after the left_frame)
-        self.mid_frame.pack(side="left", fill="both", expand=True)
-
-        # RIGHT FRAME (Display Area)
+        # RIGHT FRAME (create the right_frame second so it can be pass to the middle frame)
         self.right_frame = RightFrame(self)
-        self.right_frame.pack(side="left", fill="y")
+
+        # Pass right_frame into mid_frame
+        self.mid_frame.set_right_frame(self.right_frame)
+
+        # LEFT FRAME (Create the left frame last and pass mid_frame to the left frame)
+        self.left_frame = LeftFrame(self, self.mid_frame)
+
+        # Pack frames in order: Left -> Middle -> Right
+        self.left_frame.pack(side="left", fill="y") # LEFT FRAME (Toggle Menu)
+        self.mid_frame.pack(side="left", fill="both", expand=True)  # Middle FRAME (Button Area)
+        self.right_frame.pack(side="left", fill="y") # RIGHT FRAME (Display Area)
 
 if __name__ == "__main__":
     gui = GUI()
