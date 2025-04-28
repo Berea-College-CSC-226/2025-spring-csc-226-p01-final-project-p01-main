@@ -72,7 +72,7 @@ def show_planet_screen(planet):
         tip_text = font.render("Press ESC to return", True, (150,150,150))
 
         screen.blit(name_text, (WIDTH // 4, HEIGHT // 3 + 150))
-        screen.blit(desc_text, (WIDTH // 4, HEIGHT // 3 + 190))
+        screen.blit(desc_text, (WIDTH // 100 - 5, HEIGHT // 3 + 190))
         screen.blit(tip_text, (WIDTH // 4, HEIGHT // 3 + 230))
         screen.blit(planet_image, (WIDTH // 2 - 150, HEIGHT // 2 - 310 ))
 
@@ -85,7 +85,6 @@ if __name__ == "__main__":
     pygame.init()
     WIDTH, HEIGHT = 1280, 655
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
-    pygame.display.set_caption("Rocket Lands on Planets")
 
     color = (255, 255, 255)
     color_light = (170, 170, 170)
@@ -99,9 +98,14 @@ if __name__ == "__main__":
     # Load Images
     background = pygame.image.load("planets.gif").convert_alpha()
     background = pygame.transform.scale(background, (1280, 250))
+    title_text = smallfont.render('WELCOME TO THE PLANET EXPLORATION GAME!', True, color)
+    instruction_txt = smallfont.render('PRESS -> TO MOVE THE ROCKET', True, color)
+    instruction1_txt = smallfont.render('PRESS 'R' TO RESET THE ROCKET', True, color)
+    instruction2_txt = smallfont.render('CLICK ON THE LAND BUTTON TO START LEARNING', True, color)
     back_rect = background.get_rect()
     back_rect.center = (screen.get_width() // 2, screen.get_height() // 2)
     screen.blit(background, back_rect)
+    screen.blit(title_text, (WIDTH // 2, HEIGHT // 2 + 120))
 
 
 
@@ -113,14 +117,14 @@ if __name__ == "__main__":
     rocket_img.set_colorkey((255, 255, 255))
 
     planet_zones = [
-        Planet("Venus", "Second planet from the Sun.", 240, 280, "venus-mariner-10-pia23791-fig2.jpg"),
-        Planet("Mercury", "Closest to the Sun.", 340, 380, "Mercury_in_true_color.jpg"),
-        Planet("Earth", "Our home planet.", 440, 480, "The_Earth_seen_from_Apollo_17.jpg"),
-        Planet("Mars", "The Red Planet.", 540, 560, "Mars_-_August_30_2021_-_Flickr_-_Kevin_M._Gill.png"),
-        Planet("Jupiter", "The largest planet.", 620, 700, "Jupiter.jpg"),
-        Planet("Saturn", "Famous for its rings.", 760, 840, "istockphoto-1496413363-612x612.jpg"),
-        Planet("Uranus", "Has a tilted rotation.", 900, 960, "Uranus_Voyager2_color_calibrated.png"),
-        Planet("Neptune", "Furthest from the Sun.", 1020, 1100, "Neptune_-_Voyager_2_(29347980845)_flatten_crop.jpg"),
+        Planet("Venus", "it is the hottest planet in our solar system, rotates backwards, and has many active volcanoes", 240, 280, "venus-mariner-10-pia23791-fig2.jpg"),
+        Planet("Mercury", "it is the smallest, and fastest planet in our solar system, and does not orbit in a perfect circle", 340, 380, "Mercury_in_true_color.jpg"),
+        Planet("Earth", "contrary to popular belief is not a round planet, being a oblate spheroid, with 4 layers", 440, 480, "The_Earth_seen_from_Apollo_17.jpg"),
+        Planet("Mars", "it has a canyon system larger than any of our own, and the largest volcano in the solar system", 540, 560, "Mars_-_August_30_2021_-_Flickr_-_Kevin_M._Gill.png"),
+        Planet("Jupiter", "it is the largest planet in our solar system, and is composed mostly of Hydrogen and Helium", 620, 700, "Jupiter.jpg"),
+        Planet("Saturn", "It is most known for its rings made of ice and rock particles, and has around 82 moons in all.", 760, 840, "istockphoto-1496413363-612x612.jpg"),
+        Planet("Uranus", "it is known for its almost entirely sideways rotation, and blue-green hue due to methane", 900, 960, "Uranus_Voyager2_color_calibrated.png"),
+        Planet("Neptune", "The first planet discovered through mathematical predictions, with winds over 2,000 km/h", 1020, 1100, "Neptune_-_Voyager_2_(29347980845)_flatten_crop.jpg"),
     ]
     # Rocket
 
