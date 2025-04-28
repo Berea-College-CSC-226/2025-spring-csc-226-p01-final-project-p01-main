@@ -118,4 +118,27 @@ Each partner should write three to four well-written paragraphs address the foll
     Partner 2: **Replace this text with your reflection
 ```
 
+```
+    Partner 3:
+    We decided to select a drawing application as the foucs of our project because it seemed
+    like a good way to apply our knowledge of classes, turtle, and tkinter into one project.
+    Overall, it helped us better understand the functionality of those three components when
+    it came to combining them all together in one simple application. Visually, our project
+    mostly remained the same from the start but we did change a lot of the functionality
+    throughout the project.
+    
+    For our group we had challenges with implementing certain features we had planned, such
+    as the saving feature, since we had no prior experience with file saving in python.
+    Communication was also a little confusing at first since were not very familar with
+    how to commit and push between multiple people. If we were to do future projects, we
+    would work on assigning tasks to each team member more effectively, since we could have
+    been more intentional with our initial planning.
+    
+    Overall, I felt that me and my teammates worked well together throughout the project. I did
+    think it would be difficult initially working in a team of three instead of two, but it turned
+    out to be more helpful in having an extra person to take on other tasks and bring different
+    input in the creation process. I enjoyed working with my team and learning more about Python
+    as well as some effective teamwork strategies.
+```
+
 ---
