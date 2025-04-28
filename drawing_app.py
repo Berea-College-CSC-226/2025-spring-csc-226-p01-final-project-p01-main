@@ -14,9 +14,15 @@
 ####################################################################################
 
 import tkinter as tk
+from PIL import ImageGrab, Image, ImageTk
+
 import turtle
 import os
+os.environ['PATH'] = r'C:\Program Files\gs\gs10.02.1\bin;' + os.environ['PATH']
 import datetime
+from PIL import ImageGrab
+
+from PIL import ImageTk
 
 class DrawingApp:
     def __init__(self, windowtext=""):
@@ -109,16 +115,76 @@ class DrawingApp:
         self.status_text.set("Canvas cleared.")
 
     def save_drawing(self):
-        drawings = os.listdir("saved_drawings")
-        current_date = datetime.datetime.now().strftime("%Y-%m-%d")
-        filename = "saved_drawings/drawing"+str(len(drawings) + 1)+"_"+current_date+".eps"
+        # Create "saved_drawings" folder if it doesn't exist
+        if not os.path.exists("saved_drawings"):
+            os.makedirs("saved_drawings")
 
-        self.screen.getcanvas().postscript(file=filename)
-        self.status_text.set('Saved drawing to '+filename)
+        # Save the WHOLE WINDOW instead of just a crop
+        x = self.root.winfo_rootx()
+        y = self.root.winfo_rooty()
+        x1 = x + self.root.winfo_width()
+        y1 = y + self.root.winfo_height()
+
+        img = ImageGrab.grab(bbox=(x, y, x1, y1))  # Screenshot whole app window
+
+        # Save the image
+        current_date = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+        filename = f"saved_drawings/drawing_{current_date}.png"
+        img.save(filename)
+
+        self.status_text.set('Saved drawing to ' + filename)
 
     def show_saved_drawings(self):
-        # Placeholder: this just updates the label for now
-        self.status_text.set("No saved drawings available.")
+        # Create a new window
+        saved_window = tk.Toplevel(self.root)
+        saved_window.title("Saved Drawings")
+        saved_window.geometry("800x600")
+
+        # Check if folder exists
+        if not os.path.exists("saved_drawings"):
+            tk.Label(saved_window, text="No saved drawings found!").pack()
+            return
+
+        # Load all images
+        drawings = [file for file in os.listdir("saved_drawings") if file.endswith(".png")]
+
+        if not drawings:
+            tk.Label(saved_window, text="No saved drawings found!").pack()
+            return
+
+        # Canvas with scrollbar
+        canvas = tk.Canvas(saved_window)
+        scrollbar = tk.Scrollbar(saved_window, orient="vertical", command=canvas.yview)
+        scroll_frame = tk.Frame(canvas)
+
+        scroll_frame.bind(
+            "<Configure>",
+            lambda e: canvas.configure(
+                scrollregion=canvas.bbox("all")
+            )
+        )
+
+        canvas.create_window((0, 0), window=scroll_frame, anchor="nw")
+        canvas.configure(yscrollcommand=scrollbar.set)
+
+        canvas.pack(side="left", fill="both", expand=True)
+        scrollbar.pack(side="right", fill="y")
+
+        # Store image references
+        self.saved_images = []
+
+        for filename in drawings:
+            filepath = os.path.join("saved_drawings", filename)
+            img = Image.open(filepath)
+            img.thumbnail((300, 300))  # Resize for display
+            img_tk = ImageTk.PhotoImage(img)
+
+            label = tk.Label(scroll_frame, image=img_tk)
+            label.image = img_tk  # Keep a reference to avoid garbage collection
+            label.pack(pady=10)
+
+            self.saved_images.append(img_tk)  # Keep all images referenced
+
 
 
 def main():
