@@ -98,18 +98,28 @@ if __name__ == "__main__":
     height = screen.get_height()
     smallfont = pygame.font.SysFont('Corbel', 35)
     text = smallfont.render('LAND', True, color)
+    title_font = pygame.font.SysFont('Corbel', 20)
 
     # Load Images
     background = pygame.image.load("planets.gif").convert_alpha()
     background = pygame.transform.scale(background, (1280, 250))
-    title_text = smallfont.render('WELCOME TO THE PLANET EXPLORATION GAME!', True, color)
-    instruction_txt = smallfont.render('PRESS -> TO MOVE THE ROCKET', True, color)
-    instruction1_txt = smallfont.render('PRESS 'R' TO RESET THE ROCKET', True, color)
-    instruction2_txt = smallfont.render('CLICK ON THE LAND BUTTON TO START LEARNING', True, color)
+    title_text = title_font.render('WELCOME TO THE PLANET EXPLORATION GAME!', True, color)
+    instruction1_txt = title_font.render('PRESS -> TO MOVE THE ROCKET', True, color)
+    instruction2_txt = title_font.render('PRESS R  TO RESET THE ROCKET', True, color)
+    instruction3_txt = title_font.render('CLICK  ON  THE LAND BUTTON  TO  START LEARNING', True, color)
     back_rect = background.get_rect()
+    title_rect = title_text.get_rect()
+    instruction1_rect = instruction1_txt.get_rect()
+    instruction2_rect = instruction2_txt.get_rect()
+    instruction3_rect = instruction3_txt.get_rect()
+    title_rect.center = (WIDTH // 2, HEIGHT // 4)
+    instruction1_rect.center =(WIDTH // 2, HEIGHT // 2 + 210)
+    instruction2_rect.center =(WIDTH // 2, HEIGHT // 2 + 240)
+    instruction3_rect.center =(WIDTH // 2, HEIGHT // 2 + 270)
     back_rect.center = (screen.get_width() // 2, screen.get_height() // 2)
     screen.blit(background, back_rect)
-    screen.blit(title_text, (WIDTH // 2, HEIGHT // 2 + 120))
+
+
 
 
 
@@ -142,6 +152,11 @@ if __name__ == "__main__":
     while running:
         screen.fill((0,0,0))
         screen.blit(background, back_rect)
+        screen.blit(title_text, title_rect)
+        screen.blit(instruction1_txt, instruction1_rect)
+        screen.blit(instruction2_txt, instruction2_rect)
+        screen.blit(instruction3_txt, instruction3_rect)
+
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
