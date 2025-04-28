@@ -101,9 +101,9 @@ if __name__ == "__main__":
 
     # Load Images
     background = pygame.image.load("planets.gif").convert_alpha()
-    background = pygame.transform.scale(background, (1280, 250))
+    background = pygame.transform.scale(background, (WIDTH, HEIGHT))  # Stretch to full screen
     back_rect = background.get_rect()
-    back_rect.center = (screen.get_width() // 2, screen.get_height() // 2)
+    back_rect.center = (WIDTH // 2, HEIGHT // 2)
     screen.blit(background, back_rect)
 
 
