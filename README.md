@@ -82,23 +82,41 @@ Indicate what percentage of the project you have left to complete and how confid
 
 ## Milestone 4: Final Code, Presentation, Demo
 
-### ❗User Instructions
+### User Instructions
 
-In a paragraph, explain how to use your program. Assume the user is starting just after they hit the "Run" button 
-in PyCharm. 
+After hitting the "Run" button in PyCharm, the DrawingApp window will appear, where you can start drawing immediately. 
+To draw, click and hold the left mouse button on the canvas, and move your mouse to create your drawing. You can change 
+the pen color by typing a valid color name (e.g., "red", "blue") into the textbox and clicking the "Change Pen Color" 
+button. Similarly, adjust the pen size by entering a number in the textbox and clicking the "Change Pen Size" button. 
+To erase your drawing, click the "Erase" button, which will turn the pen color to white. If you need to clear the canvas 
+entirely, simply click the "Clear All" button. To save your drawing, click the "Save" button, and the image will be 
+saved in a folder named "saved_drawings" in your project directory. You can view saved drawings by clicking the "Saved 
+Drawings" button, which opens a new window where you can see all saved images. Additionally, if you want to delete all 
+saved drawings, you can click the "Delete All Saved Drawings" button in the saved drawings window.
 
-### ❗Errors and Constraints
+### Errors and Constraints
 
 Every program has bugs or features that had to be scrapped for time. These bugs should be tracked in the issue queue. 
 You should already have a few items in here from the prior weeks. Create a new issue for any undocumented errors and 
 deficiencies that remain in your code. Bugs found that aren't acknowledged in the queue will be penalized.
 
+bug 1: One issue with the saving is that it does not take the screenshot properly and shows outside the window a little 
+bit, especially if you move the window around the screen it will be off center.
+
 ### ❗Peer Evaluation
 
-It is important that all members of your team contribute equitably. The peer evaluation is your chance to either 
-a) celebrate the great work you all did together as an effective team, or b) indicate to the instructor if a member of
-your team did not contribute their fair share. Grades will be adjusted for any team member who is evaluated poorly. Your
-commit history will be used as evidence, so make sure you are using git effectively!
+In our team, we collaborated effectively to complete the project and each member contributed their fair share. Throughout 
+the development process, we divided the tasks efficiently and regularly communicated to ensure the features were 
+integrated smoothly. Each team member took responsibility for specific sections of the code, and we frequently reviewed 
+and tested each other’s work to ensure high quality and consistency.
+
+Our Git commit history clearly reflects our contributions, with each member making regular commits to track progress. 
+We followed good practices by creating meaningful commit messages and resolving any issues that came up during development. 
+Everyone stayed engaged with the project, and all tasks were completed on time.
+
+If there had been any member who didn't contribute fairly or failed to meet their responsibilities, we would have flagged 
+it during our team discussions, but that was not the case. We worked well together, and I believe all members made 
+valuable contributions to the success of this project.
 
 ### ❗Reflection
 
@@ -111,7 +129,31 @@ Each partner should write three to four well-written paragraphs address the foll
 - How well did you work with your partner? What made it go well? What made it challenging?
 
 ```
-    Partner 1: **Replace this text with your reflection
+    Partner 1: We selected the drawing application project because we wanted to intergrate graphical user interfaces (GUIs) 
+    and programming.It allowed us to combine Python with Tkinter and Turtle, which was a great opportunity to apply 
+    event-driven programming.Additionally, We wanted to build something interactive that could immediately showcase 
+    the effects of the code, such as drawing on the screen and changing pen properties.
+    
+    The final project reflected the initial design but with a few additions. While I started with the idea of a basic 
+    drawing app, We decided to include extra features, such as buttons for changing pen color, size, and saving drawings. 
+    These improvements added more interactivity and complexity, enhancing the user experience without changing the core 
+    design.
+    
+    This process taught me a lot about GUI development, especially working with Tkinter and handling mouse events. I also
+    learned how to implement dynamic features like changing pen color and size and adding an erase mode. Capturing the 
+    entire window as an image to save drawings was another valuable skill I gained, along with handling user errors 
+    like invalid input.
+     
+     The hardest part was coordinating the buttons to function properly with the drawing tools was particularly challenging.
+     Debugging these interactions took time and effort to make everything work smoothly.
+     
+     Next time, I would focus on organizing the code better by breaking it into more modular functions. This would make 
+     it easier to modify and scale the app in the future. Additionally, I would make the UI more user-friendly with icons
+     or visual cues to improve the overall user experience, especially for beginners.
+      
+      I worked well with my partners, dividing tasks based on our strengths. The challenge was syncing our parts together, 
+      especially with the buttons and interactions, but clear communication helped us align our work and overcome these 
+      challenges.
 ```
 
 ```
