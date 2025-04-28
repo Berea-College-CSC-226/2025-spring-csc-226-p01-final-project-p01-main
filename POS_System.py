@@ -10,6 +10,7 @@
 # ChatGPT - Lambda in Command -
 # ChatGPT - Spacer -
 # ChatGPT - Implicit Grid -
+# ChatGPT - Nested Dictionary - https://chatgpt.com/c/680efcbe-2ee4-800a-8589-a61576eecf6a
 #######################################################################################
 import customtkinter,random
 
@@ -173,6 +174,7 @@ class RightFrame(customtkinter.CTkFrame):
         super().__init__(master, width = 550, height=864, corner_radius = 1,fg_color = "#121212")
 
         self.pack_propagate(False)  # ChatGPT
+        self.item_dict = {} # Dictionary stores item and qty
 
         # All Checks Button
         self.all_check_btn = customtkinter.CTkButton(self, text="All checks", corner_radius=3, width= 125, height = 40)
@@ -251,42 +253,83 @@ class RightFrame(customtkinter.CTkFrame):
         self.pay_btn.pack(side="right", expand=True, fill="x", padx=(5, 0))
 
 
-
-
-    # def update_order_number(self):
-    #     """
-    #     When the Pay button is clicked the order number is incremented
-    #     :return:
-    #     """
-    #     self.order_number+=1
-    #     self.order_label.configure(text=f"Ch. #{self.order_number}") # Currently the order number is not being saved once the pos system is exited
-
     def display_menu_item(self,p_name, p_price):
-        """ This method takes input parameter from another method and uses it to create a label widgets in the Order Frame (container widget)"""
+        """ This method takes input parameter from another method and uses it to create a label widgets in the Order Frame(container widget)"""
 
-        if p_name and (p_price is not None): # if the parameters are not empty
+        # Check to see it the item in dict
+        if p_name in self.item_dict:
+            # Item in dict, add 1 to qty (Nested dictionary "Item name" : {"qty": x, "price": y})
+            self.item_dict[p_name]["qty"] +=1
+            self.update_qty_label(p_name, self.item_dict[p_name]['qty'])
+            self.update_price_label(p_name, self.item_dict[p_name]['price'], self.item_dict[p_name]['qty'])
+        else:
+            # Item does not exist, the parameters are not empty, then create a new label and add to dictionary
+            if p_name and (p_price is not None):
 
-            # Row count = how many items (name + price) have already been added - ChatGPT
-            row_count = len(self.order_frame.winfo_children())  # length of total number of widgets
+                # Row count = how many items (name + price) have already been added - ChatGPT
+                row_count = len(self.order_frame.winfo_children())  # length of total number of widgets
 
-            # Create a frame to hold the name and price labels together
-            item_frame = customtkinter.CTkFrame(self.order_frame, fg_color="transparent")
-            item_frame.grid(row=row_count, column=0, columnspan=2, sticky="w", padx=(10, 5), pady=5)
+                # Create a frame to hold the name and price labels together
+                item_frame = customtkinter.CTkFrame(self.order_frame, fg_color="transparent")
+                item_frame.grid(row=row_count, column=0, columnspan=3, sticky="w", padx=(10, 5), pady=5)
+
+                # Create label for item name (left)
+                name_label = customtkinter.CTkLabel(item_frame, text=p_name, fg_color="transparent", anchor="w", width = 160)
+                name_label.grid(row=0, column=0, sticky="w", padx=(10, 5), pady=5)
+
+                # Create a QTY Label (center)
+                qty_label_accum = customtkinter.CTkLabel(item_frame, text="1", fg_color="transparent",anchor="w")
+                qty_label_accum.grid(row=0, column=1, sticky="ew", padx=(75, 10), pady=5)
+
+                # Create label for item price (right)
+                price_label = customtkinter.CTkLabel(item_frame, text=f"${p_price:.2f}", fg_color="transparent", anchor="e")
+                price_label.grid(row=0, column=2, sticky="w", padx=(105, 5), pady=5)
+
+                # Configure grid columns to be the same size
+                for i in range(3):
+                    item_frame.grid_columnconfigure(i, weight=1, uniform="column")
+
+                # Add the qty & price to the specific dictionary key
+                self.item_dict[p_name] = {"qty": 1, "price": p_price}
+
+    def update_qty_label(self, p_name, p_updated_qty):
+        """ This method will increase the qty amount"""
+
+        # Iterate over all frames in order_frame to find the correct label
+        for item_frame in self.order_frame.winfo_children():
+            # Get and store all child widgets located in the item_frame
+            children_in_item_frame = item_frame.winfo_children()
+
+            # Find the name of each label within each item_frame (ex: "Fries")
+            label_name = children_in_item_frame[0]  # First child is the name_label
+            #print(f"Label name: {label_name.cget("text")}")  # Debug print
+
+            if label_name.cget("text") == p_name:
+                # Find the qty_label (second child in each item_frame)
+                qty_label = children_in_item_frame[1]
+                #print(f"Current qty: {qty_label.cget("text")}")  # Debug print
+
+                qty_label.configure(text=f"{p_updated_qty}")  # Update the quantity label
+                # Call update_price_label to update the price based on current qty
+                self.update_price_label(p_name, self.item_dict[p_name]["price"], p_updated_qty)
 
 
-            # Create label for item name (left)
-            name_label = customtkinter.CTkLabel(item_frame, text=p_name, fg_color="transparent", anchor="w")
-            name_label.grid(row=0, column=0, sticky="w", padx=(10, 5), pady=5)
+    def update_price_label(self,p_name,p_price, p_updated_qty):
+        """ This method will update the price amount in the label based on the updated quantity. """
 
-            # Create label for item price (right)
-            price_label = customtkinter.CTkLabel(item_frame, text=f"${p_price:.2f}", fg_color="transparent", anchor="e")
-            price_label.grid(row=0, column=1, sticky="e", padx=(210, 5), pady=5)
+        # Total Price =  Qty x Price
+        total_price = p_updated_qty * p_price
 
-            # Make columns expand nicely in the frame (two columns) & ensure all columns are the same no matter the length of the item_frame
-            item_frame.grid_columnconfigure(0, weight=1, uniform = "column")
-            item_frame.grid_columnconfigure(1, weight=1, uniform = "column")
+        for item_frame in self.order_frame.winfo_children():
+            children_in_item_frame = item_frame.winfo_children()
 
+            # Find the name of each label within each item_frame
+            label_name = children_in_item_frame[0]  # First child is the name_label
 
+            if label_name.cget("text") == p_name:
+                # Find the price_label (third child in each item_frame)
+                price_label = children_in_item_frame[2]
+                price_label.configure(text=f"${total_price:.2f}")  # Update the price label with total price
 
 
 
