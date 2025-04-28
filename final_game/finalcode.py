@@ -51,9 +51,13 @@ class Rocket:
                 return planet
         return None
 
-def show_planet_screen(self):
+def show_planet_screen(planet):
     showing = True
     font = pygame.font.SysFont(None, 40)
+
+    planet_image = pygame.image.load(planet.image).convert_alpha()
+    planet_image = pygame.transform.scale(planet_image, (300, 300))
+
     while showing:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -62,14 +66,15 @@ def show_planet_screen(self):
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     showing = False
-        screen.fill((0,0,50))
+        screen.fill((0,0,0))
         name_text = font.render(f"Welcome to {planet.name}!", True, (255,255,255))
         desc_text = font.render(planet.description, True, (150,150,150))
         tip_text = font.render("Press ESC to return", True, (150,150,150))
 
-        screen.blit(name_text, (WIDTH // 4, HEIGHT // 3))
-        screen.blit(desc_text, (WIDTH // 4, HEIGHT // 3 + 40))
-        screen.blit(tip_text, (WIDTH // 4, HEIGHT // 3 + 80))
+        screen.blit(name_text, (WIDTH // 4, HEIGHT // 3 + 150))
+        screen.blit(desc_text, (WIDTH // 4, HEIGHT // 3 + 190))
+        screen.blit(tip_text, (WIDTH // 4, HEIGHT // 3 + 230))
+        screen.blit(planet_image, (WIDTH // 2 - 150, HEIGHT // 2 - 310 ))
 
         pygame.display.update()
 
@@ -89,11 +94,11 @@ if __name__ == "__main__":
     width = screen.get_width()
     height = screen.get_height()
     smallfont = pygame.font.SysFont('Corbel', 35)
-    text = smallfont.render('land', True, color)
+    text = smallfont.render('LAND', True, color)
 
     # Load Images
     background = pygame.image.load("planets.gif").convert_alpha()
-    background = pygame.transform.scale(background, (1280, 330))
+    background = pygame.transform.scale(background, (1280, 250))
     back_rect = background.get_rect()
     back_rect.center = (screen.get_width() // 2, screen.get_height() // 2)
     screen.blit(background, back_rect)
@@ -113,9 +118,9 @@ if __name__ == "__main__":
         Planet("Earth", "Our home planet.", 440, 480, "The_Earth_seen_from_Apollo_17.jpg"),
         Planet("Mars", "The Red Planet.", 540, 560, "Mars_-_August_30_2021_-_Flickr_-_Kevin_M._Gill.png"),
         Planet("Jupiter", "The largest planet.", 620, 700, "Jupiter.jpg"),
-        Planet("Saturn", "Famous for its rings.", 760, 840, "Saturn_during_Equinox.jpg"),
-        Planet("Uranus", "Has a tilted rotation.", 900, 960, "Uranus.avif"),
-        Planet("Neptune", "Furthest from the Sun.", 1020, 1100, "pia01492-neptune-full-disk-16x9-1.webp"),
+        Planet("Saturn", "Famous for its rings.", 760, 840, "istockphoto-1496413363-612x612.jpg"),
+        Planet("Uranus", "Has a tilted rotation.", 900, 960, "Uranus_Voyager2_color_calibrated.png"),
+        Planet("Neptune", "Furthest from the Sun.", 1020, 1100, "Neptune_-_Voyager_2_(29347980845)_flatten_crop.jpg"),
     ]
     # Rocket
 
@@ -123,7 +128,7 @@ if __name__ == "__main__":
     # Setup game
     rocket = Rocket()
     clock = pygame.time.Clock()
-    font = pygame.font.SysFont(None, 30)
+    font = pygame.font.SysFont(None, 50)
 
     running = True
     while running:
@@ -143,7 +148,7 @@ if __name__ == "__main__":
                         p.hit = False
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mouse = pygame.mouse.get_pos()
-                if rocket.current_planet and width / 2.37 <= mouse[0] <= width / 2.37 + 140 and height / 1.33 <= mouse[1] <= height / 1.33 + 40:
+                if rocket.current_planet and width / 2.37 <= mouse[0] <= width / 2.37 + 140 and height / 1.445 <= mouse[1] <= height / 1.445 + 40:
                     show_planet_screen(rocket.current_planet)
 
 
@@ -156,10 +161,10 @@ if __name__ == "__main__":
 
         if rocket.current_planet:
 
-            pygame.draw.rect(screen, color_light, [width / 2.37, height / 1.33, 140, 40])
-            screen.blit(text, (width / 2.37 + 40, height / 1.33))
+            pygame.draw.rect(screen, color_light, [width / 2.37, height / 1.445, 180, 60])
+            screen.blit(text, (width / 2.37 + 50, height / 1.445 + 10))
         else:
-            pygame.draw.rect(screen, (0, 0, 0), [width / 2.37, height / 1.33, 140, 40])
+            pygame.draw.rect(screen, (0, 0, 0), [width / 2.37, height / 1.445, 180, 60])
 
         pygame.display.update()
         clock.tick(30)
