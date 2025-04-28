@@ -33,7 +33,10 @@ class Rocket:
         self.current_planet = None
 
     def move_right(self):
-        self.x += self.speed
+        if self.x + self.speed + 50 <= WIDTH:  # 50 is rocket's width
+            self.x += self.speed
+        else:
+            self.x = WIDTH - 50  # Keep it inside the screen
         print(f"Rocket X: {self.x}")
 
     def draw(self):
