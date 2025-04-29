@@ -47,4 +47,3 @@ def rocket_game_test_suite():
 
 if __name__ == "__main__":
     rocket_game_test_suite()
-
