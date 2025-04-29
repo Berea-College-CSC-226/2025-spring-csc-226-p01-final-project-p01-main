@@ -64,7 +64,8 @@ section as you go. DO NOT forget about it!
 Online Documentation & Tutorials
 Python Official Documentation (https://docs.python.org/3/) – Referenced for syntax, Turtle graphics, and event-driven programming.
 
-GeeksforGeeks (https://www.geeksforgeeks.org/) – Used for examples on handling keyboard events and object-oriented programming.
+GeeksforGeeks (https://www.geeksforgeeks.org/, https://www.geeksforgeeks.org/python-display-text-to-pygame-window/, https://www.geeksforgeeks.org/how-to-use-multiple-screens-on-pygame/, 
+https://www.geeksforgeeks.org/how-to-use-multiple-screens-on-pygame/, https://www.geeksforgeeks.org/how-to-create-buttons-in-a-game-using-pygame/,) – Used for examples on handling keyboard events and object-oriented programming, making buttons, putting texts on a screen.
 
 Real Python (https://realpython.com/) – Consulted for best practices in writing modular Python code.
 
@@ -75,11 +76,13 @@ Pygame Documentation (https://www.pygame.org/docs/) – Used for understanding h
 W3Schools on Python Classes (https://www.w3schools.com/python/python_classes.asp) – Clarifying concepts about object-oriented programming and the structure of classes in Python.
 
 AI & Code Assistance
-ChatGPT – Used for brainstorming ideas, debugging code, and refining program structure. Suggestions were implemented after personal review and modifications.
+ChatGPT – Used for brainstorming ideas, debugging code, and refining program structure. Suggestions were implemented after personal review and modifications. (https://chatgpt.com/share/68110b3e-8704-8011-82ba-a0fe70acfe15)
 
-Stack Overflow (https://stackoverflow.com/) – Used for troubleshooting specific coding issues related to key event handling and Turtle movement.
+Stack Overflow (https://stackoverflow.com/, https://stackoverflow.com/questions/64254687/how-to-allow-the-user-to-type-only-under-certain-conditions-in-pygame) – Used for troubleshooting specific coding issues related to key event handling and Turtle movement.
 
 T11
+
+
 
 ---
 
@@ -126,7 +129,7 @@ in PyCharm.
 
 After hitting the “Run” button in PyCharm, the user will see a rocket on the left side of the screen with a row of planets spread across the background. To move the rocket, the user simply holds down the right arrow key. As the rocket moves toward the planets, it will automatically detect when it reaches one. Once a planet is detected, a “Land” button appears on the screen. By clicking the “Land” button, a pop-up window will display the planet’s name along with a short, kid-friendly description. The user can press the Escape key to close the pop-up window and return to the game. Additionally, pressing the R key will restart the game at any time. The experience is visual and interactive, designed specifically for preschool-aged children to help them learn fun facts about the planets in a simple and engaging way.
 
-### ❗Errors and Constraints
+### Errors and Constraints
 
 Every program has bugs or features that had to be scrapped for time. These bugs should be tracked in the issue queue. 
 You should already have a few items in here from the prior weeks. Create a new issue for any undocumented errors and 
@@ -143,7 +146,7 @@ Our team worked collaboratively and made sure that all members contributed fairl
 
 The peer evaluation is a fair and important way to acknowledge each team member’s effort. In our case, I feel confident in celebrating the great teamwork we demonstrated. Everyone was engaged, willing to help one another, and flexible when changes or challenges came up. There was a strong sense of mutual respect and shared accountability, which made the collaboration smooth and enjoyable. Using Git effectively not only kept our project organized but also held us accountable for doing our fair share.
 
-### ❗Reflection
+### Reflection
 
 Each partner should write three to four well-written paragraphs address the following (at a minimum):
 - Why did you select the project that you did?
@@ -154,7 +157,18 @@ Each partner should write three to four well-written paragraphs address the foll
 - How well did you work with your partner? What made it go well? What made it challenging?
 
 ```
-    Partner 1: **Replace this text with your reflection
+    Partner 1: We chose this project to inform people about planets in a fun and interactive way as opposed to just text on a screen, intended to 
+    be a fun and educational project, it resembles fairly closely our intial design the only difference being how controls are handled
+    essentially how long a button is pushed turned into pushing a button multiple times. I learned a lot from this process
+    for example, how classes interact with each other and how initializing several objects in a class can be useful for 
+    describing several things at once. The hardest part in my opinion was handling formatting, more specficaly for buttons
+    looking through the mind of the user rather than the programmer, not taking the easy way out but trying to make it easier for
+    the user to look at, I had to constantly change the resoultion of the screen, so I had to constantly mess with the parameters of
+    the button. What I would do differently is focus on changing the screen as little as possible so I did not have to constantly
+    change buttons and such. I think me and my partner worked quite well together, getting to explain the concepts we were
+    utilizing allowed me to better understand what I was doing. Furthermore, we were able to get what we wanted done no real
+    hiccups and that was good for me. The only chalenging part was getting started, however after the fact the ball was rolling
+    and good implementation followed.
 ```
 
 ```
