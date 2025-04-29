@@ -119,10 +119,12 @@ Indicate what percentage of the project you have left to complete and how confid
 
 ## Milestone 4: Final Code, Presentation, Demo
 
-### ❗User Instructions
+### User Instructions
 
 In a paragraph, explain how to use your program. Assume the user is starting just after they hit the "Run" button 
 in PyCharm. 
+
+After hitting the “Run” button in PyCharm, the user will see a rocket on the left side of the screen with a row of planets spread across the background. To move the rocket, the user simply holds down the right arrow key. As the rocket moves toward the planets, it will automatically detect when it reaches one. Once a planet is detected, a “Land” button appears on the screen. By clicking the “Land” button, a pop-up window will display the planet’s name along with a short, kid-friendly description. The user can press the Escape key to close the pop-up window and return to the game. Additionally, pressing the R key will restart the game at any time. The experience is visual and interactive, designed specifically for preschool-aged children to help them learn fun facts about the planets in a simple and engaging way.
 
 ### ❗Errors and Constraints
 
@@ -130,12 +132,16 @@ Every program has bugs or features that had to be scrapped for time. These bugs 
 You should already have a few items in here from the prior weeks. Create a new issue for any undocumented errors and 
 deficiencies that remain in your code. Bugs found that aren't acknowledged in the queue will be penalized.
 
-### ❗Peer Evaluation
+### Peer Evaluation
 
 It is important that all members of your team contribute equitably. The peer evaluation is your chance to either 
 a) celebrate the great work you all did together as an effective team, or b) indicate to the instructor if a member of
 your team did not contribute their fair share. Grades will be adjusted for any team member who is evaluated poorly. Your
 commit history will be used as evidence, so make sure you are using git effectively!
+
+Our team worked collaboratively and made sure that all members contributed fairly throughout the development of the project. From the beginning, we divided the responsibilities based on our individual strengths and made sure to stay in regular communication. Each person was actively involved in both the coding and the design process, and we consistently used Git to track changes, ensuring that our contributions were transparent and well-documented. Looking at our commit history, it’s clear that we all took equal responsibility in building and refining the game.
+
+The peer evaluation is a fair and important way to acknowledge each team member’s effort. In our case, I feel confident in celebrating the great teamwork we demonstrated. Everyone was engaged, willing to help one another, and flexible when changes or challenges came up. There was a strong sense of mutual respect and shared accountability, which made the collaboration smooth and enjoyable. Using Git effectively not only kept our project organized but also held us accountable for doing our fair share.
 
 ### ❗Reflection
 
@@ -152,7 +158,13 @@ Each partner should write three to four well-written paragraphs address the foll
 ```
 
 ```
-    Partner 2: **Replace this text with your reflection
+    Partner 2: Karina Ismailova
+We chose this rocket and planets game because it combined our interest in space with the opportunity to practice essential coding concepts such as event handling, image manipulation, and collision detection. It was also visually engaging and simple enough in scope to complete within our timeline while still offering room for creativity. We liked the idea of creating something interactive and educational, and the visual aspect of a moving rocket made the project more enjoyable to develop and test.
+Our final project stayed fairly close to our initial design, though we simplified some elements. We managed to include all the planets and ensure they each had distinct descriptions, which matched our initial vision for an informative space-themed game.
+What We Learned and the Hardest Part:
+We learned how to structure a game loop, handle keypress events, and use object-oriented programming to manage game elements like the rocket and planets. The hardest part was getting the rocket to stop moving cleanly at each planet without overshooting or missing the detection area. We had to fine-tune the coordinates and hitboxes to make the game feel natural.
+Reflections on Teamwork and Future Improvements:
+Working with my partner was smooth and productive. We both contributed code, tested features, and communicated regularly about what we were working on. What went well was our clear division of tasks and shared goal for the project. One challenge was aligning our schedules, especially close to the deadline, but we overcame it by coordinating via messages and Git commits. If we were to do this again, I would start testing visuals earlier to allow easier changes. I also learned the importance of using Git more frequently to avoid merge conflicts and keep better track of progress.
 ```
 
 ---
