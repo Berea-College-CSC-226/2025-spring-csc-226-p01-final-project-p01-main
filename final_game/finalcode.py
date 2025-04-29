@@ -154,8 +154,8 @@ if __name__ == "__main__":
     rocket_img.set_colorkey((255, 255, 255)) # sets white color to be transparent for rocket
 
     planet_zones = [
-        Planet("Venus", "it is the hottest planet in our solar system, rotates backwards, and has many active volcanoes", 240, 280, "venus-mariner-10-pia23791-fig2.jpg"),
-        Planet("Mercury", "it is the smallest, and fastest planet in our solar system, and does not orbit in a perfect circle", 340, 380, "Mercury_in_true_color.jpg"),
+        Planet("Venus", "it is the hottest planet in our solar system, rotates backwards, and has many active volcanoes", 340, 380, "venus-mariner-10-pia23791-fig2.jpg"),
+        Planet("Mercury", "it is the smallest, and fastest planet in our solar system, and does not orbit in a perfect circle", 240, 280, "Mercury_in_true_color.jpg"),
         Planet("Earth", "contrary to popular belief is not a round planet, being a oblate spheroid, with 4 layers", 440, 480, "The_Earth_seen_from_Apollo_17.jpg"),
         Planet("Mars", "it has a canyon system larger than any of our own, and the largest volcano in the solar system", 540, 560, "Mars_-_August_30_2021_-_Flickr_-_Kevin_M._Gill.png"),
         Planet("Jupiter", "it is the largest planet in our solar system, and is composed mostly of Hydrogen and Helium", 620, 700, "Jupiter.jpg"),
