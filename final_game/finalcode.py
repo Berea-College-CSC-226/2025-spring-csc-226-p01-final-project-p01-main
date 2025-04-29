@@ -15,29 +15,29 @@ class Planet:
         self.hit = False  # Controls if popup was already shown
 
     def is_hit(self, x):
-        return self.x_start <= x <= self.x_end
+        return self.x_start <= x <= self.x_end # checks if the rocket is within planet's zone
 
     def get_info(self):
-        return f"{self.name}: {self.description}"
+        return f"{self.name}: {self.description}" # returns planet name and description
 
 
 # Rocket
 class Rocket:
     def __init__(self):
-        self.reset()
+        self.reset() # initializes rocket attributes by calling reset()
 
     def reset(self, HEIGHT=300):
         self.x = 0
         self.y = HEIGHT // 2 + 150
-        self.speed = 20  # Smaller step = better planet detection accuracy
-        self.current_planet = None
+        self.speed = 20  # smaller step = better planet detection accuracy
+        self.current_planet = None  # sets the current planet to None
 
     def move_right(self):
         if self.x + self.speed + 50 <= WIDTH:  # 50 is rocket's width
             self.x += self.speed
         else:
-            self.x = WIDTH - 50  # Keep it inside the screen
-        print(f"Rocket X: {self.x}")
+            self.x = WIDTH - 50  # keep it inside the screen
+        print(f"Rocket X: {self.x}") # prints rocket's x-coordinate for debugging
 
     def draw(self):
         screen.blit(rocket_img, (self.x, self.y)) #draws the rocket onto the screen
@@ -48,11 +48,11 @@ class Rocket:
                 self.current_planet = planet
                 return planet
 
-            if planet.is_hit(self.x) and not planet.hit:
+            if planet.is_hit(self.x) and not planet.hit: # checks if rocket has hit a new planet
                 planet.hit = True
                 self.current_planet = planet
                 return planet
-        return None
+        return None # returns None if no planet is hit
 
 def show_planet_screen(planet):
     showing = True #sets if the second screen shows or not
@@ -83,32 +83,50 @@ def show_planet_screen(planet):
         pygame.display.update()
 
 
+# Function to draw the quit button
+def draw_quit_button():
+    font = pygame.font.SysFont('Corbel', 35)
+    text = font.render("Quit", True, (255, 0, 0))  # red text for quit button
+    button_rect = pygame.Rect(WIDTH // 2 - 75, HEIGHT - 100, 150, 50)  # button position and size
+
+    pygame.draw.rect(screen, (255, 0, 0), button_rect)  # draw the button
+    screen.blit(text, (
+    button_rect.centerx - text.get_width() // 2, button_rect.centery - text.get_height() // 2))  # center the text
+
+    return button_rect # returns the button rectangle for click detection
+
+
 
 if __name__ == "__main__":
-    # Setup
-    pygame.init()
-    WIDTH, HEIGHT = 1280, 655
-    screen = pygame.display.set_mode((WIDTH, HEIGHT))
-    pygame.display.set_caption("Rocket Lands on Planets")
+    # setup
+    pygame.init()  # initialize all pygame modules
+    WIDTH, HEIGHT = 1280, 655  # define window dimensions
+    screen = pygame.display.set_mode((WIDTH, HEIGHT))  # create a display window with the specified dimensions
+    pygame.display.set_caption("Rocket Lands on Planets")  # set the window title
 
-    color = (255, 255, 255)
-    color_light = (170, 170, 170)
-    color_dark = (100, 100, 100)
+    # define colors for text and buttons
+    color = (255, 255, 255)  # white (standard color for text)
+    color_light = (170, 170, 170)  # light gray (for hover effects)
+    color_dark = (100, 100, 100)  # dark gray (for idle button state)
 
+    # retrieve actual screen width and height (in case needed later)
     width = screen.get_width()
     height = screen.get_height()
-    smallfont = pygame.font.SysFont('Corbel', 35)
-    text = smallfont.render('LAND', True, color)
-    title_font = pygame.font.SysFont('Corbel', 20)
 
-    # Load Images
-    background = pygame.image.load("planets.gif").convert_alpha() #sets the image of the game as a screen
-    background = pygame.transform.scale(background, (1280, 250))
+    # Setup fonts
+    smallfont = pygame.font.SysFont('Corbel', 35)  # font for button text
+    text = smallfont.render('LAND', True, color)  # render the "LAND" button text
+    title_font = pygame.font.SysFont('Corbel', 20)  # font for smaller instructions and titles
 
-    title_text = title_font.render('WELCOME TO THE PLANET EXPLORATION GAME!', True, color)
-    instruction1_txt = title_font.render('PRESS -> TO MOVE THE ROCKET', True, color)
-    instruction2_txt = title_font.render('PRESS R  TO RESET THE ROCKET', True, color)
-    instruction3_txt = title_font.render('CLICK  ON  THE LAND BUTTON  TO  START LEARNING', True, color)
+    # Load images
+    background = pygame.image.load("planets.gif").convert_alpha()  # load the background image and optimize it
+    background = pygame.transform.scale(background, (1280, 250))  # resize the background image to fit a section of the window
+
+    # Render text elements for the title and instructions
+    title_text = title_font.render('WELCOME TO THE PLANET EXPLORATION GAME!', True, color)  #main game title
+    instruction1_txt = title_font.render('PRESS -> TO MOVE THE ROCKET', True, color)  # instruction for moving rocket
+    instruction2_txt = title_font.render('PRESS R  TO RESET THE ROCKET', True, color)  # instruction for resetting rocket position
+    instruction3_txt = title_font.render('CLICK  ON  THE LAND BUTTON  TO  START LEARNING', True, color)  # instruction for starting exploration
 
     '''loads instructions on how to play the game on the main screen'''
 
@@ -128,18 +146,12 @@ if __name__ == "__main__":
 
     '''gives the location of all of the text and where it will be placed'''
 
-    screen.blit(background, back_rect)
-
-
-
-
-
-
+    screen.blit(background, back_rect) # draws the background on the screen
 
 
     rocket_img = pygame.image.load("rocket.png").convert_alpha()
     rocket_img = pygame.transform.scale(rocket_img, (50, 50))
-    rocket_img.set_colorkey((255, 255, 255))
+    rocket_img.set_colorkey((255, 255, 255)) # sets white color to be transparent for rocket
 
     planet_zones = [
         Planet("Venus", "it is the hottest planet in our solar system, rotates backwards, and has many active volcanoes", 240, 280, "venus-mariner-10-pia23791-fig2.jpg"),
@@ -161,7 +173,7 @@ if __name__ == "__main__":
 
     running = True
     while running:
-        screen.fill((0,0,0))
+        screen.fill((0,0,0)) # fills the screen black at start of frame
         screen.blit(background, back_rect)
         screen.blit(title_text, title_rect)
         screen.blit(instruction1_txt, instruction1_rect)
@@ -176,12 +188,12 @@ if __name__ == "__main__":
                 running = False
 
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_RIGHT: #Moves the rocket to the right by using the key "right"
+                if event.key == pygame.K_RIGHT: #moves the rocket to the right by using the key "right"
                     rocket.move_right()
-                elif event.key == pygame.K_r: #Key "R" sets the rocket to the start
+                elif event.key == pygame.K_r: #key "R" sets the rocket to the start
                     rocket.reset()
                     for p in planet_zones:
-                        p.hit = False
+                        p.hit = False # resets planet hit status
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mouse = pygame.mouse.get_pos()
                 if rocket.current_planet and width / 2.37 <= mouse[0] <= width / 2.37 + 140 and height / 1.445 <= mouse[1] <= height / 1.445 + 40:
