@@ -7,7 +7,7 @@ from dataclasses import dataclass
 
 class Planet:
     def __init__(self, name, description, x_start, x_end, image):
-        self.name = name
+        self.name = name #initializes the Planet class
         self.description = description
         self.x_start = x_start
         self.x_end = x_end
