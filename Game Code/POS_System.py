@@ -86,11 +86,12 @@ class Order:
 
 class LeftFrame(customtkinter.CTkFrame):
     """ This Frame will display a toggle menu with general buttons and some more buttons"""
-    def __init__(self, master, mid_frame):
+    def __init__(self, master, mid_frame, gui_ref):
         super().__init__(master, width=230, height=864, fg_color = "#181818")
 
         self.pack_propagate(False)  # ChatGPT
         self.mid_frame = mid_frame # Store a reference to the MiddleFrame instance so methods can be called from LeftFrame
+        self.gui_ref = gui_ref # reference to gui class
 
         # Track Menu Visibility
         self.menu_visible = True
@@ -131,7 +132,7 @@ class LeftFrame(customtkinter.CTkFrame):
         spacer.pack(expand=True)  # Expands and fills space between buttons and exit
 
         # Exit Button
-        self.exit_btn = customtkinter.CTkButton(self.menu_container, text = "Exit", corner_radius = 3, height = 50, command = self.exit_pos)
+        self.exit_btn = customtkinter.CTkButton(self.menu_container, text = "Exit", corner_radius = 3, height = 50, command = self.exit)
         self.exit_btn.pack(pady = 0, fill = "x")
 
     def toggle_menu(self):
@@ -146,10 +147,9 @@ class LeftFrame(customtkinter.CTkFrame):
         """ When a general button is clicked, initialize specific buttons related to that category. """
         self.mid_frame.display_specific_buttons(p_category) # Call the method in MiddleFrame from the LeftFrame class and pass the categories of that general button
 
-    def exit_pos(self):
-        """ When the exit button is clicked the pos returns to the main window"""
-        self.destroy()  # Close the POS GUI
-        subprocess.Popen(["python", "Window.py"])  # Relaunch window.py
+    def exit(self):
+        """ Call exit_pos method in gui class from left frame"""
+        self.gui_ref.exit_pos()
 
 class MiddleFrame(customtkinter.CTkFrame):
     """ This frame is where the buttons will go"""
@@ -482,12 +482,18 @@ class GUI (customtkinter.CTk):
         self.mid_frame.set_right_frame(self.right_frame)
 
         # LEFT FRAME (Create the left frame last and pass mid_frame to the left frame)
-        self.left_frame = LeftFrame(self, self.mid_frame)
+        self.left_frame = LeftFrame(self, self.mid_frame, gui_ref = self)
 
         # Pack frames in order: Left -> Middle -> Right
         self.left_frame.pack(side="left", fill="y") # LEFT FRAME (Toggle Menu)
         self.mid_frame.pack(side="left", fill="both", expand=True)  # Middle FRAME (Button Area)
         self.right_frame.pack(side="left", fill="y") # RIGHT FRAME (Display Area)
+
+    def exit_pos(self):
+        """ When the exit button is clicked the pos returns to the main window"""
+        self.destroy()  # Close the POS GUI
+
+
 
 if __name__ == "__main__":
     gui = GUI()
