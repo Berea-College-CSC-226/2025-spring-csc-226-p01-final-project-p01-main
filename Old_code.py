@@ -72,3 +72,14 @@
 #         cell.grid(row=row, column=col, sticky="nsew", padx=2, pady=2)
 #         row_frames.append(cell)  # Store the frame reference
 #     self.frames.append(row_frames)  # Store the row in the frames list
+# def filter_buttons(self, event):
+#     """ This method captures the word the user types and compares it the name of buttons in the button frame to find a match"""
+#
+#     search_word = self.search_bar.get().lower()
+#     # For every child widget (specific button) in the button frame
+#     for button in self.specific_btn_frame.winfo_children():
+#         button_text = button.cget('text').lower()  # Get the text of the button and store it
+#         if search_word in button_text:
+#             button.grid()  # show button
+#         else:
+#             button.grid_remove()  # hide button

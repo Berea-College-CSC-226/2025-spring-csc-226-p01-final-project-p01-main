@@ -5,6 +5,35 @@
 #######################################################################################
 import customtkinter,random
 
+class RightFrameButtonFunctionality:
+    def __init__(self, delete_button, cancel_button, order_frame, order):
+        self.delete_button = delete_button
+        self.cancel_button = cancel_button
+        self.order_frame = order_frame # Frame that holds orders
+        self.order = order # Reference the display labels
+
+    def cancel_order(self):
+        """ This method will destroy all widgets in a window and generate a new order and at the same time updating the order number"""
+
+        # Clear all the current order display widgets
+        for widget in self.order_frame.winfo_children():
+            widget.destroy()
+
+        # Reset any other components like totals, discount, etc.
+        self.order.reset_totals()
+
+    # def delete_item(self, item_name):
+    #     """This method will destroy frames holding individual label widgets for a specific item """
+    #
+    #     # Iterate through all widgets in the order frame to find the item to delete
+    #     for widget in self.order_frame.winfo_children():
+    #         if hasattr(widget, 'item_name') and widget.item_name == item_name: # ChatGPT
+    #             widget.destroy()  # Delete the frame
+    #             break  # Stop after deleting the matching frame
+    #
+    #     # Update the order data to remove the item from the order dictionary
+    #     self.order.remove_item_from_order(item_name)
+
 class Order:
     """ This class has methods that calculates the tax, total, and discount"""
     def __init__(self, item_dict, tax_label,total_label, discount_label):
@@ -15,7 +44,6 @@ class Order:
         self.tax_rate = 0.06      # Kentucky Sales Tax
         self.discount_rate = 0.10 # Set Discount Rate
         self.discount_active = False # initial state
-
 
     def calculate_totals(self):
         """ This method calculates sales tax, discount and total"""
@@ -47,6 +75,14 @@ class Order:
         self.discount_active = not self.discount_active
         self.update_payment_labels()
 
+    def reset_totals(self):
+        """ Clear all items from the order_dict"""
+        self.item_dict.clear()
+
+    def remove_item_from_order(self, item_name):
+        """Remove a specific item from the order."""
+        if item_name in self.item_dict:
+            del self.item_dict[item_name]  # Delete the item from the order dictionary
 
 class LeftFrame(customtkinter.CTkFrame):
     """ This Frame will display a toggle menu with general buttons and some more buttons"""
@@ -101,8 +137,6 @@ class LeftFrame(customtkinter.CTkFrame):
     def call_specific_button(self, p_category):
         """ When a general button is clicked, initialize specific buttons related to that category. """
         self.mid_frame.display_specific_buttons(p_category) # Call the method in MiddleFrame from the LeftFrame class and pass the categories of that general button
-
-
 
 class MiddleFrame(customtkinter.CTkFrame):
     """ This frame is where the buttons will go"""
@@ -200,7 +234,6 @@ class MiddleFrame(customtkinter.CTkFrame):
             self.right_frame.display_menu_item(p_name,p_price)
 
 
-
 class RightFrame(customtkinter.CTkFrame):
     """ This frame will be where orders show"""
     def __init__(self, master):
@@ -208,7 +241,6 @@ class RightFrame(customtkinter.CTkFrame):
 
         self.pack_propagate(False)  # ChatGPT
         self.item_dict = {} # Dictionary stores item and qty
-
 
         # All Checks Button
         self.all_check_btn = customtkinter.CTkButton(self, text="All checks", corner_radius=3, width= 125, height = 40)
@@ -223,16 +255,16 @@ class RightFrame(customtkinter.CTkFrame):
         button_row.pack(fill="x", pady=5, padx=5)
 
         # Cancel Button (Left)
-        self.cancel_btn = customtkinter.CTkButton(button_row, text="Cancel", corner_radius=3, height=40, width=125)
+        self.cancel_btn = customtkinter.CTkButton(button_row, text="Cancel", corner_radius=3, height=40, width=125, command = self.cancel)
         self.cancel_btn.pack(side="left", padx=(5, 5))
 
         # Delete Button (Right)
-        self.delete_btn = customtkinter.CTkButton(button_row, text="Delete", corner_radius=3, height=40, width=125)
+        self.delete_btn = customtkinter.CTkButton(button_row, text="Delete", corner_radius=3, height=40, width=125, command = self.delete)
         self.delete_btn.pack(side="right", padx=(5, 5))
 
-        # Save Button (Center)
-        self.save_btn = customtkinter.CTkButton(button_row, text = "Save", corner_radius=3, height=40, width = 125)
-        self.save_btn.pack(padx = (5,5))
+        # # Save Button (Center)
+        # self.save_btn = customtkinter.CTkButton(button_row, text = "Save", corner_radius=3, height=40, width = 125)
+        # self.save_btn.pack(padx = (5,5))
 
         # Divider Line
         divider2 = customtkinter.CTkFrame(self, height=2, width=800, fg_color="#404040")
@@ -295,9 +327,8 @@ class RightFrame(customtkinter.CTkFrame):
         for col in range(2):
             self.payment_frame.grid_columnconfigure(col, weight=1)
 
-        # Instance of the order class
+        # Instance of the "Order" class
         self.order = Order(self.item_dict, self.display_tax_label, self.display_total_label, self.display_discount_label)
-
 
         # Discount & Pay Button (in a frame)
         button_row2 = customtkinter.CTkFrame(self, fg_color = "transparent")
@@ -310,6 +341,9 @@ class RightFrame(customtkinter.CTkFrame):
         # Pay Button (Right)
         self.pay_btn = customtkinter.CTkButton(button_row2, text="Pay", corner_radius=3, height=45)
         self.pay_btn.pack(side="right", expand=True, fill="x", padx=(5, 0))
+
+        # Instance of the "RightFrameButtonFunctionality" class
+        self.right_btn_ftn = RightFrameButtonFunctionality(delete_button=self.delete_btn, cancel_button=self.cancel_btn,order_frame=self.order_frame, order=self.order)
 
 
     def display_menu_item(self,p_name, p_price):
@@ -330,6 +364,12 @@ class RightFrame(customtkinter.CTkFrame):
                 # Create a frame to hold the name and price labels together
                 item_frame = customtkinter.CTkFrame(self.order_frame, fg_color="transparent")
                 item_frame.grid(row=row_count, column=0, columnspan=3, sticky="w", padx=(10, 5), pady=5)
+
+                # Store item name for deletion reference
+                item_frame.item_name = p_name
+
+                # Bind click event to call delete method with item name
+                item_frame.bind("<Button-1>", lambda event, name=p_name: self.delete(name))
 
                 # Create label for item name (left)
                 name_label = customtkinter.CTkLabel(item_frame, text=p_name, fg_color="transparent", anchor="w", width = 160)
@@ -373,7 +413,6 @@ class RightFrame(customtkinter.CTkFrame):
         # Update the (sub-tax & total display labels)
         self.order.update_payment_labels()
 
-
     def update_price_label(self,p_name,p_price, p_updated_qty):
         """ This method will update the price amount in the label based on the updated quantity. """
 
@@ -393,6 +432,16 @@ class RightFrame(customtkinter.CTkFrame):
 
         # Call the toggle method in the order class to apply or remove discount
         self.order.toggle_discount()
+
+    # def delete(self, item_name):
+    #     """Calls the delete method from the rightframebuttonfunctionality class."""
+    #     self.right_btn_ftn.delete_item(item_name)
+    #     self.order.update_payment_labels()
+
+    def cancel(self):
+        """ This method calls the cancel method from the rightframebuttonfunctionality class"""
+        self.right_btn_ftn.cancel_order()
+        self.order.update_payment_labels()  # update totals to $0.00
 
 
 class GUI (customtkinter.CTk):
