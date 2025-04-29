@@ -14,6 +14,9 @@
 #######################################################################################
 import customtkinter,random
 
+class Order():
+    pass
+
 
 class LeftFrame(customtkinter.CTkFrame):
     """ This Frame will display a toggle menu with general buttons and some more buttons"""
@@ -230,19 +233,31 @@ class RightFrame(customtkinter.CTkFrame):
         self.order_frame.pack(fill="both", padx=10, expand = True)
 
 
-        # Total & Sub-tax (Label)
+        # Total & Sub-tax (Frame)
+        self.payment_frame = customtkinter.CTkFrame(self, fg_color = "transparent", corner_radius = 3, height = 60)
+        self.payment_frame.pack(fill = "both", padx = 10, pady = 5, expand = True)
 
+        # Tax (Left - inside of payment_frame)
+        tax_label = customtkinter.CTkLabel(self.payment_frame, text = "Tax", fg_color = "transparent", corner_radius = 3, font = ("Roboto", 17))
+        tax_label.grid(row = 0, column = 0, sticky = "w", padx = (5,5), pady = 4)
 
+        # Total (left - inside of payment_frame)
+        total_label = customtkinter.CTkLabel(self.payment_frame, text = "Total", fg_color = "transparent", corner_radius = 3, font = ("Roboto", 20, "normal"))
+        total_label.grid(row = 1, column = 0, sticky = "w", padx = (5,5))
 
+        tax = 0.00
+        total = 0.00
+        # Display Tax Label (right - inside the payment frame)
+        display_tax_label = customtkinter.CTkLabel(self.payment_frame, text = f"${tax:.2f}", fg_color = "transparent", corner_radius = 3, font = ("Roboto", 17))
+        display_tax_label.grid(row = 0, column = 1, sticky = "e", padx = (400,5), pady = 4)
 
-
-        # Spacer to push bottom buttons to the bottom of the frame
-        spacer = customtkinter.CTkLabel(self, text="")
-        spacer.pack(expand=True)
+        # Display Total label (right - inside the payment frame
+        display_total_label = customtkinter.CTkLabel(self.payment_frame, text = f"${total:.2f}", fg_color = "transparent", corner_radius = 3, font =("Roboto", 17))
+        display_total_label.grid(row = 1, column = 1, sticky = "e", padx = (400,5))
 
         # Discount & Pay Button (in a frame)
         button_row2 = customtkinter.CTkFrame(self, fg_color = "transparent")
-        button_row2.pack(fill="x", pady=20, padx=10)
+        button_row2.pack(fill="x", pady=5, padx=10)
 
         # Discount Button (Left)
         self.discount_btn = customtkinter.CTkButton(button_row2, text="Discount", corner_radius=3, height=45)
@@ -310,6 +325,7 @@ class RightFrame(customtkinter.CTkFrame):
                 #print(f"Current qty: {qty_label.cget("text")}")  # Debug print
 
                 qty_label.configure(text=f"{p_updated_qty}")  # Update the quantity label
+
                 # Call update_price_label to update the price based on current qty
                 self.update_price_label(p_name, self.item_dict[p_name]["price"], p_updated_qty)
 
@@ -330,6 +346,7 @@ class RightFrame(customtkinter.CTkFrame):
                 # Find the price_label (third child in each item_frame)
                 price_label = children_in_item_frame[2]
                 price_label.configure(text=f"${total_price:.2f}")  # Update the price label with total price
+
 
 
 
