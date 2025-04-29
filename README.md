@@ -4,62 +4,57 @@ Instructions
 
 
 Author(s): Faryal Fatima
-️**Author(s)**: Shadaria Mickler
+Author(s): Shadaria Mickler
 
 Google Doc Link: https://docs.google.com/document/d/18Ollp-Q9-JxPCMsv5_5mtRZN1qjXiAV-MKdliw0oUJ8/edit?usp=sharing
-**Google Doc Link**: https://docs.google.com/document/d/18Ollp-Q9-JxPCMsv5_5mtRZN1qjXiAV-MKdliw0oUJ8/edit?usp=sharing
-**Repo Link: https://github.com/Berea-College-CSC-226/p01-final-project-fatimaf_shadaria/tree/main
+
+Repo Link: https://github.com/Berea-College-CSC-226/p01-final-project-fatimaf_shadaria/tree/main
 
 ---
 
 Milestone 1: Setup, Planning, Design
 
-Title: POS System With a Creative Twist
+Title: POS System With a Creative Twist & StuPOS - Student POS
 
 Purpose: We are creating a POS system that is more than just that. It will have a Turtle game that you can play inbetween 
 taking the orders so that are user does not get bored.
-**Title**: StuPOS - Student POS
 
 Source Assignment(s): My partner wanted to create a POS system and I was interested in the turtles. Therefore, we tried to find the middle ground. 
 We ended up coming up with an idea of making a POS that also has a game feature. I will be coding the entire game while my partner (Shadaria) will be
 coding the POS system. I will be using all of my assignments that have used the concept of turtles and Shadaria will be using her life_path_number assignment.
-**Purpose**: Restaurant order taking system
 
-Assignments that I will be using to code the game:
-**Source Assignment(s)**: HW_04: A Bugs life
 
+Faryal: Assignments that I will be using to code the game:
+Shadaria :HW_04: A Bugs life
+
+Faryal
 1) t02- exploring-turtles-t02
 2) hw07-the-game-of-nim
 3) hw05-funky-functions
 4) t03-boustrophen-turtles
 5) HW08 for test suite
+6) hw-loopy-turtles-loopy-languages 
 
-hw-loopy-turtles-loopy-languages 
-
-  - Create a CRC card for each class that your project will implement.
+  - Create a CRC card for each class that your project will implement:  image/My CRC cards.docx
+     I uploaded them as a word doc
   - See this link for a sample CRC card and a template to use for your own cards (you will have to make a copy to edit):
     [CRC Card Example](https://docs.google.com/document/d/1JE_3Qmytk_JGztRqkPXWACJwciPH61VCx3idIlBCVFY/edit?usp=sharing)
   - Tables in markdown are not easy, so we suggest saving your CRC card as an image and including the image(s) in the 
     README. You can do this by saving an image in the repository and linking to it. See the sample CRC card below - 
     and REPLACE it with your own:
   
-![Don't leave me in your README!](image/crc.png "Image of CRC card as an example. Upload your CRC card(s) in place of this one. ")
 
-**Branches**: This project will **require** effective use of git. 
 
- 
-    image/My CRC cards.docx
-     I uploaded them as a word doc
+**Branches**:
 Each partner should create a branch at the beginning of the project, and stay on this branch (or branches of their 
 branch) as they work. When you need to bring each others branches together, do so by merging each other's branches 
 into your own, following the process we've discussed in previous assignments, then re-branching out from the merged code.  
 
 ```
-    Branch 1 starting name: __fatimaf_final-project-1___________
-    Branch 2 starting name: _____________
+    Branch 1 starting name: fatimaf_final-project-1
     Branch 1 starting name: design_POS (shadaria)
     Branch 2 starting name: functionality_POS (shadaria)
-    Branch 3 starting name: ____________________
+    Branch 3 starting name: Merge_Branch (Main)
 ```
 
 ### References 
@@ -69,6 +64,7 @@ and describe how you integrated the ideas or code into your program. This includ
 helped you, AI tools you've used, and any other resources that are not solely your own contribution. Update this 
 section as you go. DO NOT forget about it!
 
+Faryal 
 https://docs.python.org/3/library/tkinter.html
 https://docs.python.org/3/library/tkinter.html#tkinter-modules
 https://docs.python.org/3/library/tkinter.html#the-index-parameter
@@ -118,6 +114,7 @@ https://www.youtube.com/watch?v=mop6g-c5HEY
 https://www.geeksforgeeks.org/how-to-use-images-as-backgrounds-in-tkinter/
 
 ````
+    Shadaria
     Referencece 1: ChatGPT
 ````
 ---
@@ -131,10 +128,10 @@ Reflect on what you’ve done so far. How’s it going? Are you feeling behind/a
 What has surprised you so far? Describe your general feelings. Be honest with yourself; this section is for you, not me.
 
 ```
-    Coding wise I am behind but I got a good outline to follow with detailed steps which has helped me so far to move the project along.
+    Shadaria -Coding wise I am behind but I got a good outline to follow with detailed steps which has helped me so far to move the project along.
     I am somewhat bummed out I waited to do this project because know I am rushing, but its alright. I think the only thing that is worrying me is the test
     I planned on testing the functionality. So when x button is clicked does it do y, but I am unsure of how to create test suites do that, but I have a decent guess of how I can test it.
-    I am a little behind and that worries me but overall I am making progress. I think I will be fine.
+    Faryal - I am a little behind and that worries me but overall I am making progress. I think I will be fine.
 ```
 
 ---
@@ -143,15 +140,17 @@ What has surprised you so far? Describe your general feelings. Be honest with yo
 
 Indicate what percentage of the project you have left to complete and how confident you feel. 
 
-I am about 60% there. I think I will be able to meet the deadline. However, there might be some parts that I want to impement
+Faryal: I am about 60% there. I think I will be able to meet the deadline. However, there might be some parts that I want to impement
 but might not be able to implement them as efficiently yet.
-**Completion Percentage**: `45%`
+
+Shadaria: `45%`
 
 **Confidence**: Describe how confident you feel about completing this project, and why. Then, describe some 
   strategies you can employ to increase the likelihood that you'll be successful in completing this project 
   before the deadline.
 
 ```
+    Shadaria
     I am confident in my abilities to complete my portion of the project. Currently, I am coding the design and the next step is the functionality.
     I was going to do a database but I'll do that own my own time. I am 1/2 of completed (Part 1: Design & Part 2: Functionality)
  
