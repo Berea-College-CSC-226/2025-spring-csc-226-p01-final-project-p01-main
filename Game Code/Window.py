@@ -6,7 +6,7 @@ def launch_turtle_game():
     subprocess.Popen(["python", "Test code.py"])
 
 def launch_pos_system():
-    subprocess.Popen(["python", "pos_system.py"])
+    subprocess.Popen(["python", "POS_System.py"])
 
 # Create the main window
 root = tk.Tk()

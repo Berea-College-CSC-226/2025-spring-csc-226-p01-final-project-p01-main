@@ -1,6 +1,5 @@
-# ❗CSC226 Final Project
-
-## Instructions
+SC226 Final Project 
+Instructions
 
 
 
@@ -128,10 +127,15 @@ but might not be able to implement them as efficiently yet.
 
 ## Milestone 4: Final Code, Presentation, Demo
 
-### ❗User Instructions
+### User Instructions
 
-In a paragraph, explain how to use your program. Assume the user is starting just after they hit the "Run" button 
-in PyCharm. 
+After you press the "Run" button in PyCharm, a window will appear with two buttons: one button to launch the Turtle Catch Game and another button to open the POS System.
+To play the Turtle Catch Game, click the button labeled "Turtle Game."
+This will open the game window where background music will start playing automatically.
+Press Enter on the keyboard to start the game.
+You control the turtle by pressing and holding the Left and Right arrow keys to glide left and right across the screen. The goal is to catch healthy foods like apples, bananas, and salad, while avoiding junk foods like burgers, candy, and pizza.
+Each healthy food increases your score, and missing healthy food will cause you to lose a heart.
+If you lose all your hearts, a "Game Over" message will appear, and you can press Enter again to restart the game. If you want to access the POS System instead, simply click the "POS System" button when the initial launcher window opens.
 
 ### ❗Errors and Constraints
 
@@ -150,6 +154,7 @@ commit history will be used as evidence, so make sure you are using git effectiv
 
 Each partner should write three to four well-written paragraphs address the following (at a minimum):
 - Why did you select the project that you did?
+- 
 - How closely did your final project reflect your initial design?
 - What did you learn from this process?
 - What was the hardest part of the final project?

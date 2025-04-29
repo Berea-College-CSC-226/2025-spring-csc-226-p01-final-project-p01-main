@@ -36,11 +36,11 @@ class TurtlePlayer:
 
     def move_left(self):
         self.turtle.setheading(180)
-        self.velocity = -5
+        self.velocity = -15
 
     def move_right(self):
         self.turtle.setheading(0)
-        self.velocity = 5
+        self.velocity = 15
 
     def stop(self):
         self.velocity = 0
@@ -112,7 +112,7 @@ class GameManager:
         self.hearts = turtle.Turtle()
         self.hearts.hideturtle()
         self.hearts.penup()
-        self.hearts.goto(140, -290)
+        self.hearts.goto(30, -290)
         self.hearts.color("black")
 
         self.update_score_display()
@@ -159,7 +159,7 @@ class GameManager:
 
     def update_lives_display(self):
         self.hearts.clear()
-        heart_str = " ".join(["❤️" for _ in range(self.lives)])
+        heart_str = "".join(["❤️" for _ in range(self.lives)])
         self.hearts.write(heart_str, font=("Segoe Print", 16, "bold"))
 
     def game_over(self):
@@ -243,3 +243,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
