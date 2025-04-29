@@ -3,7 +3,7 @@
 #
 #
 #######################################################################################
-import customtkinter,random
+import customtkinter,random, sys, subprocess
 
 class RightFrameButtonFunctionality:
     def __init__(self, delete_button, cancel_button, order_frame, order):
@@ -148,8 +148,8 @@ class LeftFrame(customtkinter.CTkFrame):
 
     def exit_pos(self):
         """ When the exit button is clicked the pos returns to the main window"""
-
-        pass
+        self.destroy()  # Close the POS GUI
+        subprocess.Popen(["python", "Window.py"])  # Relaunch window.py
 
 class MiddleFrame(customtkinter.CTkFrame):
     """ This frame is where the buttons will go"""
