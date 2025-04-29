@@ -75,7 +75,7 @@ def show_planet_screen(planet):
         tip_text = font.render("Press ESC to return", True, (150,150,150))
 
         screen.blit(name_text, (WIDTH // 4, HEIGHT // 3 + 150))
-        screen.blit(desc_text, (WIDTH // 4, HEIGHT // 3 + 190))
+        screen.blit(desc_text, (WIDTH // 100 - 5, HEIGHT // 3 + 190))
         screen.blit(tip_text, (WIDTH // 4, HEIGHT // 3 + 230))
         screen.blit(planet_image, (WIDTH // 2 - 150, HEIGHT // 2 - 310 ))
 
@@ -98,13 +98,28 @@ if __name__ == "__main__":
     height = screen.get_height()
     smallfont = pygame.font.SysFont('Corbel', 35)
     text = smallfont.render('LAND', True, color)
+    title_font = pygame.font.SysFont('Corbel', 20)
 
     # Load Images
     background = pygame.image.load("planets.gif").convert_alpha()
-    background = pygame.transform.scale(background, (WIDTH, HEIGHT))  # Stretch to full screen
+    background = pygame.transform.scale(background, (1280, 250))
+    title_text = title_font.render('WELCOME TO THE PLANET EXPLORATION GAME!', True, color)
+    instruction1_txt = title_font.render('PRESS -> TO MOVE THE ROCKET', True, color)
+    instruction2_txt = title_font.render('PRESS R  TO RESET THE ROCKET', True, color)
+    instruction3_txt = title_font.render('CLICK  ON  THE LAND BUTTON  TO  START LEARNING', True, color)
     back_rect = background.get_rect()
-    back_rect.center = (WIDTH // 2, HEIGHT // 2)
+    title_rect = title_text.get_rect()
+    instruction1_rect = instruction1_txt.get_rect()
+    instruction2_rect = instruction2_txt.get_rect()
+    instruction3_rect = instruction3_txt.get_rect()
+    title_rect.center = (WIDTH // 2, HEIGHT // 4)
+    instruction1_rect.center =(WIDTH // 2, HEIGHT // 2 + 210)
+    instruction2_rect.center =(WIDTH // 2, HEIGHT // 2 + 240)
+    instruction3_rect.center =(WIDTH // 2, HEIGHT // 2 + 270)
+    back_rect.center = (screen.get_width() // 2, screen.get_height() // 2)
     screen.blit(background, back_rect)
+
+
 
 
 
@@ -116,14 +131,14 @@ if __name__ == "__main__":
     rocket_img.set_colorkey((255, 255, 255))
 
     planet_zones = [
-        Planet("Venus", "Second planet from the Sun.", 240, 280, "venus-mariner-10-pia23791-fig2.jpg"),
-        Planet("Mercury", "Closest to the Sun.", 340, 380, "Mercury_in_true_color.jpg"),
-        Planet("Earth", "Our home planet.", 440, 480, "The_Earth_seen_from_Apollo_17.jpg"),
-        Planet("Mars", "The Red Planet.", 540, 560, "Mars_-_August_30_2021_-_Flickr_-_Kevin_M._Gill.png"),
-        Planet("Jupiter", "The largest planet.", 620, 700, "Jupiter.jpg"),
-        Planet("Saturn", "Famous for its rings.", 760, 840, "istockphoto-1496413363-612x612.jpg"),
-        Planet("Uranus", "Has a tilted rotation.", 900, 960, "Uranus_Voyager2_color_calibrated.png"),
-        Planet("Neptune", "Furthest from the Sun.", 1020, 1100, "Neptune_-_Voyager_2_(29347980845)_flatten_crop.jpg"),
+        Planet("Venus", "it is the hottest planet in our solar system, rotates backwards, and has many active volcanoes", 240, 280, "venus-mariner-10-pia23791-fig2.jpg"),
+        Planet("Mercury", "it is the smallest, and fastest planet in our solar system, and does not orbit in a perfect circle", 340, 380, "Mercury_in_true_color.jpg"),
+        Planet("Earth", "contrary to popular belief is not a round planet, being a oblate spheroid, with 4 layers", 440, 480, "The_Earth_seen_from_Apollo_17.jpg"),
+        Planet("Mars", "it has a canyon system larger than any of our own, and the largest volcano in the solar system", 540, 560, "Mars_-_August_30_2021_-_Flickr_-_Kevin_M._Gill.png"),
+        Planet("Jupiter", "it is the largest planet in our solar system, and is composed mostly of Hydrogen and Helium", 620, 700, "Jupiter.jpg"),
+        Planet("Saturn", "It is most known for its rings made of ice and rock particles, and has around 82 moons in all.", 760, 840, "istockphoto-1496413363-612x612.jpg"),
+        Planet("Uranus", "it is known for its almost entirely sideways rotation, and blue-green hue due to methane", 900, 960, "Uranus_Voyager2_color_calibrated.png"),
+        Planet("Neptune", "The first planet discovered through mathematical predictions, with winds over 2,000 km/h", 1020, 1100, "Neptune_-_Voyager_2_(29347980845)_flatten_crop.jpg"),
     ]
     # Rocket
 
@@ -137,6 +152,11 @@ if __name__ == "__main__":
     while running:
         screen.fill((0,0,0))
         screen.blit(background, back_rect)
+        screen.blit(title_text, title_rect)
+        screen.blit(instruction1_txt, instruction1_rect)
+        screen.blit(instruction2_txt, instruction2_rect)
+        screen.blit(instruction3_txt, instruction3_rect)
+
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
