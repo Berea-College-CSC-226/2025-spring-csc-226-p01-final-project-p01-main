@@ -3,7 +3,7 @@
 #
 #
 #######################################################################################
-import customtkinter,random, sys, subprocess
+import customtkinter,random, subprocess
 
 class RightFrameButtonFunctionality:
     def __init__(self, delete_button, cancel_button, order_frame, order):
