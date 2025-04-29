@@ -95,9 +95,17 @@ class LeftFrame(customtkinter.CTkFrame):
         # Track Menu Visibility
         self.menu_visible = True
 
+        # Top Bar Frame (toggle button and label)
+        top_bar_frame = customtkinter.CTkFrame(self, fg_color="transparent", width = 70, height = 50)
+        top_bar_frame.pack(pady=15, padx=10, anchor="nw", fill="x")
+
         # Toggle Button
-        self.toggle_btn = customtkinter.CTkButton(self, text="☰", width=35, corner_radius = 3, command=self.toggle_menu)
-        self.toggle_btn.pack(pady=15, padx=10, anchor="nw")
+        self.toggle_btn = customtkinter.CTkButton(top_bar_frame, text="☰", width=35, corner_radius = 3, command=self.toggle_menu)
+        self.toggle_btn.pack(side = "left", padx = (0,10))
+
+        # Title Label
+        self.label = customtkinter.CTkLabel(top_bar_frame, text = "StuPOS", width = 35, font = ("Roboto", 17))
+        self.label.pack(side = "left")
 
         # Container Widget
         self.menu_container = customtkinter.CTkFrame(self, fg_color="transparent")
@@ -123,7 +131,7 @@ class LeftFrame(customtkinter.CTkFrame):
         spacer.pack(expand=True)  # Expands and fills space between buttons and exit
 
         # Exit Button
-        self.exit_btn = customtkinter.CTkButton(self.menu_container, text = "Exit", corner_radius = 3, height = 50)
+        self.exit_btn = customtkinter.CTkButton(self.menu_container, text = "Exit", corner_radius = 3, height = 50, command = self.exit_pos)
         self.exit_btn.pack(pady = 0, fill = "x")
 
     def toggle_menu(self):
@@ -131,12 +139,17 @@ class LeftFrame(customtkinter.CTkFrame):
         if self.menu_visible:
             self.menu_container.pack_forget() # Hide the container widget
         else:
-            self.menu_container.pack(fill="both", expand=True, padx=10, pady=(0, 10)) # Show the container widget
+            self.menu_container.pack(fill="both", expand=True, padx=0, pady= 20) # Show the container widget
         self.menu_visible = not self.menu_visible
 
     def call_specific_button(self, p_category):
         """ When a general button is clicked, initialize specific buttons related to that category. """
         self.mid_frame.display_specific_buttons(p_category) # Call the method in MiddleFrame from the LeftFrame class and pass the categories of that general button
+
+    def exit_pos(self):
+        """ When the exit button is clicked the pos returns to the main window"""
+
+        pass
 
 class MiddleFrame(customtkinter.CTkFrame):
     """ This frame is where the buttons will go"""
@@ -259,7 +272,7 @@ class RightFrame(customtkinter.CTkFrame):
         self.cancel_btn.pack(side="left", padx=(5, 5))
 
         # Delete Button (Right)
-        self.delete_btn = customtkinter.CTkButton(button_row, text="Delete", corner_radius=3, height=40, width=125, command = self.delete)
+        self.delete_btn = customtkinter.CTkButton(button_row, text="Delete", corner_radius=3, height=40, width=125)
         self.delete_btn.pack(side="right", padx=(5, 5))
 
         # # Save Button (Center)
