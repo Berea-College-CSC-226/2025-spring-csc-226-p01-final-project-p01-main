@@ -2,20 +2,50 @@
 # Name: Shadaria Mickler
 #
 #
-########################################################################################
-# Acknowledgements
-# ChatGPT - Interaction between frames - https://chatgpt.com/c/6806f27a-25e4-800a-b15f-08fb55fa6eb9
-# ChatGPT - Maintaining Frame Sizes - https://chatgpt.com/c/6806f327-1668-800a-8461-e50208d39257
-# ChatGPT - Toggle Menu Walkthrough Steps - https://chatgpt.com/c/6806f391-ead8-800a-bac4-1192ead61ae6
-# ChatGPT - Lambda in Command -
-# ChatGPT - Spacer -
-# ChatGPT - Implicit Grid -
-# ChatGPT - Nested Dictionary - https://chatgpt.com/c/680efcbe-2ee4-800a-8589-a61576eecf6a
 #######################################################################################
 import customtkinter,random
 
-class Order():
-    pass
+class Order:
+    """ This class has methods that calculates the tax, total, and discount"""
+    def __init__(self, item_dict, tax_label,total_label, discount_label):
+        self.item_dict = item_dict
+        self.tax_label = tax_label
+        self.total_label = total_label
+        self.discount_label = discount_label
+        self.tax_rate = 0.06      # Kentucky Sales Tax
+        self.discount_rate = 0.10 # Set Discount Rate
+        self.discount_active = False # initial state
+
+
+    def calculate_totals(self):
+        """ This method calculates sales tax, discount and total"""
+
+        subtotal = 0
+        for value in self.item_dict.values():
+            qty_x_price = (value['qty'] * value['price'])
+            subtotal += qty_x_price
+
+        sales_tax = subtotal * self.tax_rate
+
+        if self.discount_active:
+            discount = subtotal * self.discount_rate # positive discount
+        else:
+            discount = 0
+
+        total = subtotal + sales_tax - discount
+        return subtotal,sales_tax, discount, total
+
+    def update_payment_labels(self):
+        """This method updates labels in the payment_frame"""
+        _,sales_tax,discount,total = self.calculate_totals()
+        # Configure the text with updated values
+        self.tax_label.configure(text = f"${sales_tax:.2f}")
+        self.total_label.configure(text=f"${total:.2f}")
+        self.discount_label.configure(text=f"${discount:.2f}")
+
+    def toggle_discount(self):
+        self.discount_active = not self.discount_active
+        self.update_payment_labels()
 
 
 class LeftFrame(customtkinter.CTkFrame):
@@ -179,6 +209,7 @@ class RightFrame(customtkinter.CTkFrame):
         self.pack_propagate(False)  # ChatGPT
         self.item_dict = {} # Dictionary stores item and qty
 
+
         # All Checks Button
         self.all_check_btn = customtkinter.CTkButton(self, text="All checks", corner_radius=3, width= 125, height = 40)
         self.all_check_btn.pack(anchor="ne", padx= 10, pady = (15,15))
@@ -229,38 +260,51 @@ class RightFrame(customtkinter.CTkFrame):
 
 
         # Order Scrollable Frame (where orders will be displayed)
-        self.order_frame = customtkinter.CTkScrollableFrame(self, fg_color="#181818", width = 400, height = 450, corner_radius=3)
+        self.order_frame = customtkinter.CTkScrollableFrame(self, fg_color="#181818", width = 400, height = 440, corner_radius=3,border_width = 1, border_color = "#282828")
         self.order_frame.pack(fill="both", padx=10, expand = True)
 
-
-        # Total & Sub-tax (Frame)
-        self.payment_frame = customtkinter.CTkFrame(self, fg_color = "transparent", corner_radius = 3, height = 60)
-        self.payment_frame.pack(fill = "both", padx = 10, pady = 5, expand = True)
+        # Total, Sub-tax, Discount (Frame)
+        self.payment_frame = customtkinter.CTkFrame(self, fg_color = "#181818", corner_radius = 3, height = 60)
+        self.payment_frame.pack(fill = "both", padx = 10, pady = 1, expand = True)
 
         # Tax (Left - inside of payment_frame)
-        tax_label = customtkinter.CTkLabel(self.payment_frame, text = "Tax", fg_color = "transparent", corner_radius = 3, font = ("Roboto", 17))
-        tax_label.grid(row = 0, column = 0, sticky = "w", padx = (5,5), pady = 4)
+        tax_label = customtkinter.CTkLabel(self.payment_frame, text = "Tax", fg_color = "transparent", corner_radius = 3, font = ("Roboto", 13))
+        tax_label.grid(row = 0, column = 0, sticky = "w", padx = (20,5), pady = 1)
+
+        # Discount (Left - inside the payment_frame)
+        discount_label = customtkinter.CTkLabel(self.payment_frame, text = "Discount", fg_color = "transparent", corner_radius = 3, font = ("Roboto", 13))
+        discount_label.grid(row = 1, column = 0, sticky = "w", padx = (20,5), pady = 1)
 
         # Total (left - inside of payment_frame)
-        total_label = customtkinter.CTkLabel(self.payment_frame, text = "Total", fg_color = "transparent", corner_radius = 3, font = ("Roboto", 20, "normal"))
-        total_label.grid(row = 1, column = 0, sticky = "w", padx = (5,5))
+        total_label = customtkinter.CTkLabel(self.payment_frame, text = "Total", fg_color = "transparent", corner_radius = 3, font = ("Roboto", 13, "normal"))
+        total_label.grid(row = 2, column = 0, sticky = "w", padx = (20,5))
 
-        tax = 0.00
-        total = 0.00
         # Display Tax Label (right - inside the payment frame)
-        display_tax_label = customtkinter.CTkLabel(self.payment_frame, text = f"${tax:.2f}", fg_color = "transparent", corner_radius = 3, font = ("Roboto", 17))
-        display_tax_label.grid(row = 0, column = 1, sticky = "e", padx = (400,5), pady = 4)
+        self.display_tax_label = customtkinter.CTkLabel(self.payment_frame, text = f"$0.00", fg_color = "transparent", corner_radius = 3, font = ("Roboto", 13))
+        self.display_tax_label.grid(row = 0, column = 1, sticky = "e", padx = (385,5), pady = 1)
 
-        # Display Total label (right - inside the payment frame
-        display_total_label = customtkinter.CTkLabel(self.payment_frame, text = f"${total:.2f}", fg_color = "transparent", corner_radius = 3, font =("Roboto", 17))
-        display_total_label.grid(row = 1, column = 1, sticky = "e", padx = (400,5))
+        # Display Discount label (right - inside the payment frame)
+        self.display_discount_label = customtkinter.CTkLabel(self.payment_frame, text = f"$0.00", fg_color = "transparent", corner_radius = 3, font = ("Roboto", 13))
+        self.display_discount_label.grid(row = 1, column = 1, sticky = "e", padx = (385,5))
+
+        # Display Total label (right - inside the payment frame)
+        self.display_total_label = customtkinter.CTkLabel(self.payment_frame, text = f"$0.00", fg_color = "transparent", corner_radius = 3, font =("Roboto", 15))
+        self.display_total_label.grid(row = 2, column = 1, sticky = "e", padx = (385,5))
+
+        # Make even column spacing
+        for col in range(2):
+            self.payment_frame.grid_columnconfigure(col, weight=1)
+
+        # Instance of the order class
+        self.order = Order(self.item_dict, self.display_tax_label, self.display_total_label, self.display_discount_label)
+
 
         # Discount & Pay Button (in a frame)
         button_row2 = customtkinter.CTkFrame(self, fg_color = "transparent")
         button_row2.pack(fill="x", pady=5, padx=10)
 
         # Discount Button (Left)
-        self.discount_btn = customtkinter.CTkButton(button_row2, text="Discount", corner_radius=3, height=45)
+        self.discount_btn = customtkinter.CTkButton(button_row2, text="Discount", corner_radius=3, height=45,border_width = 1, fg_color = "transparent", border_color = "#404040", hover_color = "#3B8ED0", command = self.apply_discount)
         self.discount_btn.pack(side="left", expand=True, fill="x", padx=(0, 5))
 
         # Pay Button (Right)
@@ -276,7 +320,6 @@ class RightFrame(customtkinter.CTkFrame):
             # Item in dict, add 1 to qty (Nested dictionary "Item name" : {"qty": x, "price": y})
             self.item_dict[p_name]["qty"] +=1
             self.update_qty_label(p_name, self.item_dict[p_name]['qty'])
-            self.update_price_label(p_name, self.item_dict[p_name]['price'], self.item_dict[p_name]['qty'])
         else:
             # Item does not exist, the parameters are not empty, then create a new label and add to dictionary
             if p_name and (p_price is not None):
@@ -307,27 +350,28 @@ class RightFrame(customtkinter.CTkFrame):
                 # Add the qty & price to the specific dictionary key
                 self.item_dict[p_name] = {"qty": 1, "price": p_price}
 
+            # Update the (subtotal and total display labels)
+            self.order.update_payment_labels()
+
     def update_qty_label(self, p_name, p_updated_qty):
         """ This method will increase the qty amount"""
 
         # Iterate over all frames in order_frame to find the correct label
         for item_frame in self.order_frame.winfo_children():
-            # Get and store all child widgets located in the item_frame
-            children_in_item_frame = item_frame.winfo_children()
-
-            # Find the name of each label within each item_frame (ex: "Fries")
+            children_in_item_frame = item_frame.winfo_children() # Get and store all child widgets located in the item_frame
             label_name = children_in_item_frame[0]  # First child is the name_label
             #print(f"Label name: {label_name.cget("text")}")  # Debug print
 
             if label_name.cget("text") == p_name:
-                # Find the qty_label (second child in each item_frame)
-                qty_label = children_in_item_frame[1]
+                qty_label = children_in_item_frame[1] # (second child widget in each item_frame)
                 #print(f"Current qty: {qty_label.cget("text")}")  # Debug print
-
                 qty_label.configure(text=f"{p_updated_qty}")  # Update the quantity label
 
                 # Call update_price_label to update the price based on current qty
                 self.update_price_label(p_name, self.item_dict[p_name]["price"], p_updated_qty)
+
+        # Update the (sub-tax & total display labels)
+        self.order.update_payment_labels()
 
 
     def update_price_label(self,p_name,p_price, p_updated_qty):
@@ -337,19 +381,18 @@ class RightFrame(customtkinter.CTkFrame):
         total_price = p_updated_qty * p_price
 
         for item_frame in self.order_frame.winfo_children():
-            children_in_item_frame = item_frame.winfo_children()
-
-            # Find the name of each label within each item_frame
+            children_in_item_frame = item_frame.winfo_children()   # Find the name of each label within each item_frame
             label_name = children_in_item_frame[0]  # First child is the name_label
 
             if label_name.cget("text") == p_name:
-                # Find the price_label (third child in each item_frame)
-                price_label = children_in_item_frame[2]
+                price_label = children_in_item_frame[2] # (third child widget in each item_frame)
                 price_label.configure(text=f"${total_price:.2f}")  # Update the price label with total price
 
+    def apply_discount(self):
+        """ This method calls a method in the order class to apply discount open clicking the discount button"""
 
-
-
+        # Call the toggle method in the order class to apply or remove discount
+        self.order.toggle_discount()
 
 
 class GUI (customtkinter.CTk):

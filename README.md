@@ -50,6 +50,13 @@ helped you, AI tools you've used, and any other resources that are not solely yo
 section as you go. DO NOT forget about it!
 ````
     Referencece 1: ChatGPT
+    # ChatGPT - Interaction between frames - https://chatgpt.com/c/6806f27a-25e4-800a-b15f-08fb55fa6eb9
+    # ChatGPT - Maintaining Frame Sizes - https://chatgpt.com/c/6806f327-1668-800a-8461-e50208d39257
+    # ChatGPT - Toggle Menu Walkthrough Steps - https://chatgpt.com/c/6806f391-ead8-800a-bac4-1192ead61ae6
+    # ChatGPT - Lambda in Command -
+    # ChatGPT - Spacer -
+    # ChatGPT - Implicit Grid -
+    # ChatGPT - Nested Dictionary - https://chatgpt.com/c/680efcbe-2ee4-800a-8589-a61576eecf6a
 ````
 ---
 
