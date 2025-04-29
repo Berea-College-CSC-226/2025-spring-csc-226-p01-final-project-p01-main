@@ -130,7 +130,7 @@ class LeftFrame(customtkinter.CTkFrame):
         top_bar_frame.pack(pady=15, padx=10, anchor="nw", fill="x")
 
         # Toggle Button
-        self.toggle_btn = customtkinter.CTkButton(top_bar_frame, text="☰", width=35, corner_radius = 3, command=self.toggle_menu)
+        self.toggle_btn = customtkinter.CTkButton(top_bar_frame, text="☰", width=35, corner_radius = 3, fg_color = "transparent",hover_color = "#4169E1", command=self.toggle_menu)
         self.toggle_btn.pack(side = "left", padx = (0,10))
 
         # Title Label
@@ -142,7 +142,7 @@ class LeftFrame(customtkinter.CTkFrame):
         self.menu_container.pack(fill="both", expand=True, padx=0, pady=20)
 
         # Button Data
-        btn_name = ["Combos", "Sandwiches", "Sides", "Desserts", "Drinks"]
+        btn_name = ["Appetizers", "Sandwiches", "Sides", "Desserts", "Drinks"]
         self.btn_ref = {}  # Instant var to store references to each button
 
         for index, text in enumerate(btn_name):
@@ -151,6 +151,8 @@ class LeftFrame(customtkinter.CTkFrame):
                 text=text,
                 corner_radius = 3,
                 height = 50,
+                fg_color = "transparent",
+                hover_color = "#4169E1",
                 command = lambda category=text: self.call_specific_button(category)
             )
             btn.pack(pady=15, fill="x")
@@ -161,7 +163,7 @@ class LeftFrame(customtkinter.CTkFrame):
         spacer.pack(expand=True)  # Expands and fills space between buttons and exit
 
         # Exit Button
-        self.exit_btn = customtkinter.CTkButton(self.menu_container, text = "Exit", corner_radius = 3, height = 50)
+        self.exit_btn = customtkinter.CTkButton(self.menu_container, text = "Exit", corner_radius = 3, height = 50, fg_color = "transparent",hover_color = "#4169E1")
         self.exit_btn.pack(pady = 0, fill = "x")
 
     def toggle_menu(self):
@@ -186,7 +188,7 @@ class MiddleFrame(customtkinter.CTkFrame):
         self.right_frame = None # Placeholder (ChatGPT)
 
         # Search Bar (Entry Widget)
-        self.search_bar = customtkinter.CTkEntry(self, placeholder_text = "Search for products . . .", width = 710, height = 40, corner_radius=3, fg_color = "#282828")
+        self.search_bar = customtkinter.CTkEntry(self, placeholder_text = "Search for products . . .", width = 710, height = 40, corner_radius=3, fg_color = "#282828", state = "disable")
         self.search_bar.pack(anchor = "nw", padx = 15, pady = (15,1), fill = "x")
 
         # Container Frame for Buttons (below search bar)
@@ -195,11 +197,15 @@ class MiddleFrame(customtkinter.CTkFrame):
 
         # Buttons Data
         self.button_data = {
-            "Combos": [
-                ("The Classic Crunch Combo", 7.99),
-                ("Smoky BBQ Bliss Combo", 7.99),
-                ("Zesty Lemon Kick Combo", 7.99),
-                ("Fiery Buffalo Heat Combo", 7.99)
+            "Appetizers": [
+                ("The Classic Crunch Bites", 7.99),
+                ("Smoky BBQ Bliss Bites", 7.99),
+                ("Zesty Lemon Kick Bites", 7.99),
+                ("Fiery Buffalo Heat Bites", 7.99),
+                ("Mozzarella Sticks", 7.99),
+                ("Stuffed Jalapeños", 7.99),
+                ("Spinach Artichoke Dip", 7.99),
+                ("Crispy Calamari", 7.99)
             ],
             "Sandwiches": [
                 ("Classic Chicken Sandwich", 5.49),
@@ -211,13 +217,21 @@ class MiddleFrame(customtkinter.CTkFrame):
                 ("Fries", 2.49),
                 ("Side Salad", 3.29),
                 ("Coleslaw", 1.79),
-                ("Onion Rings", 2.49)
+                ("Onion Rings", 2.49),
+                ("Garlic Bread", 2.29),
+                ("Sweet Potato Fries", 2.79),
+                ("Baked Mac & Cheese", 3.49),
+                ("Corn on the Cob", 2.49)
             ],
             "Desserts": [
                 ("Strawberry Shortcake", 3.99),
                 ("Banana Pudding", 3.49),
                 ("Vanilla Ice Cream", 2.49),
-                ("Chocolate Ice Cream", 2.49)
+                ("Chocolate Ice Cream", 2.49),
+                ("Cheesecake", 4.49),
+                ("Apple Pie", 3.99),
+                ("Chocolate Lava Cake", 4.49),
+                ("Cinnamon Sugar Churros", 3.99)
             ],
             "Drinks": [
                 ("Coke", 2.29),
@@ -246,6 +260,18 @@ class MiddleFrame(customtkinter.CTkFrame):
         counter = 0
         menu_item = self.button_data.get(p_category,[]) # Grabs key from dictionary
 
+        # Button Colors(ChatGPT)
+        button_colors = [
+            "#1E3A8A",  # Dark Blue
+            "#4C1D95",  # Dark Purple
+            "#D61CFF",  # Neon Pink
+            "#16A34A",  # Dark Green
+            "#2C3E50",  # Charcoal Blue
+            "#8B5CF6",  # Medium Purple
+            "#10B981",  # Emerald Green
+            "#9B4D96"  # Purple
+        ]
+
         # Iterate through menu items (Key) & prices (Value)
         for item_name, item_price in menu_item:
             # Create a button for each item
@@ -254,6 +280,8 @@ class MiddleFrame(customtkinter.CTkFrame):
                 text = item_name,
                 corner_radius=3,
                 height = 175,
+                fg_color = button_colors[counter % len(button_colors)],
+                font = ("Roboto", 14),
                 command = lambda name = item_name, price = item_price: self.call_right_frame(name,price) # When specific button clicked pass button's data
             )
             # Place the buttons in Grid Layout
@@ -311,15 +339,16 @@ class RightFrame(customtkinter.CTkFrame):
         button_row.pack(fill="x", pady=5, padx=5)
 
         # Cancel Button (Left)
-        self.cancel_btn = customtkinter.CTkButton(button_row, text="Cancel", corner_radius=3, height=40, width=125, command = self.cancel)
+        self.cancel_btn = customtkinter.CTkButton(button_row, text="Cancel", corner_radius=3, height=40, width=125,fg_color = "#4169E1",
+                command = self.cancel)
         self.cancel_btn.pack(side="left", padx=(5, 5))
 
         # Delete Button (Right)
-        self.delete_btn = customtkinter.CTkButton(button_row, text="Delete", corner_radius=3, height=40, width=125, state = "disabled")
+        self.delete_btn = customtkinter.CTkButton(button_row, text="Delete", corner_radius=3, height=40, width=125, state = "disabled",fg_color = "#4169E1")
         self.delete_btn.pack(side="right", padx=(5, 5))
 
         # Save Button (Center)
-        self.save_btn = customtkinter.CTkButton(button_row, text = "Save", corner_radius=3, height=40, width = 125, state = "disabled")
+        self.save_btn = customtkinter.CTkButton(button_row, text = "Save", corner_radius=3, height=40, width = 125, state = "disabled",fg_color = "#4169E1")
         self.save_btn.pack(padx = (5,5))
 
         # Divider Line
@@ -390,11 +419,11 @@ class RightFrame(customtkinter.CTkFrame):
         button_row2.pack(fill="x", pady=5, padx=10)
 
         # Discount Button (Left)
-        self.discount_btn = customtkinter.CTkButton(button_row2, text="Discount", corner_radius=3, height=45,border_width = 1, fg_color = "transparent", border_color = "#282828", hover_color = "#3B8ED0", command = self.apply_discount)
+        self.discount_btn = customtkinter.CTkButton(button_row2, text="Discount", corner_radius=3, height=45,border_width = 1, fg_color = "transparent", border_color = "#282828", hover_color = "#4169E1", command = self.apply_discount)
         self.discount_btn.pack(side="left", expand=True, fill="x", padx=(0, 5))
 
         # Pay Button (Right)
-        self.pay_btn = customtkinter.CTkButton(button_row2, text="Pay", corner_radius=3, height=45, command = self.pay)
+        self.pay_btn = customtkinter.CTkButton(button_row2, text="Pay", corner_radius=3, height=45,fg_color = "#1E3A8A", hover_color = "#2F7AB1", command = self.pay)
         self.pay_btn.pack(side="right", expand=True, fill="x", padx=(5, 0))
 
         # Instance of the "RightFrameButtonFunctionality" class
