@@ -40,7 +40,7 @@ class Rocket:
         print(f"Rocket X: {self.x}")
 
     def draw(self):
-        screen.blit(rocket_img, (self.x, self.y))
+        screen.blit(rocket_img, (self.x, self.y)) #draws the rocket onto the screen
 
     def check_planet(self, planetS, testing=False):
         for planet in planetS:
@@ -55,11 +55,11 @@ class Rocket:
         return None
 
 def show_planet_screen(planet):
-    showing = True
-    font = pygame.font.SysFont(None, 40)
+    showing = True #sets if the second screen shows or not
+    font = pygame.font.SysFont(None, 40) #sets font
 
-    planet_image = pygame.image.load(planet.image).convert_alpha()
-    planet_image = pygame.transform.scale(planet_image, (300, 300))
+    planet_image = pygame.image.load(planet.image).convert_alpha() #loads image of planet on second screen
+    planet_image = pygame.transform.scale(planet_image, (300, 300)) #scales size of image
 
     while showing:
         for event in pygame.event.get():
@@ -67,17 +67,18 @@ def show_planet_screen(planet):
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_ESCAPE:
+                if event.key == pygame.K_ESCAPE: #if the esc key is pressed goes back to original screen
                     showing = False
-        screen.fill((0,0,0))
+        screen.fill((0,0,0)) #wipes the screen and fills with black
         name_text = font.render(f"Welcome to {planet.name}!", True, (255,255,255))
         desc_text = font.render(planet.description, True, (150,150,150))
-        tip_text = font.render("Press ESC to return", True, (150,150,150))
+        tip_text = font.render("Press ESC to return", True, (150,150,150)) #writes instructions and descriptions for planets
 
         screen.blit(name_text, (WIDTH // 4, HEIGHT // 3 + 150))
         screen.blit(desc_text, (WIDTH // 100 - 5, HEIGHT // 3 + 190))
         screen.blit(tip_text, (WIDTH // 4, HEIGHT // 3 + 230))
         screen.blit(planet_image, (WIDTH // 2 - 150, HEIGHT // 2 - 310 ))
+        '''puts all of the images and text onto the second screen'''
 
         pygame.display.update()
 
@@ -101,30 +102,33 @@ if __name__ == "__main__":
     title_font = pygame.font.SysFont('Corbel', 20)
 
     # Load Images
-    background = pygame.image.load("planets.gif").convert_alpha()
+    background = pygame.image.load("planets.gif").convert_alpha() #sets the image of the game as a screen
     background = pygame.transform.scale(background, (1280, 250))
+
     title_text = title_font.render('WELCOME TO THE PLANET EXPLORATION GAME!', True, color)
     instruction1_txt = title_font.render('PRESS -> TO MOVE THE ROCKET', True, color)
     instruction2_txt = title_font.render('PRESS R  TO RESET THE ROCKET', True, color)
     instruction3_txt = title_font.render('CLICK  ON  THE LAND BUTTON  TO  START LEARNING', True, color)
+
+    '''loads instructions on how to play the game on the main screen'''
+
     back_rect = background.get_rect()
     title_rect = title_text.get_rect()
     instruction1_rect = instruction1_txt.get_rect()
     instruction2_rect = instruction2_txt.get_rect()
     instruction3_rect = instruction3_txt.get_rect()
+
+    '''gets the rects of all of the texts and gets a positioning for their arrangement'''
+
     title_rect.center = (WIDTH // 2, HEIGHT // 4)
     instruction1_rect.center =(WIDTH // 2, HEIGHT // 2 + 210)
     instruction2_rect.center =(WIDTH // 2, HEIGHT // 2 + 240)
     instruction3_rect.center =(WIDTH // 2, HEIGHT // 2 + 270)
     back_rect.center = (screen.get_width() // 2, screen.get_height() // 2)
+
+    '''gives the location of all of the text and where it will be placed'''
+
     screen.blit(background, back_rect)
-
-
-
-
-
-
-
 
     rocket_img = pygame.image.load("rocket.png").convert_alpha()
     rocket_img = pygame.transform.scale(rocket_img, (50, 50))
@@ -157,6 +161,8 @@ if __name__ == "__main__":
         screen.blit(instruction2_txt, instruction2_rect)
         screen.blit(instruction3_txt, instruction3_rect)
 
+        '''puts all of the text onto the screen when it is drawn'''
+
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -172,29 +178,27 @@ if __name__ == "__main__":
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mouse = pygame.mouse.get_pos()
                 if rocket.current_planet and width / 2.37 <= mouse[0] <= width / 2.37 + 140 and height / 1.445 <= mouse[1] <= height / 1.445 + 40:
-                    show_planet_screen(rocket.current_planet)
+                    show_planet_screen(rocket.current_planet) #detects if the land button is clicked
 
 
         rocket.current_planet = None
         for planet in planet_zones:
-            if planet.is_hit(rocket.x):
+            if planet.is_hit(rocket.x): #handles detections of if the rocket is in the same positioning as a planet
                 rocket.current_planet = planet
                 break
         rocket.draw()
 
         if rocket.current_planet:
 
-            pygame.draw.rect(screen, color_light, [width / 2.37, height / 1.445, 180, 60])
-            screen.blit(text, (width / 2.37 + 50, height / 1.445 + 10))
+            pygame.draw.rect(screen, color_light, [width / 2.37, height / 1.445, 180, 60]) #draws the land button when a rocket is over a planet
+            screen.blit(text, (width / 2.37 + 50, height / 1.445 + 10)) #places text on the land button
         else:
-            pygame.draw.rect(screen, (0, 0, 0), [width / 2.37, height / 1.445, 180, 60])
+            pygame.draw.rect(screen, (0, 0, 0), [width / 2.37, height / 1.445, 180, 60]) #sets the boundary of where the button is placed
 
-        pygame.display.update()
-        clock.tick(30)
+        pygame.display.update() #updates the game to put all of the info on the screen
+        clock.tick(30) #sets the movement speed of the rocket
 
     pygame.quit()
     sys.exit()
 
 
-'''important note *** when we integrate a button we should have the event handler for text, we just have a button pop up
-when a planet is hit then we handle screen and changing them'''
