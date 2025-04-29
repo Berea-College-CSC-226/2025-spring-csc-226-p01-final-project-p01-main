@@ -3,7 +3,8 @@
 #
 #
 #######################################################################################
-import customtkinter,random, sys, subprocess
+import customtkinter,random, subprocess
+
 
 class RightFrameButtonFunctionality:
     def __init__(self, delete_button, cancel_button, order_frame, order):
@@ -131,7 +132,7 @@ class LeftFrame(customtkinter.CTkFrame):
         spacer.pack(expand=True)  # Expands and fills space between buttons and exit
 
         # Exit Button
-        self.exit_btn = customtkinter.CTkButton(self.menu_container, text = "Exit", corner_radius = 3, height = 50, command = self.exit_pos)
+        self.exit_btn = customtkinter.CTkButton(self.menu_container, text = "Exit", corner_radius = 3, height = 50)
         self.exit_btn.pack(pady = 0, fill = "x")
 
     def toggle_menu(self):
@@ -146,10 +147,6 @@ class LeftFrame(customtkinter.CTkFrame):
         """ When a general button is clicked, initialize specific buttons related to that category. """
         self.mid_frame.display_specific_buttons(p_category) # Call the method in MiddleFrame from the LeftFrame class and pass the categories of that general button
 
-    def exit_pos(self):
-        """ When the exit button is clicked the pos returns to the main window"""
-        self.destroy()  # Close the POS GUI
-        subprocess.Popen(["python", "Window.py"])  # Relaunch window.py
 
 class MiddleFrame(customtkinter.CTkFrame):
     """ This frame is where the buttons will go"""
@@ -160,8 +157,8 @@ class MiddleFrame(customtkinter.CTkFrame):
         self.right_frame = None # Placeholder (ChatGPT)
 
         # Search Bar (Entry Widget)
-        self.search_bar = customtkinter.CTkEntry(self, placeholder_text = "Search for products . . .", width = 710, height = 35, corner_radius=3, fg_color = "#282828")
-        self.search_bar.pack(anchor = "nw", padx = 15, pady = (15,5), fill = "x")
+        self.search_bar = customtkinter.CTkEntry(self, placeholder_text = "Search for products . . .", width = 710, height = 40, corner_radius=3, fg_color = "#282828")
+        self.search_bar.pack(anchor = "nw", padx = 15, pady = (15,1), fill = "x")
 
         # Container Frame for Buttons (below search bar)
         self.specific_btn_frame = customtkinter.CTkFrame(self, fg_color="transparent")
@@ -250,14 +247,30 @@ class MiddleFrame(customtkinter.CTkFrame):
 class RightFrame(customtkinter.CTkFrame):
     """ This frame will be where orders show"""
     def __init__(self, master):
-        super().__init__(master, width = 550, height=864, corner_radius = 1,fg_color = "#121212")
+        super().__init__(master, width = 550, height=864, corner_radius = 1,fg_color = "#181818", border_width = 1, border_color = "#282828")
 
         self.pack_propagate(False)  # ChatGPT
         self.item_dict = {} # Dictionary stores item and qty
 
-        # All Checks Button
-        self.all_check_btn = customtkinter.CTkButton(self, text="All checks", corner_radius=3, width= 125, height = 40)
-        self.all_check_btn.pack(anchor="ne", padx= 10, pady = (15,15))
+        # Upper frame (Order Number and User Labels)
+        self.upper_frame = customtkinter.CTkFrame(self, fg_color="transparent", corner_radius=3, height=40, width=500)
+        self.upper_frame.pack(fill="both", expand=False, padx=10, pady=(15, 10))
+
+        # Tables Label
+        self.tables_label = customtkinter.CTkLabel(self.upper_frame, text="Tables", font=("Roboto", 15))
+        self.tables_label.pack(side="left", padx=(30, 50))
+
+        # Order Number Label
+        self.order_num_label = customtkinter.CTkLabel(self.upper_frame, text="Order #", font=("Roboto", 15))
+        self.order_num_label.pack(side="left", padx=(110, 0))
+
+        # Order Number Display
+        self.order_num_display = customtkinter.CTkLabel(self.upper_frame, text=f"{0}", font=("Roboto", 15))
+        self.order_num_display.pack(side="left", padx=(5, 5))
+
+        # Online Label
+        self.online_label = customtkinter.CTkLabel(self.upper_frame, text="Online", font=("Roboto", 15))
+        self.online_label.pack(side="right", padx=(70, 40))
 
         # Divider Line (Upper)
         divider1 = customtkinter.CTkFrame(self, height=2, width=800, fg_color="#404040")
@@ -305,7 +318,7 @@ class RightFrame(customtkinter.CTkFrame):
 
 
         # Order Scrollable Frame (where orders will be displayed)
-        self.order_frame = customtkinter.CTkScrollableFrame(self, fg_color="#181818", width = 400, height = 440, corner_radius=3,border_width = 1, border_color = "#282828")
+        self.order_frame = customtkinter.CTkScrollableFrame(self, fg_color="#181818", width = 400, height = 440, corner_radius=3, border_width = 1, border_color = "#282828")
         self.order_frame.pack(fill="both", padx=10, expand = True)
 
         # Total, Sub-tax, Discount (Frame)
@@ -348,11 +361,11 @@ class RightFrame(customtkinter.CTkFrame):
         button_row2.pack(fill="x", pady=5, padx=10)
 
         # Discount Button (Left)
-        self.discount_btn = customtkinter.CTkButton(button_row2, text="Discount", corner_radius=3, height=45,border_width = 1, fg_color = "transparent", border_color = "#404040", hover_color = "#3B8ED0", command = self.apply_discount)
+        self.discount_btn = customtkinter.CTkButton(button_row2, text="Discount", corner_radius=3, height=45,border_width = 1, fg_color = "transparent", border_color = "#282828", hover_color = "#3B8ED0", command = self.apply_discount)
         self.discount_btn.pack(side="left", expand=True, fill="x", padx=(0, 5))
 
         # Pay Button (Right)
-        self.pay_btn = customtkinter.CTkButton(button_row2, text="Pay", corner_radius=3, height=45)
+        self.pay_btn = customtkinter.CTkButton(button_row2, text="Pay", corner_radius=3, height=45, command = self.pay)
         self.pay_btn.pack(side="right", expand=True, fill="x", padx=(5, 0))
 
         # Instance of the "RightFrameButtonFunctionality" class
@@ -445,6 +458,30 @@ class RightFrame(customtkinter.CTkFrame):
 
         # Call the toggle method in the order class to apply or remove discount
         self.order.toggle_discount()
+
+    def pay(self):
+        """
+        Temporarily changes the Pay button to 'Paid' with green color, disables it, generates a random order_num, then resets it.
+        """
+        original_txt = self.pay_btn.cget('text') # Get original text and stores it
+        original_color = self.pay_btn.cget('fg_color') # Get the original color and store it
+
+        # Configure Pay button to simulate a paid order
+        self.pay_btn.configure(text="Paid", fg_color="green", state = "disabled")
+
+        # Reset the order frame (data)
+        for widget in self.order_frame.winfo_children():
+            widget.destroy()
+
+        self.order.reset_totals()  # Reset the order (total, tax, discount, etc.)
+        self.order.update_payment_labels()  # Update the (sub-tax & total display labels)
+
+        # Reset the button after 2.5 seconds
+        self.pay_btn.after(2500,lambda: self.pay_btn.configure(text=original_txt, fg_color=original_color, state="normal"))
+
+        # Generate a random 3-digit order number (between 100 and 999)
+        new_order_num = random.randint(100, 999)
+        self.order_num_display.configure(text=str(new_order_num))  # Update the label with the new number
 
     # def delete(self, item_name):
     #     """Calls the delete method from the rightframebuttonfunctionality class."""
