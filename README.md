@@ -95,25 +95,61 @@ Indicate what percentage of the project you have left to complete and how confid
 
 ## Milestone 4: Final Code, Presentation, Demo
 
-### ❗User Instructions
+### User Instructions
 
-In a paragraph, explain how to use your program. Assume the user is starting just after they hit the "Run" button 
-in PyCharm. 
+The POS interface is divided into three main sections:
+Left Frame – Category Toggle Menu
+Middle Frame – Item Display Area
+Right Frame – Order Summary Panel
 
-### ❗Errors and Constraints
+1.Browsing Menu Categories
+Start by using the toggle menu in the left frame.
+Press any of the category buttons (e.g., Drink, Sides, Desserts).
+Once a category is selected, a new set of buttons representing specific menu items within that category will appear in the middle frame.
+
+2.Adding Items to the Order
+In the middle frame, press a button representing a menu item.
+Each button will display the item name and its price.
+When pressed, the item will be added to the order list shown in the right frame.
+
+3.Viewing and Managing the Current Order
+The right frame keeps a running list of all items added to the order.
+Each item appears as a separate entry.
+
+To Delete an Item:
+Hover your cursor over the item in the right frame.
+Once the item flashes red, click it to remove it from the order
+
+A. Cancel Button
+Press to clear the entire order and reset the current transaction.
+
+B. Discount Toggle Button
+Press once to activate a discount (e.g., percentage off the order).
+Press again to turn the discount off.
+
+C. Pay Button
+Finalize the transaction by pressing the Pay button.
+The system will:
+Clear the current order.
+Generate a random order number for tracking purposes and turn green to represent a "paid transaction"
+
+
+
+
+### Errors and Constraints
 
 Every program has bugs or features that had to be scrapped for time. These bugs should be tracked in the issue queue. 
 You should already have a few items in here from the prior weeks. Create a new issue for any undocumented errors and 
 deficiencies that remain in your code. Bugs found that aren't acknowledged in the queue will be penalized.
 
-### ❗Peer Evaluation
+### Peer Evaluation
 
 It is important that all members of your team contribute equitably. The peer evaluation is your chance to either 
 a) celebrate the great work you all did together as an effective team, or b) indicate to the instructor if a member of
 your team did not contribute their fair share. Grades will be adjusted for any team member who is evaluated poorly. Your
 commit history will be used as evidence, so make sure you are using git effectively!
 
-### ❗Reflection
+### Reflection
 
 Each partner should write three to four well-written paragraphs address the following (at a minimum):
 - Why did you select the project that you did?
@@ -128,7 +164,26 @@ Each partner should write three to four well-written paragraphs address the foll
 ```
 
 ```
-    Partner 2: **Replace this text with your reflection
+    Partner 2 (Shadaria): 
+    Every job I’ve had so far has been in fast food, and through those experiences, I’ve seen how much more efficient 
+    it is to use software rather than pen and paper when handling orders. 
+    Initially, my POS system design was more suitable for a large-scale restaurant setup, but I soon realized that 
+    for this project—a mock small restaurant—a simpler, more compact layout would be more appropriate. 
+    This shift taught me a lot about the importance of tailoring design to fit the scope and context of a project.
+    
+    Throughout the development process, I gained a deeper understanding of GUI design, particularly how frames interact 
+    with each other and how to work with parent and child widgets in Python. I also explored concepts in object-oriented 
+    programming and databases, even though I didn’t end up integrating a database into the final project. 
+    The most difficult part was ensuring smooth interaction between components and keeping track of the control flow as the code grew longer and more complex. 
+    If I were to do the project again, I would prioritize locking down the layout and being confident with my abilities, 
+    and I’d also use more debug printing to track reference passing and storage more effectively.
+    
+    This project had two main components, and I believe both partners contributed effectively to its success. 
+    Once we gained clarity on the project requirements, everything moved more smoothly, and we were able to collaborate 
+    efficiently. The biggest challenge early on was communication—specifically, aligning our individual ideas with what 
+    was actually feasible within our skills and the project’s scope. But as we progressed, that initial uncertainty 
+    turned into a shared understanding and ultimately a strong final product.
+    
 ```
 
 ---
