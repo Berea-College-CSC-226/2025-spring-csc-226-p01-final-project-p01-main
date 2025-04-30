@@ -101,7 +101,32 @@ Each partner should write three to four well-written paragraphs address the foll
 ```
 
 ```
-    Partner 2: **Replace this text with your reflection
+    Partner 2: I chose to create a Python calculator for our project because it offered a practical way to apply the 
+    programming skills we’ve been learning, while still being manageable within the time frame. A calculator is a useful 
+    tool and gave us the opportunity to explore fundamental programming concepts like functions, conditionals, loops, 
+    and error handling. We also wanted to challenge ourselves by making it more than just a calculator—adding features 
+    like input validation and an arithmetic computation game. This project was simple, yet it tested my python skills.
+
+    The project stayed pretty close to the initial design, especially when it came to the underlying functionality. We 
+    wanted to have simple operations such as addition, subtraction, multiplication, and division, and managed to get 
+    all of them done. While we did consider adding a Turtle initially, we decided to concentrate on a clean, functional 
+    version first, so we could have a solid project before going into extra features. This adjustment in scope allowed 
+    us to narrow our focus and complete a stable version of the calculator without overcomplicating the development 
+    process. Later on, we decided to add a game which tests one's mathematical skills by providing mathematical 
+    equations to complete.
+
+    Over the course of the project, I learned a lot — not only about Python, but about planning, troubleshooting, and 
+    teamwork. I focused more on each function to maintain code structure and thorough testing to prevent bugs. We 
+    learned how important it is to divide a project into smaller pieces and develop iteratively. One of the challenging 
+    aspects of the project was handling edge cases such as dividing by zero. It took some trial and error to ensure the 
+    calculator provided good error messages for these.
+
+    Having a partner to work on this project was a good experience overall. One of the challenges we faced was 
+    coordinating our schedules to work at the same time, but we managed to overcome this by using common files and 
+    leaving clear notes for each other. Working together as partners went smoothly overall. We left comments, and pushed 
+    updates without needing to be online at the same time. What made the collaboration effective was our consistent 
+    communication, and mutual respect for each other’s ideas and time. The main challenge was occasionally merging 
+    different versions of files, but we learned how to manage branches and resolve conflicts. 
 ```
 
 ---
