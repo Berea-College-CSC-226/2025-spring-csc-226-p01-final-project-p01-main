@@ -17,12 +17,11 @@ import tkinter as tk
 from tkinter import ttk
 import random
 
-
 class Calculator:
    DIGITS = '0123456789'
    def __init__(self):
        """
-       <write purpose of function>
+       Initializes the Calculator application window and its components
        """
        # initialize application window
        self.master = tk.Tk()
@@ -47,8 +46,8 @@ class Calculator:
 
    def create_frames(self):
        """
-       <write purpose of function>
-       :return:
+       Creates calculator and button frames.
+       :return: Tuple containing calculator and turtle frames
        """
        calculator_frame = ttk.Frame(self.master)
        calculator_frame.pack(side='top', fill='x', padx=10, pady=10)
@@ -58,9 +57,8 @@ class Calculator:
 
    def create_buttons(self):
        """
-       <write purpose of function>
-       :param self:
-       :return:
+       Creates calculator buttons
+       :return: Returns list of buttons
        """
        button_text = [
                        ['MODE','Del','C','RESET'],
@@ -82,12 +80,11 @@ class Calculator:
            buttons.append(button_row)
        return buttons
 
-
    def generate_game_equation(self):
-       '''
-       <write purpose of function>
-       :return: random equation string
-       '''
+       """
+       Creates random equation with missing values
+       :return: Random equation string
+       """
        equation_signs = '+-*//*' #additional multiplication and division symbols to increase odds
        templates = ['i=isi','i=isisi','isi=i','isi=isi','isisi=i','i=isisisi','isi=isisi','isisi=isi','isisisi=i']
        while True:
@@ -101,18 +98,17 @@ class Calculator:
                    equation += [char]
            if eval(''.join(equation).replace('=','==')):
                break
+       #replaces part of equation with '__'
        equals_index = equation.index('=')
        equation[equals_index+1] = len(equation[equals_index+1]) * '_'
        return ' '.join(equation)
 
-
    def onclick(self,event):
        """
-       <write purpose of function>
-       :param event:
-       :return:
+       Event handler for when button is clicked
+       :param event: The GUI framework’s event object for clicked button
+       :return: None
        """
-
        clicked_button = event.widget
        #get pressed character
        char = clicked_button['text']
@@ -209,7 +205,7 @@ class Calculator:
 
 def main():
    """
-   <write purpose of function>
+   Runs calculator program. Initializes the Calculator class and starts the Tkinter main loop.
    :return: None
    """
    calculator = Calculator()
