@@ -28,7 +28,6 @@ class Calculator:
        self.master.configure(background='#d9d9d9')
        self.master.title("Simple Calculator")
        self.master.geometry("450x600")
-       self.master.resizable(False, False)
        # create calculator frame and button frame
        self.calculator_frame, self.button_frame= self.create_frames()
        # create buttons
