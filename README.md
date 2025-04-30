@@ -68,18 +68,23 @@ Indicate what percentage of the project you have left to complete and how confid
 
 ## Milestone 4: Final Code, Presentation, Demo
 
-### ❗User Instructions
+### User Instructions
 
-In a paragraph, explain how to use your program. Assume the user is starting just after they hit the "Run" button 
-in PyCharm. 
+The calculator starts in 'CAL' mode which means it functions like a regular calculator. The user can enter simple math 
+problems using the buttons on screen and click the '=' button to show the FINAl result, as the result is actively displayed 
+each time the user enters an integer value. The user can toggle between 'CAL' and 'GAME' mode by clicking the 'MODE' button.
+When in 'GAME' mode, the user is given an equation to solve by entering the missing values on the black line. The user 
+enters the missing values by clicking the number buttons. As this is a simple program, when in 'GAME' mode, equation sign
+and parenthesis buttons are disabled. The user clicked the '=' sign button to view if their answer is right or wrong.
+clicking the 'RESET' or the 'MODE' button twice, displays a new equation.
 
-### ❗Errors and Constraints
+### Errors and Constraints
 
 Every program has bugs or features that had to be scrapped for time. These bugs should be tracked in the issue queue. 
 You should already have a few items in here from the prior weeks. Create a new issue for any undocumented errors and 
 deficiencies that remain in your code. Bugs found that aren't acknowledged in the queue will be penalized.
 
-### ❗Peer Evaluation
+### Peer Evaluation
 
 It is important that all members of your team contribute equitably. The peer evaluation is your chance to either 
 a) celebrate the great work you all did together as an effective team, or b) indicate to the instructor if a member of
