@@ -168,11 +168,9 @@ Shadaria: `45%`
 ## Milestone 4: Final Code, Presentation, Demo
 
 ### User Instructions
-
+Shadaria
 The POS interface is divided into three main sections:
-Left Frame – Category Toggle Menu
-Middle Frame – Item Display Area
-Right Frame – Order Summary Panel
+Left Frame – Category Toggle Menu --- Middle Frame – Item Display Area --Right Frame – Order Summary Panel
 
 1.Browsing Menu Categories
 Start by using the toggle menu in the left frame.
@@ -185,18 +183,26 @@ Each button will display the item name and its price.
 When pressed, the item will be added to the order list shown in the right frame.
 
 3.Viewing and Managing the Current Order
-The right frame keeps a running list of all items added to the order.
-Each item appears as a separate entry.
+The right frame keeps a running list of all items added to the order (Each item appears as a separate entry)
 
 To Delete an Item:
-Hover your cursor over the item in the right frame.
-Once the item flashes red, click it to remove it from the order
+Hover your cursor over the item in the right frame. Once the item flashes red, click it to remove it from the order
 
 A. Cancel Button
 Press to clear the entire order and reset the current transaction.
 
+B. Discount Toggle Button
+Press once to activate a discount & Press again to turn the discount off.
+
+C. Pay Button
+Finalize the transaction by pressing the Pay button.
+The system will:
+Clear the current order.
+Generate a random order number for tracking purposes and turn green to represent a "paid transaction"
 
 
+
+Faryal
 After you press the "Run" button in PyCharm, a window will appear with two buttons: one button to launch the Turtle Catch Game and another button to open the POS System.
 To play the Turtle Catch Game, click the button labeled "Turtle Game."
 This will open the game window where background music will start playing automatically.
@@ -204,15 +210,6 @@ Press Enter on the keyboard to start the game.
 You control the turtle by pressing and holding the Left and Right arrow keys to glide left and right across the screen. The goal is to catch healthy foods like apples, bananas, and salad, while avoiding junk foods like burgers, candy, and pizza.
 Each healthy food increases your score, and missing healthy food will cause you to lose a heart.
 If you lose all your hearts, a "Game Over" message will appear, and you can press Enter again to restart the game. If you want to access the POS System instead, simply click the "POS System" button when the initial launcher window opens.
-B. Discount Toggle Button
-Press once to activate a discount (e.g., percentage off the order).
-Press again to turn the discount off.
-
-C. Pay Button
-Finalize the transaction by pressing the Pay button.
-The system will:
-Clear the current order.
-Generate a random order number for tracking purposes and turn green to represent a "paid transaction"
 
 
 
