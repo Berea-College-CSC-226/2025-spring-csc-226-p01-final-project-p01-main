@@ -1,4 +1,4 @@
-from flashcard import FlashcardDeck
+from logic import FlashcardDeck
 from GUIClass import FlashcardGUI
 
 def main():

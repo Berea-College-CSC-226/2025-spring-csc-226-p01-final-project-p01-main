@@ -1,10 +1,10 @@
-Variable: A named location used to store data in memory.
-Function: A block of reusable code that performs a specific task.
-Loop: A way to repeat a block of code multiple times.
-List: A collection of ordered, changeable items.
-Tuple: A collection of ordered, unchangeable items.
-Dictionary: A collection of key-value pairs.
-Boolean: A data type with only two values: True or False.
-String: A sequence of characters.
-Integer: A whole number without a decimal point.
-Float: A number with a decimal point.
+Variable:: A named location used to store data in memory.
+Function:: A block of reusable code that performs a specific task.
+Loop:: A way to repeat a block of code multiple times.
+List:: A collection of ordered, changeable items.
+Tuple:: A collection of ordered, unchangeable items.
+Dictionary:: A collection of key-value pairs.
+Boolean:: A data type with only two values: True or False.
+String:: A sequence of characters.
+Integer:: A whole number without a decimal point.
+Float:: A number with a decimal point.
