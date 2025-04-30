@@ -62,7 +62,7 @@ class Apple:
             if pygame.sprite.spritecollide(self.Snake, [self.Apple], False):
 
                 else:
-                    self.position = new_position
+                    self.position = new_position # change to use the same as snake. How?? Research
 
     def drawApple(self, surface):
 
