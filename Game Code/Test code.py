@@ -1,4 +1,6 @@
 # Import necessary modules
+#Name: Faryal Fatima
+#Username: fatimaf
 import turtle
 import random
 
@@ -34,10 +36,12 @@ class TurtlePlayer:
         self.turtle.goto(0, -200)
         self.velocity = 0
 
+        #move to the left
+
     def move_left(self):
         self.turtle.setheading(180)
         self.velocity = -15
-
+#move to the right
     def move_right(self):
         self.turtle.setheading(0)
         self.velocity = 15
@@ -50,6 +54,7 @@ class TurtlePlayer:
         new_x = x + self.velocity
         if -280 <= new_x <= 280:
             self.turtle.setx(new_x)
+        #checl for collisions
 
     def check_collision(self, food):
         return self.turtle.distance(food.turtle) < 30
@@ -61,7 +66,7 @@ class FoodItem:
         self.turtle.penup()
         self.turtle.speed(0)
         self.turtle.hideturtle()
-        self.speed = 7
+        self.speed = 9 #Falling food speed
         self.set_type(random.choice(FOOD_TYPES))
         self.reset_position()
         self.turtle.showturtle()
@@ -96,6 +101,8 @@ class GameManager:
         self.message = turtle.Turtle()
         self.message.hideturtle()
         self.reset_game()
+
+        #resetting the game to bring in food
 
     def reset_game(self):
         self.player = TurtlePlayer()
@@ -161,6 +168,8 @@ class GameManager:
         self.hearts.clear()
         heart_str = "".join(["❤️" for _ in range(self.lives)])
         self.hearts.write(heart_str, font=("Segoe Print", 16, "bold"))
+
+        #Feauture to replay the game
 
     def game_over(self):
         self.message.clear()

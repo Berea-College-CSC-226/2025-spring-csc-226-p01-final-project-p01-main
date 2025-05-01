@@ -203,12 +203,12 @@ Generate a random order number for tracking purposes and turn green to represent
 
 
 Faryal
-After you press the "Run" button in PyCharm, a window will appear with two buttons: one button to launch the Turtle Catch Game and another button to open the POS System.
+After you press the "Run" button for Window.py, a window will appear with two buttons: one button to launch the Turtle Catch Game and another button to open the POS System.
 To play the Turtle Catch Game, click the button labeled "Turtle Game."
 This will open the game window where background music will start playing automatically.
 Press Enter on the keyboard to start the game.
 You control the turtle by pressing and holding the Left and Right arrow keys to glide left and right across the screen. The goal is to catch healthy foods like apples, bananas, and salad, while avoiding junk foods like burgers, candy, and pizza.
-Each healthy food increases your score, and missing healthy food will cause you to lose a heart.
+Each healthy food increases your score, and missing healthy food will cause you to lose a heart. There are 5 hearts and each heart represents life.
 If you lose all your hearts, a "Game Over" message will appear, and you can press Enter again to restart the game. If you want to access the POS System instead, simply click the "POS System" button when the initial launcher window opens.
 
 
@@ -238,7 +238,32 @@ Each partner should write three to four well-written paragraphs address the foll
 - How well did you work with your partner? What made it go well? What made it challenging?
 
 ```
-    Partner 1: **Replace this text with your reflection
+    Partner 1: Faryal
+We selected our project based on a combination of our shared interests and the opportunity to build something that incorporated both a visual game interface and practical functionality.
+After exploring a few ideas that didn’t fully resonate with both of us, we eventually agreed on a concept that allowed us to blend our individual strengths. 
+It gave us the chance to learn while creating something meaningful and enjoyable.
+
+Our final project ended up being quite different from our initial design. 
+As we progressed, we kept finding ways to enhance it—adding features, improving the visuals, and making the overall user experience better. 
+In fact, it ended up looking much nicer and more polished than we originally planned. 
+We were constantly adapting and improving the project as we developed new ideas and learned more about what we could do with the tools we were using.
+
+Through this process, I learned a lot—especially when it came to understanding code syntax, organizing a project structure, and troubleshooting problems.
+It also taught me how to think through logic more carefully and how different parts of a program work together. 
+Beyond the technical learning, I gained experience in how to collaborate, iterate on designs, and stay flexible even when things don’t go exactly as planned.
+
+The hardest part of the project was definitely the beginning. Things were unclear, and we had a hard time getting started. 
+The process was slow at first because we hadn’t fully decided on a project direction, and as a result, we struggled to hit our early milestones. 
+However, once we finalized our idea and agreed on a shared vision, everything started to come together much more smoothly. 
+That turning point really helped us gain momentum.
+
+If I were to do this again, I would make sure to start with a clearer plan and better structure. 
+Having a more solid roadmap in the early stages would have saved us time and made it easier to meet deadlines. 
+Now that I’m more familiar with how to approach a project like this, I would also challenge myself to include more advanced features and build something even more interactive.
+
+Working with my partner had its ups and downs, but overall, we collaborated well. Once we landed on a shared idea that reflected both of our interests, we were able to work as a team and support each other’s contributions.
+What made it challenging at times was the lack of clarity early on, which made it hard to divide tasks effectively.
+But as the project developed, so did our communication and ability to work together.
 ```
 
 ```
