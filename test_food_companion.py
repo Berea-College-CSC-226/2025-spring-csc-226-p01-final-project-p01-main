@@ -1,3 +1,27 @@
+######################################################################
+# Author: Kamau Clark
+# Username: clarkk2
+#
+# Assignment: Final Project
+#
+# Purpose:
+# This project demonstrates mastery of Python classes, inheritance,
+# file handling, dictionaries, and graphical user interfaces (GUIs).
+# Inspired by the Teamwork 2 (T12: Events and GUIs) assignment and
+# the EventGuru concept, this app allows users to create, view, and
+# manage recipes, plan meals, track calories, and receive smart
+# AI-based suggestions through a fully interactive Tkinter interface.
+#
+######################################################################
+# Acknowledgements:
+# I’d like to thank my instructors, TAs, and classmates for their
+# guidance throughout the semester. This project is influenced by
+# the T12 assignment structure and builds on the t12_tkinter.py example.
+#
+# I also used Google, Python documentation, and AI tools to help
+# brainstorm structure, polish the GUI design, and write supporting code in all honesty.
+######################################################################
+# food_companion.py
 # test_food_companion.py
 
 import unittest

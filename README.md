@@ -20,15 +20,16 @@
 ❗️**Source Assignment(s)**: `
 Source Assignment(s)
 
-# This project incorporates concepts from Chapter 10: Lists in Python, specifically:
-#
-# Utilizing aliases and cloning for managing recipe versions.
-#
-# Applying delimiters for efficient recipe input processing.
-#
-# Implementing nested lists for organizing recipes by meal type or ingredients.
-#
-# Using list operations and traversal to update and manage recipes, meal plans, and generate shopping lists.`
+This application is a smart, interactive recipe manager and meal planner. It allows users to:
+
+- Add and view recipes with detailed ingredients and instructions
+- Automatically calculate the calorie content for any recipe
+- Use Smart AI to get recipe suggestions based on available ingredients
+- Plan meals for specific days and meal types (breakfast, lunch, dinner)
+- View a full weekly meal plan, including estimated daily calorie totals
+- Browse recipe cards visually using integrated images (JPG or PNG)
+
+The project uses Python's object-oriented features (classes and inheritance), JSON file handling, and Tkinter for the graphical user interface. It was heavily inspired by the *EventGuru* concept from Teamwork2 (T12: Events and GUIs), and built out into a full working application with all features integrated.
 
 ❗️**CRC Card(s)**:
   - Create a CRC card for each class that your project will implement.
@@ -76,7 +77,11 @@ Reflect on what you’ve done so far. How’s it going? Are you feeling behind/a
 What has surprised you so far? Describe your general feelings. Be honest with yourself; this section is for you, not me.
 
 ```
-    **Replace this text with your reflection
+    **So far, things are going pretty well. At first, I felt a little behind just because there were a lot of moving parts to manage — recipes, calories, AI, planning meals ;
+     but once I locked in and started organizing my files and logic, everything came together.
+     The class structure made things cleaner than I expected, and seeing everything connect, especially with the new GUI, made it more rewarding.
+     What surprised me most is how deep a simple recipe app can get when you start adding smart features like AI suggestions or visual elements. I’m proud of how the app is starting to feel like a real product.
+      My only worry is making sure the visuals and experience are as good as the logic underneath.
 ```
 
 ---
@@ -85,14 +90,16 @@ What has surprised you so far? Describe your general feelings. Be honest with yo
 
 Indicate what percentage of the project you have left to complete and how confident you feel. 
 
-❗️**Completion Percentage**: `0 - 100%`
+❗️**Completion Percentage**: `90%`
 
 ❗️**Confidence**: Describe how confident you feel about completing this project, and why. Then, describe some 
   strategies you can employ to increase the likelihood that you'll be successful in completing this project 
   before the deadline.
 
 ```
-    **Replace this text with your reflection
+    **The core features are fully implemented ; including recipe tracking, calorie calculation, meal planning, and smart AI ingredient suggestions.
+     The new GUI gives everything a better look, and I even added recipe images and a logo to bring it to life.
+    To stay on track, I’m going to make sure all image files and dependencies are bundled cleanly and check that everything runs smoothly on different systems.
 ```
 
 ---

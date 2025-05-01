@@ -1,0 +1,175 @@
+[
+    {
+        "name": "Grilled Salmon",
+        "ingredients": [
+            "salmon",
+            "lemon",
+            "garlic",
+            "olive oil",
+            "salt",
+            "pepper"
+        ],
+        "instructions": [
+            "Marinate salmon with lemon, garlic, olive oil, salt, and pepper",
+            "Grill salmon for 4\u20135 minutes per side until cooked through"
+        ],
+        "servings": 2
+    },
+    {
+        "name": "Tacos",
+        "ingredients": [
+            "tortillas",
+            "ground beef",
+            "lettuce",
+            "tomato",
+            "cheese",
+            "sour cream",
+            "taco seasoning"
+        ],
+        "instructions": [
+            "Cook ground beef with taco seasoning",
+            "Warm tortillas",
+            "Assemble tacos with beef, lettuce, tomato, cheese, and sour cream"
+        ],
+        "servings": 3
+    },
+    {
+        "name": "Cheeseburger",
+        "ingredients": [
+            "burger bun",
+            "ground beef",
+            "cheese",
+            "lettuce",
+            "tomato",
+            "onion",
+            "ketchup"
+        ],
+        "instructions": [
+            "Form and grill beef patty",
+            "Toast bun",
+            "Assemble burger with patty, cheese, lettuce, tomato, onion, and ketchup"
+        ],
+        "servings": 1
+    },
+    {
+        "name": "Spaghetti",
+        "ingredients": [
+            "spaghetti noodles",
+            "ground beef",
+            "tomato sauce",
+            "garlic",
+            "onion",
+            "olive oil"
+        ],
+        "instructions": [
+            "Boil noodles",
+            "Cook beef with garlic and onion",
+            "Stir in tomato sauce",
+            "Serve over noodles"
+        ],
+        "servings": 4
+    },
+    {
+        "name": "Mac and Cheese",
+        "ingredients": [
+            "macaroni",
+            "cheddar cheese",
+            "milk",
+            "butter"
+        ],
+        "instructions": [
+            "Boil macaroni",
+            "Melt cheese with milk and butter",
+            "Combine and stir"
+        ],
+        "servings": 3
+    },
+    {
+        "name": "Pancakes",
+        "ingredients": [
+            "pancake mix",
+            "egg",
+            "milk",
+            "butter",
+            "syrup"
+        ],
+        "instructions": [
+            "Mix batter with egg and milk",
+            "Cook on skillet until golden brown",
+            "Serve with butter and syrup"
+        ],
+        "servings": 3
+    },
+    {
+        "name": "Fried Chicken",
+        "ingredients": [
+            "chicken thighs",
+            "flour",
+            "seasoning salt",
+            "pepper",
+            "oil",
+            "buttermilk"
+        ],
+        "instructions": [
+            "Marinate chicken in buttermilk",
+            "Coat in seasoned flour",
+            "Fry in hot oil until crispy and cooked through"
+        ],
+        "servings": 4
+    },
+    {
+        "name": "Shrimp Alfredo",
+        "ingredients": [
+            "shrimp",
+            "fettuccine",
+            "heavy cream",
+            "butter",
+            "parmesan cheese",
+            "garlic"
+        ],
+        "instructions": [
+            "Cook shrimp in butter and garlic",
+            "Prepare Alfredo sauce with cream and parmesan",
+            "Toss with cooked fettuccine"
+        ],
+        "servings": 2
+    },
+    {
+        "name": "Steak and Potatoes",
+        "ingredients": [
+            "steak",
+            "salt",
+            "pepper",
+            "potatoes",
+            "butter",
+            "garlic",
+            "parsley"
+        ],
+        "instructions": [
+            "Season steak and cook to desired doneness",
+            "Roast or mash potatoes with butter and garlic",
+            "Serve together with parsley garnish"
+        ],
+        "servings": 2
+    },
+    {
+        "name": "Gumbo",
+        "ingredients": [
+            "chicken",
+            "sausage",
+            "shrimp",
+            "okra",
+            "onion",
+            "celery",
+            "bell pepper",
+            "roux",
+            "rice"
+        ],
+        "instructions": [
+            "Make a dark roux",
+            "Cook vegetables and meats together",
+            "Simmer with spices and serve over rice"
+        ],
+        "servings": 4
+    }
+]
