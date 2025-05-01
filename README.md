@@ -8,9 +8,9 @@
 
 ## Milestone 1: Setup, Planning, Design
 
-**Title**: `Interactive Calculator with Turtle`
+**Title**: `Interactive Calculator`
 
-**Purpose**: `Building an interactive calculator and using a turtle object to write the result.`
+**Purpose**: `Building an interactive calculator.`
  
 **Source Assignment(s)**: `RQ18: Chapter 15: Event Driven Programming and GUIs`
 
@@ -28,8 +28,11 @@
 ### References 
 
 Julio Jijon
+
 Sami
+
 https://stackoverflow.com/questions/44634947/how-to-set-a-turtle-to-a-turtle-screen/44639041#44639041
+
 https://www.w3schools.com/python/ref_func_eval.asp
 
 ---
@@ -49,11 +52,9 @@ https://www.w3schools.com/python/ref_func_eval.asp
 
 Indicate what percentage of the project you have left to complete and how confident you feel. 
 
-❗️**Completion Percentage**: 90%
+**Completion Percentage**: 90%
 
-❗️**Confidence**: Describe how confident you feel about completing this project, and why. Then, describe some 
-  strategies you can employ to increase the likelihood that you'll be successful in completing this project 
-  before the deadline.
+**Confidence**: 
 
 ```
     We are sure that we can complete this Python calculator project since we have a solid understanding of fundamental 
@@ -80,18 +81,13 @@ clicking the 'RESET' or the 'MODE' button twice, displays a new equation.
 
 ### Errors and Constraints
 
-Every program has bugs or features that had to be scrapped for time. These bugs should be tracked in the issue queue. 
-You should already have a few items in here from the prior weeks. Create a new issue for any undocumented errors and 
-deficiencies that remain in your code. Bugs found that aren't acknowledged in the queue will be penalized.
+Found in GitHub issue queue
 
 ### Peer Evaluation
 
-It is important that all members of your team contribute equitably. The peer evaluation is your chance to either 
-a) celebrate the great work you all did together as an effective team, or b) indicate to the instructor if a member of
-your team did not contribute their fair share. Grades will be adjusted for any team member who is evaluated poorly. Your
-commit history will be used as evidence, so make sure you are using git effectively!
+Completed
 
-### ❗Reflection
+### Reflection
 
 Each partner should write three to four well-written paragraphs address the following (at a minimum):
 - Why did you select the project that you did?
@@ -102,7 +98,32 @@ Each partner should write three to four well-written paragraphs address the foll
 - How well did you work with your partner? What made it go well? What made it challenging?
 
 ```
-    Partner 1: **Replace this text with your reflection
+    Partner 1: We chose to work on the Python calculator project because it gave us a hands-on way to apply everything we 
+    have been learning this semester. The idea of combining a basic calculator with a game mode made the project 
+    more interesting. At first, we thought about using Turtle graphics to display the result in a fun way, but 
+    after trying it out, we realized it did not add much value/uniqueness. We decided to focus on making the calculator 
+    function well and give users a chance to practice their math skills through an interactive game instead.
+    
+    The final version of our project was pretty close to our original design. We planned for two modes: a regular 
+    calculator and a game that gives the user a missing-value equation to solve. Both features were completed, 
+    and we were able to make the mode switching work smoothly. We scrapped the Turtle idea early and put more 
+    time into getting the calculator to display results in real time. Our goal was to make the user interface 
+    clear and simple, and I think we succeeded in doing that. In the end, we created a calculator that works 
+    well and offers something a little extra, just like you wanted Scott:).
+    
+    This project taught me a lot about writing clean code, using Tkinter, and managing user input carefully. 
+    I also saw how important it is to test as we go. Some of the harder parts were dealing with edge cases 
+    in the calculator and making sure the game mode did not break when given odd input. We tried to keep 
+    the program from crashing by using try-except blocks and limiting what users could enter at different 
+    points. Looking back, I would write more helper functions to organize the code better and maybe try 
+    an alternative to using eval for safety.
+    
+    Working with my partner went well overall. We split up the work, used Git branches, and kept in touch regularly to avoid 
+    stepping on each other’s code (see what i did there?:)). GitHub really helped us stay organized, though we had a few small 
+    merge issues when accidentall working on the same thing. What helped the most was our consistent communication: leaving 
+    clear comments, helping each other understand difficult concepts, and setting workable/SMART goals for each milestone. 
+    Our teamwork made the project less stressful, and we both contributed to building something we are proud of.
+    
 ```
 
 ```

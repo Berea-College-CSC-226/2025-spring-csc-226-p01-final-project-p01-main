@@ -4,7 +4,7 @@
 #
 # Assignment: P01: Final Project
 #
-# Purpose: Building an interactive calculator and using a turtle object to write the result.
+# Purpose: Building an interactive calculator
 ######################################################################
 # Acknowledgements:
 #
@@ -46,7 +46,7 @@ class Calculator:
    def create_frames(self):
        """
        Creates calculator and button frames.
-       :return: Tuple containing calculator and turtle frames
+       :return: Tuple containing calculator and button frames
        """
        calculator_frame = ttk.Frame(self.master)
        calculator_frame.pack(side='top', fill='x', padx=10, pady=10)
@@ -84,7 +84,7 @@ class Calculator:
        Creates random equation with missing values
        :return: Random equation string
        """
-       equation_signs = '+-*//*' #additional multiplication and division symbols to increase odds
+       equation_signs = ['+','-','*','/','*','/'] #additional multiplication and division symbols to increase odds
        templates = ['i=isi','i=isisi','isi=i','isi=isi','isisi=i','i=isisisi','isi=isisi','isisi=isi','isisisi=i']
        while True:
            equation = []
