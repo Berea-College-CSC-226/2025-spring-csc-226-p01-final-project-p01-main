@@ -5,7 +5,7 @@
 Exclamation Marks indicate action items; you should remove these emoji as you complete/update the items which 
   they accompany. (This means that your final README should have no in it!)
 
-**Author(s)**: Cade Allen and Briana Nshimirimana
+**Author(s)**: Cade Allen & Briana Nshimirimana
 
 **Google Doc Link**: https://docs.google.com/document/d/1oLwXd286w14zDXONdglwq0IruwoGnN_kT3aUklyMdXw/edit?usp=sharing
 
@@ -20,7 +20,7 @@ Exclamation Marks indicate action items; you should remove these emoji as you co
 
 ️**Source Assignment(s)**: `T11 and T12`
 
-❗️**CRC Card(s)**:
+**CRC Card(s)**:
   - Create a CRC card for each class that your project will implement.
   - See this link for a sample CRC card and a template to use for your own cards (you will have to make a copy to edit):
     [CRC Card Example](https://docs.google.com/document/d/1JE_3Qmytk_JGztRqkPXWACJwciPH61VCx3idIlBCVFY/edit?usp=sharing)
