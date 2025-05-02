@@ -141,7 +141,7 @@ Each partner should write three to four well-written paragraphs address the foll
     we'll be working on it and I'd be really stuck and I'll have to keep asking Bao questions and for help, and I, sometimes, felt like 
     I was holding her back and having imposter syndrome because I was like "Wow she's so smart, and I'm no where near the level
     she is." In the end, though, we managed to make it work and finished the project, which was very reliving and lifted 
-    a huge weight and stress off my shoulders. 
+    a huge weight and stress off my shoulders.  
         
 ```
 
