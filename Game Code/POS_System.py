@@ -164,7 +164,7 @@ class LeftFrame(customtkinter.CTkFrame):
         spacer.pack(expand=True)  # Expands and fills space between buttons and exit
 
         # Exit Button
-        self.exit_btn = customtkinter.CTkButton(self.menu_container, text = "Exit", corner_radius = 3, height = 50, fg_color = "transparent",hover_color = "#4169E1")
+        self.exit_btn = customtkinter.CTkButton(self.menu_container, text = "Exit", corner_radius = 3, height = 50, fg_color = "transparent",hover_color = "#4169E1", command = self.exit)
         self.exit_btn.pack(pady = 0, fill = "x")
 
     def toggle_menu(self):
