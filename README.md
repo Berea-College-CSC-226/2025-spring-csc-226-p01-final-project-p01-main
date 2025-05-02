@@ -104,25 +104,32 @@ Indicate what percentage of the project you have left to complete and how confid
 
 ## Milestone 4: Final Code, Presentation, Demo
 
-### ❗User Instructions
+### User Instructions
 
-In a paragraph, explain how to use your program. Assume the user is starting just after they hit the "Run" button 
-in PyCharm. 
+After clicking the “Run” button in PyCharm, the flashcard program will open a new window with a clean graphical 
+interface. The user will first be prompted to choose how they want to input flashcards—either by uploading a file or 
+entering cards manually. If they choose "Upload File," they’ll be able to select a text file containing flashcards
+formatted with terms and definitions. If they choose "Enter Manually," they’ll be guided through adding flashcards 
+one by one. Once flashcards are loaded, the quiz will begin, showing a term and allowing the user to guess the 
+definition before revealing the correct answer. They can then mark whether they got it correct or incorrect. At
+the end of the session, the program will display the final score based on their responses.
 
-### ❗Errors and Constraints
+### Errors and Constraints
 
 Every program has bugs or features that had to be scrapped for time. These bugs should be tracked in the issue queue. 
 You should already have a few items in here from the prior weeks. Create a new issue for any undocumented errors and 
 deficiencies that remain in your code. Bugs found that aren't acknowledged in the queue will be penalized.
 
-### ❗Peer Evaluation
+In Issue queue on GitHub
+
+### Peer Evaluation
 
 It is important that all members of your team contribute equitably. The peer evaluation is your chance to either 
 a) celebrate the great work you all did together as an effective team, or b) indicate to the instructor if a member of
 your team did not contribute their fair share. Grades will be adjusted for any team member who is evaluated poorly. Your
 commit history will be used as evidence, so make sure you are using git effectively!
 
-### ❗Reflection
+### Reflection
 
 Each partner should write three to four well-written paragraphs address the following (at a minimum):
 - Why did you select the project that you did?
@@ -133,7 +140,29 @@ Each partner should write three to four well-written paragraphs address the foll
 - How well did you work with your partner? What made it go well? What made it challenging?
 
 ```
-    Partner 1: **Replace this text with your reflection
+    Fatma: We picked the flashcard app as our project because it felt useful and doable at the same time. As students, 
+    we’re always looking for better ways to study, and making a flashcard system that we could actually use just made
+    sense. We liked that it gave us a chance to practice both file handling and GUI design with Tkinter. It also felt 
+    like something we could expand on later if we wanted to. From the start, we wanted to create something that was 
+    clean, simple, and had some smart functionality, like tracking scores or saving user input.
+
+    The final version of our project stayed pretty true to what we originally planned. We had two input options
+    (manual and file upload), a working flashcard system, and a way to give a final score at the end. We did make a few 
+    adjustments as we went, especially to simplify the layout and keep the experience smooth for the user. There were 
+    parts we thought would be more complicated that ended up being easier, and other parts—like debugging the GUI—that 
+    took more time than we expected. But overall, it followed our original design pretty closely.
+
+    One of the biggest things I learned from this project is how much planning really helps. It’s easy 
+    to jump into coding, but taking time to think through the flow of the program and how each part connects saved us a lot 
+    of time later. I also got more confident with Tkinter and using classes to keep everything organized. The hardest part 
+    was definitely testing everything and making sure it still worked after each change—especially when buttons were
+    triggering the wrong functions or the window wasn’t updating the way we wanted.
+
+    Working with my partner went really well. We both brought different strengths to the table, and we tried to divide up
+    the work in a way that made sense. Communication was the key—just checking in often and sharing updates helped keep 
+    us on the same page. The only hard part was lining up our schedules, but once we got a rhythm going, it all came
+    together. If I were to do it again, I’d maybe sketch out the UI ahead of time and plan for more user testing early on.
+    But overall, I’m happy with how it turned out.
 ```
 
 ```
