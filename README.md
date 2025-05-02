@@ -82,25 +82,18 @@ finalize coding decisions before the end of the week.We need to also comment way
 
 ## Milestone 4: Final Code, Presentation, Demo
 
-### ❗User Instructions
+### User Instructions
 
-In a paragraph, explain how to use your program. Assume the user is starting just after they hit the "Run" button 
-in PyCharm. 
+Welcome to Sneaky Snake, a fun twist on the classic Snake game. In this version, you control the snake (the black square)
+using the arrow keys. Your objective is to eat as many green apples (green squares) as possible to increase your score, 
+which is displayed at the top of the screen. Be careful to avoid the red apples (red squares), as they are bombs. You 
+start with five lives, also shown at the top of the screen, and each time you eat a bomb, you lose one life. If you lose 
+all five, the game ends. Additionally, if you crash into the edges of the screen, the game will end immediately. Try to 
+rack up the highest score you can before your lives run out!
 
-### ❗Errors and Constraints
 
-Every program has bugs or features that had to be scrapped for time. These bugs should be tracked in the issue queue. 
-You should already have a few items in here from the prior weeks. Create a new issue for any undocumented errors and 
-deficiencies that remain in your code. Bugs found that aren't acknowledged in the queue will be penalized.
 
-### ❗Peer Evaluation
-
-It is important that all members of your team contribute equitably. The peer evaluation is your chance to either 
-a) celebrate the great work you all did together as an effective team, or b) indicate to the instructor if a member of
-your team did not contribute their fair share. Grades will be adjusted for any team member who is evaluated poorly. Your
-commit history will be used as evidence, so make sure you are using git effectively!
-
-### ❗Reflection
+###Reflection
 
 Each partner should write three to four well-written paragraphs address the following (at a minimum):
 - Why did you select the project that you did?
@@ -115,7 +108,20 @@ Each partner should write three to four well-written paragraphs address the foll
 ```
 
 ```
-    Partner 2: **Replace this text with your reflection
+    Partner 2: I will say Cade and I wanted to do a game from the jump but, had to think of which. Cade suggested the snake game, a game 
+     he plays in his past time. I agreed to it because I grew up playing this game and thought of how cool it would be to see
+    the game from a different view. Our initial design was more of the original concept of the game but that is not what our 
+    final design came to be. Both designs have similar factors but have different objectives of playing. The original was to grow 
+    the snake but the design we followed was more focused on getting as many green apples and avoiding bombs.This process genuinely emphasized the importance of breaking down, planning and giving yourself the needed time to 
+    complete each part of a larger task. Also the importance of knowing the material you wish to implement. I should've
+    not only identified what would be the hardest part but, also actually distributed the needed time and used the 
+    given resources far more. 
+    The hardest part of the of the project was adding to the body of the snake and in the end we 86'ed the idea and 
+    switched to another. Also, randomizing the apple on the screen and not every time I restart the game. KNowing what I know 
+    now I would have not wasted the time using a turtle in the begining and focused on more how to build the body effectively.
+    I think my partner and I created an environment between ourselves that allowed us to be transparent with each other 
+    and our levels of understanding. SO that in the end made it easier to communicate. We did have trouble getting in contact 
+    and meeting up at one point but we tried to use slack most times when we updated things or found resources.
 ```
 
 ---
