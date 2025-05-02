@@ -115,14 +115,17 @@ https://www.geeksforgeeks.org/how-to-use-images-as-backgrounds-in-tkinter/
 
 ````
     Shadaria
-    Referencece 1: ChatGPT
+Referencece 1: ChatGPT
     # ChatGPT - Interaction between frames - https://chatgpt.com/c/6806f27a-25e4-800a-b15f-08fb55fa6eb9
     # ChatGPT - Maintaining Frame Sizes - https://chatgpt.com/c/6806f327-1668-800a-8461-e50208d39257
     # ChatGPT - Toggle Menu Walkthrough Steps - https://chatgpt.com/c/6806f391-ead8-800a-bac4-1192ead61ae6
-    # ChatGPT - Lambda in Command -
-    # ChatGPT - Spacer -
-    # ChatGPT - Implicit Grid -
+    # ChatGPT - Lambda in Command - Prompt - I want to do a function call but i do not want to create a separate function to do so
+    # ChatGPT - Spacer - Prompt - How can I push buttons to the bottom of my gui
     # ChatGPT - Nested Dictionary - https://chatgpt.com/c/680efcbe-2ee4-800a-8589-a61576eecf6a
+
+ # Design - https://unipos.com.au/point-of-sale/kounta-dark-mode/
+# Dark mode colors - https://blog.karenying.com/posts/50-shades-of-dark-mode-gray   
+    
 ````
 ---
 
