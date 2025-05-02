@@ -2,8 +2,8 @@
 
 ## Instructions
 
-Exclamation Marks ❗️indicate action items; you should remove these emoji as you complete/update the items which 
-  they accompany. (This means that your final README should have no ❗️in it!)
+Exclamation Marks indicate action items; you should remove these emoji as you complete/update the items which 
+  they accompany. (This means that your final README should have no in it!)
 
 **Author(s)**: Bao Hoang, Ahna Watt
 
@@ -91,25 +91,30 @@ Indicate what percentage of the project you have left to complete and how confid
 
 ## Milestone 4: Final Code, Presentation, Demo
 
-### ❗User Instructions
+### User Instructions
 
-In a paragraph, explain how to use your program. Assume the user is starting just after they hit the "Run" button 
-in PyCharm. 
+After you click "Run" in PyCharm, the Trivia Quiz Game window will pop up. You'll first see a setup screen where you can pick a category, 
+choose how hard you want the questions to be (Easy, Medium, or Hard), and type in how many questions you want to play. 
+Once you're ready, just hit the "Start Quiz" button. The game will then show you one question at a time with four possible answers. 
+You'll also see a timer counting down from 10 seconds. Click on the answer you think is right — if you get it correct, 
+the button will turn green; if you're wrong, it will turn red, and the correct answer will light up green. 
+If you don’t answer in time, the game will still show you the right answer. After you finish all the questions, 
+a final screen will show your score and give you the option to play again or exit the game.
 
-### ❗Errors and Constraints
+### Errors and Constraints
 
 Every program has bugs or features that had to be scrapped for time. These bugs should be tracked in the issue queue. 
 You should already have a few items in here from the prior weeks. Create a new issue for any undocumented errors and 
 deficiencies that remain in your code. Bugs found that aren't acknowledged in the queue will be penalized.
 
-### ❗Peer Evaluation
+### Peer Evaluation
 
 It is important that all members of your team contribute equitably. The peer evaluation is your chance to either 
 a) celebrate the great work you all did together as an effective team, or b) indicate to the instructor if a member of
 your team did not contribute their fair share. Grades will be adjusted for any team member who is evaluated poorly. Your
 commit history will be used as evidence, so make sure you are using git effectively!
 
-### ❗Reflection
+### Reflection
 
 Each partner should write three to four well-written paragraphs address the following (at a minimum):
 - Why did you select the project that you did?
@@ -120,7 +125,7 @@ Each partner should write three to four well-written paragraphs address the foll
 - How well did you work with your partner? What made it go well? What made it challenging?
 
 ```
-    Partner 1: We chose this project because Bao came up with it and I liked it. It was a good idea that didn't seem crazy 
+    Ahna: We chose this project because Bao came up with it and I liked it. It was a good idea that didn't seem crazy 
     hard and doable in the amount of time that we had. I think for the most part, we did everything that we had designed in
     the CRC card. The only difference, which wasn't major, was that we didn't end up using the title that we initially thought 
     up in the beginning. 
@@ -141,7 +146,24 @@ Each partner should write three to four well-written paragraphs address the foll
 ```
 
 ```
-    Partner 2: **Replace this text with your reflection
+    Bao: We chose this project because I wanted to build something that felt both fun and functional, and after brainstorming with Ahna, 
+    we landed on the trivia quiz idea. It felt manageable within the time we had, and it gave us room to practice working with 
+    user interfaces and logic at the same time. I pitched the idea because it matched what we were learning, 
+    and Ahna liked it too, so it was an easy decision to move forward with it.
+
+    Looking back, our final project ended up aligning well with our original design. Most of what we outlined in the CRC cards, 
+    like displaying questions, tracking the score, and handling user input—was built into the final program. 
+    We did make a few small changes, such as the title and layout tweaks, but overall, the functionality matched what we planned. 
+    That felt rewarding, especially after all the debugging and problem-solving along the way.
+
+    I learned a lot during this project—particularly how important it is to break down the code into manageable parts 
+    using classes and clear functions. I also realized how easy it is to overlook small syntax issues, like a missing symbol 
+    or a wrong operator, and how those tiny mistakes can cause bigger issues if you’re not careful. But each mistake taught me something new.
+    
+    Working with Ahna was a great experience. Even though he felt like he was behind sometimes, I could tell he was putting in effort 
+    and learning as we went. He asked thoughtful questions, and it pushed me to be clearer when explaining code, which helped both of us. 
+    The biggest challenge was just finding the right balance between explaining and moving forward, but we communicated well 
+    and stayed supportive of each other. I’m proud of the work we did as a team.
 ```
 
 ---
