@@ -163,6 +163,7 @@ Each partner should write three to four well-written paragraphs address the foll
     us on the same page. The only hard part was lining up our schedules, but once we got a rhythm going, it all came
     together. If I were to do it again, I’d maybe sketch out the UI ahead of time and plan for more user testing early on.
     But overall, I’m happy with how it turned out.
+    
 ```
 
 ```
