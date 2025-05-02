@@ -107,7 +107,13 @@ Each partner should write three to four well-written paragraphs address the foll
 - How well did you work with your partner? What made it go well? What made it challenging?
 
 ```
-    Partner 1: **Replace this text with your reflection
+    Partner 1:  I selected the project I did because I wanted to do something that was fun but wasn't too simple.
+    The final project wasn't exactly what I had planned  because I coudln't understand how to code the snake lentgh. 
+    So instead  decidied to change the aim of the game while still keeping it interesting. I think it worked personally.
+    I learned mroe about classes than I did before. This is especially true after the coding interview. The hardest part was
+    definetly the actual coding. I didn't understand classes and I had to learn as I went.
+    I would defintely schedule my time better if I had the chance to. I'm bad at time management and that harms me.
+    My parter was good though, I handled more of the code while she handled the milestones and made sure we were on track.
 ```
 
 ```
