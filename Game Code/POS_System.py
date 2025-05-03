@@ -81,6 +81,7 @@ class Order:
         self.discount_label.configure(text=f"${discount:.2f}")
 
     def toggle_discount(self):
+        " Allows discount to be turned on and off "
         self.discount_active = not self.discount_active
         self.update_payment_labels()
 
@@ -574,7 +575,7 @@ class RightFrame(customtkinter.CTkFrame):
 
 
 class GUI (customtkinter.CTk):
-    """ """
+    """ Initialize screen size and three frame layout created in addition to a method"""
     def __init__(self):
         super().__init__()
         self.title("POS System")
