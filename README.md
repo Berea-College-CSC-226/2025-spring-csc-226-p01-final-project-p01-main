@@ -5,19 +5,31 @@
 ❗️Exclamation Marks ❗️indicate action items; you should remove these emoji as you complete/update the items which 
   they accompany. (This means that your final README should have no ❗️in it!)
 
-❗️**Author(s)**: Your name(s) here
+❗️**Author(s)**: Kamau Clark, Naod Ksmu
 
-❗️**Google Doc Link**: Your link here
+❗️**Google Doc Link**: https://docs.google.com/document/d/13EO7nWam9933nf8DoYmTe1gZ321sO48OcgQAgKhBpjs/edit?usp=sharing
 
 ---
 
 ## Milestone 1: Setup, Planning, Design
 
-❗️**Title**: `What is the title of your project? Be creative! Replace this block of text.`
+❗️**Title**: `Food Companion`
 
-❗**Purpose**: `In a single sentence, describe WHAT your project will do. Replace this block of text.`
+❗**Purpose**: `Food Companion helps users efficiently manage their recipes, plan weekly meals, and generate shopping lists based on selected meals, simplifying meal preparation and grocery shopping.`
 
-❗️**Source Assignment(s)**: `List which original assignments you will base your project on? Replace this block of text.`
+❗️**Source Assignment(s)**: `
+Source Assignment(s)
+
+This application is a smart, interactive recipe manager and meal planner. It allows users to:
+
+- Add and view recipes with detailed ingredients and instructions
+- Automatically calculate the calorie content for any recipe
+- Use Smart AI to get recipe suggestions based on available ingredients
+- Plan meals for specific days and meal types (breakfast, lunch, dinner)
+- View a full weekly meal plan, including estimated daily calorie totals
+- Browse recipe cards visually using integrated images (JPG or PNG)
+
+The project uses Python's object-oriented features (classes and inheritance), JSON file handling, and Tkinter for the graphical user interface. It was heavily inspired by the *EventGuru* concept from Teamwork2 (T12: Events and GUIs), and built out into a full working application with all features integrated.
 
 ❗️**CRC Card(s)**:
   - Create a CRC card for each class that your project will implement.
@@ -27,7 +39,15 @@
     README. You can do this by saving an image in the repository and linking to it. See the sample CRC card below - 
     and REPLACE it with your own:
   
-![Don't leave me in your README!](image/crc.png "Image of CRC card as an example. Upload your CRC card(s) in place of this one. ")
+markdown_content = """
+![MealPlanner](./image/MealPlanner.png "Meal Planner")
+![RecipeCRC](./image/RecipeCRC.png "Recipe CRC")
+![Recipe_Collection](./image/Recipe_Collection.png "Recipe Collection")
+![ShoppingList](./image/ShoppingList.png "Shopping List")
+"""
+( "Image of CRC card as an example. Upload your CRC card(s) in place of this one. ")
+
+
 
 ❗️**Branches**: This project will **require** effective use of git. 
 
@@ -36,8 +56,8 @@ branch) as they work. When you need to bring each others branches together, do s
 into your own, following the process we've discussed in previous assignments, then re-branching out from the merged code.  
 
 ```
-    Branch 1 starting name: _____________
-    Branch 2 starting name: _____________
+    Branch 1 starting name: Clarkk2
+    Branch 2 starting name: Ksmu2312
 ```
 
 ### References 
@@ -57,7 +77,11 @@ Reflect on what you’ve done so far. How’s it going? Are you feeling behind/a
 What has surprised you so far? Describe your general feelings. Be honest with yourself; this section is for you, not me.
 
 ```
-    **Replace this text with your reflection
+    **So far, things are going pretty well. At first, I felt a little behind just because there were a lot of moving parts to manage — recipes, calories, AI, planning meals ;
+     but once I locked in and started organizing my files and logic, everything came together.
+     The class structure made things cleaner than I expected, and seeing everything connect, especially with the new GUI, made it more rewarding.
+     What surprised me most is how deep a simple recipe app can get when you start adding smart features like AI suggestions or visual elements. I’m proud of how the app is starting to feel like a real product.
+      My only worry is making sure the visuals and experience are as good as the logic underneath.
 ```
 
 ---
@@ -66,14 +90,16 @@ What has surprised you so far? Describe your general feelings. Be honest with yo
 
 Indicate what percentage of the project you have left to complete and how confident you feel. 
 
-❗️**Completion Percentage**: `0 - 100%`
+❗️**Completion Percentage**: `90%`
 
 ❗️**Confidence**: Describe how confident you feel about completing this project, and why. Then, describe some 
   strategies you can employ to increase the likelihood that you'll be successful in completing this project 
   before the deadline.
 
 ```
-    **Replace this text with your reflection
+    **The core features are fully implemented ; including recipe tracking, calorie calculation, meal planning, and smart AI ingredient suggestions.
+     The new GUI gives everything a better look, and I even added recipe images and a logo to bring it to life.
+    To stay on track, I’m going to make sure all image files and dependencies are bundled cleanly and check that everything runs smoothly on different systems.
 ```
 
 ---
