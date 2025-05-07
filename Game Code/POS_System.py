@@ -387,31 +387,31 @@ class RightFrame(customtkinter.CTkFrame):
 
         # Total, Sub-tax, Discount (Frame)
         self.payment_frame = customtkinter.CTkFrame(self, fg_color = "#181818", corner_radius = 3, height = 60)
-        self.payment_frame.pack(fill = "both", padx = 10, pady = 1, expand = True)
+        self.payment_frame.pack(fill = "both", padx = 10, pady = 15, expand = True)
 
         # Tax (Left - inside of payment_frame)
-        tax_label = customtkinter.CTkLabel(self.payment_frame, text = "Tax", fg_color = "transparent", corner_radius = 3, font = ("Roboto", 13))
-        tax_label.grid(row = 0, column = 0, sticky = "w", padx = (20,5), pady = 1)
+        tax_label = customtkinter.CTkLabel(self.payment_frame, text = "Tax", fg_color = "transparent", corner_radius = 3, font = ("Roboto", 13), width = 150)
+        tax_label.grid(row = 0, column = 0, sticky = "w", padx = (20,5), pady = 10)
 
         # Discount (Left - inside the payment_frame)
         discount_label = customtkinter.CTkLabel(self.payment_frame, text = "Discount", fg_color = "transparent", corner_radius = 3, font = ("Roboto", 13))
-        discount_label.grid(row = 1, column = 0, sticky = "w", padx = (20,5), pady = 1)
+        discount_label.grid(row = 1, column = 0, sticky = "w", padx = (20,5), pady = 10)
 
         # Total (left - inside of payment_frame)
         total_label = customtkinter.CTkLabel(self.payment_frame, text = "Total", fg_color = "transparent", corner_radius = 3, font = ("Roboto", 13, "normal"))
-        total_label.grid(row = 2, column = 0, sticky = "w", padx = (20,5))
+        total_label.grid(row = 2, column = 0, sticky = "w", padx = (20,5), pady = 10)
 
         # Display Tax Label (right - inside the payment frame)
-        self.display_tax_label = customtkinter.CTkLabel(self.payment_frame, text = f"$0.00", fg_color = "transparent", corner_radius = 3, font = ("Roboto", 13))
-        self.display_tax_label.grid(row = 0, column = 1, sticky = "e", padx = (385,5), pady = 1)
+        self.display_tax_label = customtkinter.CTkLabel(self.payment_frame, text = f"$0.00", fg_color = "transparent", corner_radius = 3, font = ("Roboto", 13), width = 150)
+        self.display_tax_label.grid(row = 0, column = 1, sticky = "e", padx = (250,5), pady = 1)
 
         # Display Discount label (right - inside the payment frame)
-        self.display_discount_label = customtkinter.CTkLabel(self.payment_frame, text = f"$0.00", fg_color = "transparent", corner_radius = 3, font = ("Roboto", 13))
-        self.display_discount_label.grid(row = 1, column = 1, sticky = "e", padx = (385,5))
+        self.display_discount_label = customtkinter.CTkLabel(self.payment_frame, text = f"$0.00", fg_color = "transparent", corner_radius = 3, font = ("Roboto", 13), width = 150)
+        self.display_discount_label.grid(row = 1, column = 1, sticky = "e", padx = (250,5))
 
         # Display Total label (right - inside the payment frame)
-        self.display_total_label = customtkinter.CTkLabel(self.payment_frame, text = f"$0.00", fg_color = "transparent", corner_radius = 3, font =("Roboto", 15))
-        self.display_total_label.grid(row = 2, column = 1, sticky = "e", padx = (385,5))
+        self.display_total_label = customtkinter.CTkLabel(self.payment_frame, text = f"$0.00", fg_color = "transparent", corner_radius = 3, font =("Roboto", 15), width = 150)
+        self.display_total_label.grid(row = 2, column = 1, sticky = "e", padx = (250,5))
 
         # Make even column spacing
         for col in range(2):
@@ -481,11 +481,11 @@ class RightFrame(customtkinter.CTkFrame):
 
                 # Create a QTY Label (center)
                 qty_label_accum = customtkinter.CTkLabel(item_frame, text="1", fg_color="transparent",anchor="w")
-                qty_label_accum.grid(row=0, column=1, sticky="ew", padx=(75, 10), pady=5)
+                qty_label_accum.grid(row=0, column=1, sticky="ew", padx=(40, 10), pady=5)
 
                 # Create label for item price (right)
                 price_label = customtkinter.CTkLabel(item_frame, text=f"${p_price:.2f}", fg_color="transparent", anchor="e")
-                price_label.grid(row=0, column=2, sticky="w", padx=(105, 5), pady=5)
+                price_label.grid(row=0, column=2, sticky="w", padx=(25, 5), pady=5)
 
                 # Configure grid columns to be the same size
                 for i in range(3):
