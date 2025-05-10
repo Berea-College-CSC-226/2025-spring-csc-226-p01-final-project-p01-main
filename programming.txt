@@ -1,0 +1,22 @@
+variable:: A named storage location in memory that contains data
+function:: A reusable block of code designed to perform a specific task
+loop:: A control structure that repeats a sequence of instructions
+conditional:: A statement that performs different actions depending on whether a condition is true or false
+array:: An ordered collection of items, accessed by index
+object:: A collection of properties and methods
+class:: A blueprint for creating objects
+inheritance:: A mechanism where a new class inherits properties and behaviors from an existing class
+algorithm:: A step-by-step procedure for solving a problem
+API:: Application Programming Interface - a set of rules allowing programs to communicate with each other
+recursion:: A technique where a function calls itself to solve a problem
+debugging:: The process of finding and fixing errors in code
+compiler:: A program that translates code written in one language to another
+interpreter:: A program that executes instructions written in a programming language
+database:: An organized collection of structured information
+framework:: A pre-built structure that provides a foundation for developing software applications
+syntax:: The set of rules that defines the combinations of symbols considered to be correctly structured statements
+polymorphism:: The ability of different objects to respond to the same message in different ways
+encapsulation:: The bundling of data with the methods that operate on that data
+abstraction:: The concept of hiding complex implementation details and showing only the necessary features
+
+

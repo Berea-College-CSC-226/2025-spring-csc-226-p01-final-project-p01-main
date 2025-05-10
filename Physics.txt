@@ -1,0 +1,3 @@
+kinematics:: The branch of physics that describes the motion of objects without considering the forces that cause the motion
+dynamics:: The branch of physics concerned with the forces that cause motion and changes in motion
+Newton's First Law:: An object at rest stays at rest, and an object in motion stays in motion with the same speed and direction unless acted upon by an unbalanced force
