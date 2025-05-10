@@ -5,21 +5,31 @@
 ❗️Exclamation Marks ❗️indicate action items; you should remove these emoji as you complete/update the items which 
   they accompany. (This means that your final README should have no ❗️in it!)
 
-❗️**Author(s)**: Your name(s) here
+**Author(s)* Gavin Miller, Alina Petrosyantsa
 
-❗️**Google Doc Link**: Your link here
+**Google Doc Link**: https://docs.google.com/document/d/1Tsf9GHin8wAM7IFgzROiJbQJ-GSK09jl3QHG7QsOEGc/edit?tab=t.0
 
 ---
 
 ## Milestone 1: Setup, Planning, Design
 
-❗️**Title**: `What is the title of your project? Be creative! Replace this block of text.`
+**Title**: Pepperoni Vs Sausage: The Ultimate Game of Checkers
 
-❗**Purpose**: `In a single sentence, describe WHAT your project will do. Replace this block of text.`
+**Purpose**: This will be a fun and visually appealing two person checkers game
 
-❗️**Source Assignment(s)**: `List which original assignments you will base your project on? Replace this block of text.`
+**Source Assignment(s)**: `Barcode assignment dictionary: self.left_side = []
+        self.right_side = []
 
-❗️**CRC Card(s)**:
+        self.left_dict = {0: '0001101', 1: "0011001", 2: "0010011", 3: '0111101', 4: '0100011',
+                          5: '0110001', 6: '0101111', 7: '0111011', 8: '0110111', 9: "0001011"}
+
+        self.right_dict = {0: '1110010', 1: '1100110', 2: '1101100', 3: '1000010', 4: '1011100',
+                           5: '1001110', 6: '1010000', 7: '1000100', 8: '1001000', 9: '1110100'}`
+
+        Will refer to T11 and T12 for GUI, we are using pygame but will use GUI basic programming habits
+        from tkinter (thoughts? I think pygame will make something like checkers and animation easier than tkinter)
+
+**CRC Card(s)**:
   - Create a CRC card for each class that your project will implement.
   - See this link for a sample CRC card and a template to use for your own cards (you will have to make a copy to edit):
     [CRC Card Example](https://docs.google.com/document/d/1JE_3Qmytk_JGztRqkPXWACJwciPH61VCx3idIlBCVFY/edit?usp=sharing)
@@ -27,17 +37,19 @@
     README. You can do this by saving an image in the repository and linking to it. See the sample CRC card below - 
     and REPLACE it with your own:
   
-![Don't leave me in your README!](image/crc.png "Image of CRC card as an example. Upload your CRC card(s) in place of this one. ")
-
-❗️**Branches**: This project will **require** effective use of git. 
+![Screenshot 2025-04-01 192448.png](image/Screenshot%202025-04-01%20192448.png)
+![Screenshot 2025-04-01 192455.png](image/Screenshot%202025-04-01%20192455.png)
+![Screenshot 2025-04-01 192506.png](image/Screenshot%202025-04-01%20192506.png)
+![Screenshot 2025-04-01 192515.png](image/Screenshot%202025-04-01%20192515.png)
+**Branches**: This project will **require** effective use of git. 
 
 Each partner should create a branch at the beginning of the project, and stay on this branch (or branches of their 
 branch) as they work. When you need to bring each others branches together, do so by merging each other's branches 
 into your own, following the process we've discussed in previous assignments, then re-branching out from the merged code.  
 
 ```
-    Branch 1 starting name: _____________
-    Branch 2 starting name: _____________
+    Branch 1 starting name: millerg3
+    Branch 2 starting name: petryosyantsa
 ```
 
 ### References 
@@ -47,8 +59,12 @@ and describe how you integrated the ideas or code into your program. This includ
 helped you, AI tools you've used, and any other resources that are not solely your own contribution. Update this 
 section as you go. DO NOT forget about it!
 
+[pizza.jpg] Inspiration for pizza checkers, wanted to make it an actual digital game and use cooler checker pieces
+(pepperoni and sausage)
 ---
-
+https://emunix.emich.edu/~mevett/AI/Checkers/checkersNotation.html Using as an inspiration for setting up the board
+https://www.pythontutorial.net/tkinter/tkinter-grid/ Using for ideas to set up the board
+https://pythonguides.com/python-for-loop-index/ Refresher on how to find current index in list while looping, using for checker pieces
 ## Milestone 2: Code Setup and Issue Queue
 
 Most importantly, keep your issue queue up to date, and focus on your code. 🙃
@@ -57,7 +73,10 @@ Reflect on what you’ve done so far. How’s it going? Are you feeling behind/a
 What has surprised you so far? Describe your general feelings. Be honest with yourself; this section is for you, not me.
 
 ```
-    **Replace this text with your reflection
+    We have made a frame and a design plan for our future program. It going pretty well, we are feeling on track. For now, we are worried 
+    about grid set up and movement on the board. What suprised us is that our programm seems like a very simple game of checkers, but when we 
+    were making a frame - there is actually a lot of steps, and things to be done. We know it will be challenging in some aspects, but 
+    we are looking forward to figure it out!  
 ```
 
 ---

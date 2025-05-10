@@ -1,0 +1,18 @@
+board = [0, 1, 0, 2, 0, 3, 0, 4,
+         5, 0, 6, 0, 7, 0, 8, 0,
+         0, 9, 0, 10, 0, 11, 0, 12,
+         13, 0, 14, 0, 15, 0, 16, 0,
+         0, 17, 0, 18, 0, 19, 0, 20,
+         21, 0, 22, 0, 23, 0, 24, 0,
+         0, 25, 0, 26, 0, 27, 0, 28,
+         29, 0, 30, 0, 31, 0, 32, 0]
+
+if piece moving normally, if number is +- 4-5 their current position, it's an
+ok move as long as no piece is there
+if hopping to +-7 spot, if number +- 4 to you is filled (if enemy piece self.position is
+"assigned" to that number on the list, it works, otherwise try again
+if hopping to +-9 spot, checks number +- 5 to you.
+if number is filled and hop is available, turn won't change until it's taken
+if there is jump to be made, you have to take it, and if there
+if you already jumped piece and there's another jump you double, ONLY same piece
+# +- depends on bottom or top side
