@@ -1,0 +1,89 @@
+#DONE - board = [0, 1, 0, 2, 0, 3, 0, 4,
+         5, 0, 6, 0, 7, 0, 8, 0,
+         0, 9, 0, 10, 0, 11, 0, 12,
+         13, 0, 14, 0, 15, 0, 16, 0,
+         0, 17, 0, 18, 0, 19, 0, 20,
+         21, 0, 22, 0, 23, 0, 24, 0,
+         0, 25, 0, 26, 0, 27, 0, 28,
+         29, 0, 30, 0, 31, 0, 32, 0]
+
+
+Logic of the grid and movements:
+
+#DONE - In the beginning we can store/position checkers in the self.pieces[]: which will be all the rows
+except middle two
+
+#TODO make the pieces on the grid an instance of their own class
+#TODO Moving checkers: in class CheckerPiece:
+Note for moving checkers:
+(from: https://www.reddit.com/r/learnprogramming/comments/a2rtl0/help_with_moving_checker_pieces_in_python/)
+First, I would suggest not trying to animate the pieces. Assume that clicking on a new square causes the piece
+to disappear from one square and reappear on another. It doesn't "move". Okay, so what do you do? My advice
+would be to write the rendering code. Write code that can display the board given the current state of the game.
+Actually, break that down:
+Open a window
+Display the board - just the board, no pieces
+Add the pieces
+Got that? Great! Now then:
+Capture mouse clicks.
+
+if piece moving normally, if number is +- 4-5 their current position, it's an
+ok move as long as no piece is there
+if hopping to +-7 spot, if number +- 4 to you is filled (if enemy piece self.position is
+"assigned" to that number on the list, it works, otherwise try again
+if hopping to +-9 spot, checks number +- 5 to you.
+if number is filled and hop is available, turn won't change until it's taken
+if there is jump to be made, you have to take it, and if there
+if you already jumped piece and there's another jump you double, ONLY same piece
+# +- depends on bottom or top side
+
+
+#TODO make make_piece_king in CheckersPiece Class
+
+#TODO finish the class Game: turn_switcher, game_won, board_state
+
+#TODO Make sure that checkers work
+
+#TODO Design implementation part
+
+
+
+MOVING ALGORITHM:
+
+conditions for moving
+
+if top piece: can move to that grid if the the row + column number added together are equal to
+or 2 GREATER than the current grid the checker is on.
+
+if bottom piece: can move to that grid if the row + column number added together are equal to
+or 2 LESS than the current grid the checker is on.
+
+thoughts:
+
+self.button_pos = None
+self.pepperoni_pos = None
+self.sausage_pos = None
+
+
+self.button_pos
+
+
+
+def button_handler():
+self.button_pos =
+
+
+Now have it set up so clicking button returns its position (row + column added)
+Next step: make it so clicking piece increases a counter to it's position number,
+clicking another piece resets it. when grid is clicked, if the counter is relative
+to grid number by algorithm stated above, it should work. Need to make movement work as well.
+
+if piece clicked:
+counter = piece_pos
+if grid clicked:
+if moving algorithm is true:
+make button at
+
+if square clicked:
+if piece at counter position == square_pos
+for now print something to test, eventually make that one disappear, row = pep_pos[0] col = [1]
